@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="ZAVQEL — Maison de Parfum. Uma fragrância. Uma assinatura.">
+  <title>ZAVQEL — Maison de Parfum</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#050505;
+      --panel:#090909;
+      --gold:#caa35a;
+      --gold-soft:#e0c27f;
+      --ivory:#f0ece3;
+      --muted:#918b81;
+      --line:rgba(202,163,90,.22);
+      --line-soft:rgba(255,255,255,.075);
+      --serif:"Cormorant Garamond", Georgia, serif;
+      --sans:"Manrope", Arial, sans-serif;
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ivory);
+      font-family:var(--sans);
+      font-weight:300;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    img{max-width:100%;display:block}
+
+    .grain{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      pointer-events:none;
+      opacity:.025;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    }
+
+    .nav{
+      position:fixed;
+      inset:0 0 auto;
+      z-index:80;
+      height:74px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(5,5,5,.82);
+      backdrop-filter:blur(13px);
+    }
+    .nav-inner{
+      width:min(var(--max),calc(100% - 42px));
+      height:100%;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:11px;
+      letter-spacing:.32em;
+      color:#e8e0d1;
+    }
+    .brand-mark{
+      width:29px;
+      height:29px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(202,163,90,.45);
+      transform:rotate(45deg);
+    }
+    .brand-mark span{
+      transform:rotate(-45deg);
+      font-family:var(--serif);
+      color:var(--gold-soft);
+      font-size:14px;
+      letter-spacing:0;
+    }
+
+    .menu-btn{
+      width:42px;
+      height:42px;
+      border:0;
+      background:none;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+    }
+    .hamb{width:23px;height:17px;position:relative}
+    .hamb span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:1px;
+      background:#d7d0c3;
+      transition:.35s ease;
+    }
+    .hamb span:nth-child(1){top:2px}
+    .hamb span:nth-child(2){top:8px}
+    .hamb span:nth-child(3){top:14px}
+    .menu-btn.open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .menu-btn.open .hamb span:nth-child(2){opacity:0}
+    .menu-btn.open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+    .menu{
+      position:fixed;
+      inset:74px 0 0;
+      z-index:70;
+      background:#050505;
+      display:grid;
+      place-items:center;
+      transform:translateY(-105%);
+      transition:transform .55s cubic-bezier(.76,0,.24,1);
+    }
+    .menu.open{transform:translateY(0)}
+    .menu nav{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:21px;
+      text-align:center;
+    }
+    .menu small{
+      color:var(--gold);
+      font-size:9px;
+      letter-spacing:.4em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .menu a{
+      font-family:var(--serif);
+      font-size:clamp(31px,7vw,58px);
+      line-height:.95;
+    }
+    .menu a:hover{color:var(--gold-soft)}
+
+    section{border-bottom:1px solid var(--line-soft)}
+    .wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
+    .eyebrow{
+      margin:0 0 22px;
+      color:var(--gold);
+      font-size:9px;
+      letter-spacing:.42em;
+      text-transform:uppercase;
+    }
+
+    .hero{
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 40%,rgba(202,163,90,.12),transparent 25%),
+        radial-gradient(circle at 85% 80%,rgba(202,163,90,.05),transparent 28%);
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:72vw;
+      height:72vw;
+      max-width:900px;
+      max-height:900px;
+      right:-36vw;
+      bottom:-48vw;
+      border:1px solid rgba(202,163,90,.08);
+      border-radius:50%;
+    }
+    .hero-content{
+      width:100%;
+      text-align:center;
+      padding:120px 0 80px;
+    }
+    .hero-mark{
+      width:min(178px,42vw);
+      height:auto;
+      margin:0 auto 26px;
+    }
+    .hero h1{
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(58px,11.8vw,128px);
+      line-height:.83;
+      font-weight:400;
+      letter-spacing:.055em;
+    }
+    .hero h1 em{
+      display:block;
+      color:var(--gold-soft);
+      font-style:italic;
+      letter-spacing:.025em;
+    }
+    .hero-sub{
+      width:min(650px,100%);
+      margin:30px auto 38px;
+      color:#a59f95;
+      font-size:14px;
+      line-height:1.9;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:190px;
+      height:52px;
+      padding:0 27px;
+      border:1px solid var(--gold);
+      background:var(--gold);
+      color:#17120a;
+      font-size:9px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      transition:.3s ease;
+    }
+    .cta:hover{
+      background:transparent;
+      color:var(--gold-soft);
+    }
+    .scroll-cue{
+      margin-top:68px;
+      color:#69645c;
+      font-size:8px;
+      letter-spacing:.42em;
+      text-transform:uppercase;
+    }
+
+    .intro{
+      padding:130px 0 145px;
+    }
+    .intro-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:85px;
+      align-items:end;
+    }
+    .display{
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(48px,7vw,88px);
+      font-weight:400;
+      line-height:.93;
+    }
+    .display em{
+      color:var(--gold-soft);
+      font-style:italic;
+    }
+    .body-copy{
+      margin:0;
+      max-width:530px;
+      color:#a7a197;
+      font-size:14px;
+      line-height:1.95;
+    }
+
+    .philosophy{
+      padding:125px 0 140px;
+    }
+    .philosophy-copy{
+      max-width:830px;
+    }
+    .philosophy h2{
+      margin:0;
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:clamp(46px,7vw,82px);
+      line-height:.96;
+    }
+    .philosophy h2 em{color:var(--gold-soft)}
+    .philosophy p{
+      max-width:710px;
+      margin:35px 0 0;
+      color:#aaa49b;
+      font-size:14px;
+      line-height:1.95;
+    }
+
+    .pillars{padding:125px 0 145px}
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:30px;
+      margin-bottom:45px;
+    }
+    .section-title{
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(44px,6vw,74px);
+      font-weight:400;
+      line-height:.95;
+    }
+    .section-title em{color:var(--gold-soft)}
+    .section-note{
+      margin:0;
+      max-width:330px;
+      color:#777169;
+      font-size:11px;
+      line-height:1.75;
+      text-align:right;
+    }
+
+    /* V6: quadrados mais compactos e tipografia mais próxima */
+    .pillar-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+    .pillar{
+      min-height:255px;
+      border:1px solid rgba(202,163,90,.17);
+      background:linear-gradient(160deg,rgba(255,255,255,.012),rgba(255,255,255,0));
+      padding:28px 24px 25px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:.35s ease;
+    }
+    .pillar:hover{
+      border-color:rgba(202,163,90,.42);
+      transform:translateY(-4px);
+    }
+    .pillar-number{
+      color:var(--gold);
+      font-size:8px;
+      letter-spacing:.32em;
+    }
+    .pillar h3{
+      margin:24px 0 11px;
+      font-family:var(--serif);
+      font-size:34px;
+      line-height:.95;
+      font-weight:400;
+    }
+    .pillar p{
+      margin:0;
+      color:#7f7970;
+      font-size:10px;
+      line-height:1.55;
+      max-width:210px;
+    }
+
+    .custom{
+      padding:125px 0 145px;
+    }
+    .custom-grid{
+      display:grid;
+      grid-template-columns:1fr .9fr;
+      gap:95px;
+      align-items:center;
+    }
+    .custom-visual{
+      min-height:520px;
+      border:1px solid rgba(202,163,90,.15);
+      background:
+        radial-gradient(circle at 50% 35%,rgba(202,163,90,.12),transparent 25%),
+        linear-gradient(145deg,#0b0b0b,#050505 65%);
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .custom-bottle{
+      width:205px;
+      height:365px;
+      border:1px solid rgba(202,163,90,.38);
+      border-radius:0 0 20px 20px;
+      position:relative;
+      background:linear-gradient(90deg,#090909,#121212 50%,#080808);
+      box-shadow:0 25px 70px rgba(0,0,0,.7);
+    }
+    .custom-bottle:before{
+      content:"";
+      position:absolute;
+      width:158px;
+      height:75px;
+      left:23px;
+      top:-75px;
+      border:1px solid rgba(202,163,90,.35);
+      border-bottom:0;
+      background:#090909;
+    }
+    .custom-label{
+      position:absolute;
+      left:32px;
+      right:32px;
+      top:78px;
+      bottom:82px;
+      border:1px solid rgba(202,163,90,.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+    .custom-label strong{
+      display:block;
+      font-family:var(--serif);
+      font-size:28px;
+      font-weight:400;
+      letter-spacing:.08em;
+    }
+    .custom-label small{
+      display:block;
+      margin-top:9px;
+      color:var(--gold);
+      font-size:7px;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+    }
+    .custom h2{
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(45px,6vw,76px);
+      font-weight:400;
+      line-height:.95;
+    }
+    .custom h2 em{color:var(--gold-soft)}
+    .custom .body-copy{margin-top:28px}
+    .signature{
+      margin:38px 0 0;
+      font-family:var(--serif);
+      color:#d4cec3;
+      font-size:30px;
+      font-style:italic;
+    }
+
+    .collection{padding:125px 0 145px}
+    .collection-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .product{
+      padding:20px;
+      border:1px solid rgba(202,163,90,.17);
+      background:#080808;
+      min-height:625px;
+      display:flex;
+      flex-direction:column;
+    }
+    .product-top{
+      display:flex;
+      justify-content:space-between;
+      color:var(--gold);
+      font-size:8px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+    }
+    .product-visual{
+      flex:1;
+      min-height:430px;
+      display:grid;
+      place-items:center;
+      position:relative;
+      background:radial-gradient(circle at center,rgba(202,163,90,.07),transparent 35%);
+    }
+    .bottle{
+      width:145px;
+      height:260px;
+      border:1px solid rgba(202,163,90,.35);
+      background:linear-gradient(90deg,#080808,#131313,#080808);
+      border-radius:0 0 14px 14px;
+      position:relative;
+    }
+    .bottle:before{
+      content:"";
+      position:absolute;
+      width:112px;
+      height:49px;
+      left:16px;
+      top:-49px;
+      border:1px solid rgba(202,163,90,.25);
+      border-bottom:0;
+      background:#0a0a0a;
+    }
+    .bottle-mark{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      color:var(--gold-soft);
+      font-family:var(--serif);
+      font-size:38px;
+    }
+    .product h3{
+      margin:0;
+      font-family:var(--serif);
+      font-size:31px;
+      line-height:1;
+      font-weight:400;
+    }
+    .product p{
+      margin:8px 0 0;
+      color:#777169;
+      font-size:10px;
+      line-height:1.6;
+    }
+
+    .manifesto{
+      padding:125px 0 145px;
+    }
+    .manifesto-inner{
+      max-width:900px;
+    }
+    .quote{
+      margin:0;
+      font-family:var(--serif);
+      font-size:clamp(44px,6.4vw,82px);
+      line-height:.98;
+      font-weight:400;
+    }
+    .quote em{color:var(--gold-soft)}
+    .manifesto-copy{
+      margin:34px 0 0;
+      max-width:650px;
+      color:#8d877e;
+      font-size:13px;
+      line-height:1.9;
+    }
+
+    .identity{padding:125px 0 145px}
+    .identity-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    .identity-card{
+      min-height:240px;
+      border:1px solid rgba(202,163,90,.14);
+      padding:27px 25px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .identity-card span{
+      color:var(--gold);
+      font-size:8px;
+      letter-spacing:.3em;
+    }
+    .identity-card h3{
+      margin:0;
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:39px;
+      line-height:.92;
+    }
+    .identity-card p{
+      margin:0;
+      max-width:330px;
+      color:#777169;
+      font-size:10px;
+      line-height:1.6;
+    }
+
+    footer{
+      padding:75px 0 55px;
+      border-top:1px solid var(--line-soft);
+    }
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:end;
+    }
+    .footer-brand{
+      letter-spacing:.32em;
+      font-size:11px;
+    }
+    .footer-brand small{
+      display:block;
+      margin-top:14px;
+      color:#625e57;
+      letter-spacing:.13em;
+      font-size:8px;
+    }
+    .footer-links{
+      display:flex;
+      gap:22px;
+      color:#7a746c;
+      font-size:8px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    @media (max-width: 900px){
+      .intro-grid,.custom-grid{grid-template-columns:1fr;gap:48px}
+      .section-head{align-items:start;flex-direction:column}
+      .section-note{text-align:left}
+      .pillar-grid{grid-template-columns:repeat(2,1fr)}
+      .collection-grid{grid-template-columns:1fr}
+      .product{min-height:550px}
+      .identity-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 560px){
+      .wrap,.nav-inner{width:min(var(--max),calc(100% - 32px))}
+      .nav{height:68px}
+      .menu{inset:68px 0 0}
+      .hero-content{padding-top:112px}
+      .hero-mark{width:150px}
+      .hero-sub{font-size:12px;line-height:1.8;margin-top:26px}
+      .scroll-cue{margin-top:54px}
+      .intro,.philosophy,.pillars,.custom,.collection,.manifesto,.identity{padding:92px 0 104px}
+      .pillar-grid{grid-template-columns:1fr;gap:10px}
+      .pillar{
+        min-height:195px;
+        padding:23px 21px 22px;
+      }
+      /* Texto dos quadrados: menor, mais compacto e mais próximo */
+      .pillar h3{
+        margin:16px 0 8px;
+        font-size:31px;
+      }
+      .pillar p{
+        font-size:10px;
+        line-height:1.48;
+      }
+      .custom-visual{min-height:430px}
+      .custom-bottle{transform:scale(.86)}
+      .product{min-height:510px;padding:17px}
+      .product-visual{min-height:350px}
+      .footer-grid{flex-direction:column;align-items:flex-start}
+      .footer-links{flex-wrap:wrap}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand" aria-label="ZAVQEL">
+        <span class="brand-mark"><span>ZQ</span></span>
+        ZAVQEL
+      </a>
+
+      <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" id="menuBtn">
+        <span class="hamb"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu">
+    <nav>
+      <small>Navigation</small>
+      <a href="#about">A ZAVQEL</a>
+      <a href="#philosophy">Filosofia</a>
+      <a href="#pillars">Os quatro pilares</a>
+      <a href="#personalizacao">Personalização</a>
+      <a href="#collection">Coleção</a>
+      <a href="#manifesto">Manifesto</a>
+    </nav>
+  </div>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="wrap hero-content">
+        <div class="hero-mark" aria-hidden="true">
+          <svg viewBox="0 0 220 220" role="img">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f0d08c"/>
+                <stop offset=".45" stop-color="#a87928"/>
+                <stop offset="1" stop-color="#e4bd65"/>
+              </linearGradient>
+            </defs>
+            <rect x="46" y="46" width="128" height="128" rx="1" transform="rotate(45 110 110)" fill="none" stroke="url(#g)" stroke-width="1.5"/>
+            <path d="M87 83 C94 65,123 66,128 84 C133 102,116 108,106 114 C92 122,86 138,93 150 C100 163,120 159,129 147" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M76 78 L135 78 L122 90 L109 90 L106 148 L94 148 L97 90 L84 90 Z" fill="url(#g)"/>
+            <path d="M110 33 L121 57 L110 75 L99 57 Z" fill="url(#g)"/>
+          </svg>
+        </div>
+
+        <p class="eyebrow">Maison de Parfum · Brasil</p>
+        <h1>Uma fragrância.<em>Uma assinatura.</em></h1>
+        <p class="hero-sub">
+          Não criamos apenas perfumes. Criamos identidades que permanecem — desenhadas para revelar quem você é sem precisar dizer uma palavra.
+        </p>
+        <a class="cta" href="#about">Descubra a ZAVQEL</a>
+        <div class="scroll-cue">Deslize para descobrir ↓</div>
+      </div>
+    </section>
+
+    <section class="intro" id="about">
+      <div class="wrap intro-grid">
+        <div>
+          <p class="eyebrow">01 · Quem somos</p>
+          <h2 class="display">Uma Maison brasileira de <em>perfumaria de assinatura.</em></h2>
+        </div>
+        <p class="body-copy">
+          A ZAVQEL nasce para aproximar a alta perfumaria da individualidade. Cada detalhe — da linguagem ao frasco, do nome à composição — é pensado para transformar fragrância em presença.
+          <br><br>
+          Uma Maison brasileira, contemporânea e silenciosamente luxuosa.
+        </p>
+      </div>
+    </section>
+
+    <section class="philosophy" id="philosophy">
+      <div class="wrap philosophy-copy">
+        <p class="eyebrow">02 · A filosofia</p>
+        <h2>Não é apenas o que você usa.<br><em>É o que você deixa.</em></h2>
+        <p>
+          Uma fragrância pode ocupar um ambiente por segundos. Uma identidade pode permanecer na memória por anos.
+          Por isso, cada elemento da ZAVQEL é construído para transmitir presença sem excesso — do nome ao frasco, do monograma à composição.
+        </p>
+      </div>
+    </section>
+
+    <section class="pillars" id="pillars">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 · Os quatro pilares</p>
+            <h2 class="section-title">O que sustenta <em>a Maison.</em></h2>
+          </div>
+          <p class="section-note">
+            Quatro princípios orientam cada criação e preservam aquilo que torna uma fragrância realmente pessoal.
+          </p>
+        </div>
+
+        <div class="pillar-grid">
+          <article class="pillar">
+            <div>
+              <span class="pillar-number">01</span>
+              <h3>Exclusividade</h3>
+            </div>
+            <p>Uma assinatura não existe para todos. Ela existe para alguém.</p>
+          </article>
+
+          <article class="pillar">
+            <div>
+              <span class="pillar-number">02</span>
+              <h3>Legado</h3>
+            </div>
+            <p>O perfume passa pelo tempo quando carrega significado.</p>
+          </article>
+
+          <article class="pillar">
+            <div>
+              <span class="pillar-number">03</span>
+              <h3>Identidade</h3>
+            </div>
+            <p>Antes da fragrância, existe a pessoa que deseja deixá-la.</p>
+          </article>
+
+          <article class="pillar">
+            <div>
+              <span class="pillar-number">04</span>
+              <h3>Assinatura</h3>
+            </div>
+            <p>Uma presença reconhecida sem precisar ser anunciada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="custom" id="personalizacao">
+      <div class="wrap custom-grid">
+        <div class="custom-visual">
+          <div class="custom-bottle">
+            <div class="custom-label">
+              <div>
+                <strong>ZAVQEL</strong>
+                <small>by Higor Monteiro</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow">04 · A diferença</p>
+          <h2>Personalização como <em>assinatura.</em></h2>
+          <p class="body-copy">
+            A ZAVQEL não parte de uma fragrância pronta para encontrar uma pessoa.
+            Parte de uma pessoa para construir uma fragrância.
+            O resultado é uma composição pensada para refletir preferências, memórias e presença.
+          </p>
+          <p class="signature">Sua identidade, em uma fragrância.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="collection" id="collection">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">05 · A coleção</p>
+            <h2 class="section-title">Uma coleção ainda <em>por revelar.</em></h2>
+          </div>
+          <p class="section-note">
+            Primeiras assinaturas da Maison. Uma nova etapa está sendo construída.
+          </p>
+        </div>
+
+        <div class="collection-grid">
+          <article class="product">
+            <div class="product-top"><span>ZAVQEL 001</span><span>Prévia</span></div>
+            <div class="product-visual">
+              <div class="bottle"><div class="bottle-mark">ZQ</div></div>
+            </div>
+            <div>
+              <h3>ZAVQEL 001</h3>
+              <p>A primeira assinatura da Maison.</p>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-top"><span>ZAVQEL 002</span><span>Prévia</span></div>
+            <div class="product-visual">
+              <div class="bottle"><div class="bottle-mark">ZQ</div></div>
+            </div>
+            <div>
+              <h3>ZAVQEL 002</h3>
+              <p>Uma nova interpretação de presença.</p>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-top"><span>ZAVQEL 003</span><span>Em breve</span></div>
+            <div class="product-visual">
+              <div class="bottle"><div class="bottle-mark">ZQ</div></div>
+            </div>
+            <div>
+              <h3>ZAVQEL 003</h3>
+              <p>O próximo capítulo começa aqui.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto" id="manifesto">
+      <div class="wrap manifesto-inner">
+        <p class="eyebrow">06 · O manifesto</p>
+        <h2 class="quote">O luxo não precisa gritar.<br><em>Ele permanece.</em></h2>
+        <p class="manifesto-copy">
+          Na ZAVQEL, luxo está nos detalhes. Na composição. Na textura.
+          Na experiência de receber algo que parece ter sido feito exatamente para você.
+        </p>
+      </div>
+    </section>
+
+    <section class="identity">
+      <div class="wrap">
+        <p class="eyebrow">07 · O que nos torna diferentes</p>
+        <div class="identity-grid">
+          <article class="identity-card">
+            <span>01</span>
+            <h3>Identidade antes do óbvio.</h3>
+            <p>A ZAVQEL busca uma presença reconhecível, não uma tendência passageira.</p>
+          </article>
+          <article class="identity-card">
+            <span>02</span>
+            <h3>Fragrância como experiência.</h3>
+            <p>O perfume começa antes da primeira borrifada e continua depois dela.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        ZAVQEL
+        <small>© 2026 ZAVQEL · Maison de Parfum · Brasil</small>
+        <small>Exclusividade · Legado · Identidade · Assinatura</small>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Início</a>
+        <a href="#collection">Coleção</a>
+        <a href="#personalizacao">Personalização</a>
+        <a href="#manifesto">Manifesto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
