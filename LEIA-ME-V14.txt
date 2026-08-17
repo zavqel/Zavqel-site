@@ -1,0 +1,15 @@
+ZAVQEL V14 — instruções
+========================
+
+1. Substitua o index.html atual por este.
+2. Mantenha na MESMA RAIZ do repositório as imagens:
+   - monograma-zq.png
+   - zavqel-001-higor.png
+   - zavqel-002-larissa.png
+   - zavqel-003-claudio.png
+3. Não envie CNAME. O domínio foi deixado de fora nesta V14.
+4. Não crie uma pasta para as imagens.
+5. A V14 usa Black Signature como primeira criação e Extrait de Parfum como concentração.
+
+Se os nomes dos arquivos de imagem no seu GitHub forem diferentes, não renomeie no escuro:
+mande um print da raiz do repositório e ajustamos os caminhos.
