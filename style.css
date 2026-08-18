@@ -1,21 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
 :root{--bg:#050505;--ink:#eee9df;--muted:#aaa59b;--gold:#c9a45c;--line:rgba(201,164,92,.35)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,Arial,sans-serif}
 .nav{height:78px;position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(5,5,5,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
-.brand{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none;letter-spacing:.32em;font-size:13px}.brand img{width:38px;height:38px;object-fit:contain}
-.menu{display:flex;gap:28px}.menu a{color:var(--muted);text-decoration:none;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.menu a:hover{color:var(--gold)}.menu-toggle{display:none;background:none;border:0;color:var(--ink);font-size:25px}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none;letter-spacing:.32em;font-size:13px}
+.brand img{width:38px;height:38px;object-fit:contain}
+.menu{display:flex;gap:28px}
+.menu a{color:var(--muted);text-decoration:none;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.menu a:hover{color:var(--gold)}
+.menu-toggle{display:none;background:none;border:0;color:var(--ink);font-size:25px}
 .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 22px 70px;background:radial-gradient(circle at 50% 40%,rgba(201,164,92,.07),transparent 36%)}
 .hero-monogram{width:300px;height:300px;object-fit:contain;margin-bottom:12px;filter:drop-shadow(0 12px 25px rgba(201,164,92,.10))}
-.eyebrow{font-size:10px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;margin-bottom:22px}h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:.92;margin:0}h1{font-size:clamp(58px,7vw,105px)}h1 em,h2 em{color:var(--gold);font-weight:400}
-.hero p{max-width:700px;color:var(--muted);font-size:13px;line-height:1.9;margin:28px auto 30px}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border:1px solid var(--line);text-decoration:none;text-transform:uppercase;letter-spacing:.18em;font-size:10px;transition:.25s}.btn.primary{color:var(--ink);background:rgba(201,164,92,.08)}.btn.secondary{color:var(--gold)}.btn:hover{transform:translateY(-2px);border-color:var(--gold)}
-.scroll-note{margin-top:48px;font-size:9px;letter-spacing:.25em;color:#777}.intro,.feature,.cta-band{max-width:1200px;margin:auto;padding:150px 6vw}.intro{display:grid;grid-template-columns:1fr 1fr;gap:90px;border-top:1px solid rgba(255,255,255,.06)}
-h2{font-size:clamp(48px,5vw,75px)}.intro p,.feature p,.cta-band p{color:var(--muted);line-height:1.9;font-size:14px;max-width:520px}.text-link{display:inline-block;margin-top:20px;color:var(--gold);text-decoration:none;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
-.feature{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}.feature-image{border:1px solid var(--line);padding:25px}.feature-image img{display:block;width:100%;max-height:620px;object-fit:cover}.feature-copy .btn{margin-top:16px}
-.cta-band{text-align:center;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}.cta-band p{margin:25px auto 30px}
-.footer{padding:55px 6vw;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}.footer strong{display:block;letter-spacing:.3em;font-size:13px}.footer span,.footer small{display:block;color:#777;font-size:10px;margin-top:9px}.socials{display:flex;gap:20px}.socials a{color:var(--gold);text-decoration:none;font-size:11px;letter-spacing:.12em}.footer small{grid-column:1/-1}
-.whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:100;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 8px 25px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;font-size:0}.whatsapp-float:after{content:"☎";font-size:25px}
-@media(max-width:800px){.nav{height:70px;padding:0 18px}.brand{gap:12px;font-size:12px;letter-spacing:.28em}.brand img{width:58px;height:58px}.menu-toggle{display:block}.menu{position:absolute;top:70px;left:0;right:0;display:none;flex-direction:column;gap:0;background:#080808;border-bottom:1px solid var(--line)}.menu.open{display:flex}.menu a{padding:18px 22px;border-top:1px solid rgba(255,255,255,.05)}
-.hero{padding:110px 22px 65px}.hero-monogram{width:260px;height:260px}.eyebrow{font-size:9px;letter-spacing:.26em}h1{font-size:60px}.hero p{font-size:13px;line-height:1.75;margin:24px auto}.actions{flex-direction:column;width:100%;max-width:340px}.btn{width:100%}.scroll-note{margin-top:30px}
-.intro,.feature{display:block;padding:95px 24px}.intro>div+div,.feature-copy{margin-top:45px}.feature-image{padding:14px}.feature-image img{max-height:none}.cta-band{padding:95px 24px}h2{font-size:48px}.footer{padding:45px 24px;grid-template-columns:1fr}.socials{margin-top:5px}.footer small{grid-column:auto}.whatsapp-float{right:16px;bottom:16px;width:54px;height:54px}}
+.eyebrow{font-size:10px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;margin-bottom:22px}
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:.92;margin:0}
+h1{font-size:clamp(58px,7vw,105px)}
+h1 em,h2 em{color:var(--gold);font-weight:400}
+.hero p{max-width:700px;color:var(--muted);font-size:13px;line-height:1.9;margin:28px auto 30px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border:1px solid var(--line);text-decoration:none;text-transform:uppercase;letter-spacing:.18em;font-size:10px;transition:.25s}
+.btn.primary{color:var(--ink);background:rgba(201,164,92,.08)}
+.btn.secondary{color:var(--gold)}
+.btn:hover{transform:translateY(-2px);border-color:var(--gold)}
+.scroll-note{margin-top:48px;font-size:9px;letter-spacing:.25em;color:#777}
+.intro,.feature,.collection-preview,.cta-band{max-width:1200px;margin:auto;padding:150px 6vw}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:90px;border-top:1px solid rgba(255,255,255,.06)}
+h2{font-size:clamp(48px,5vw,75px)}
+.intro p,.feature p,.cta-band p{color:var(--muted);line-height:1.9;font-size:14px;max-width:520px}
+.text-link{display:inline-block;margin-top:20px;color:var(--gold);text-decoration:none;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.feature-image{border:1px solid var(--line);padding:25px}
+.feature-image img{display:block;width:100%;max-height:620px;object-fit:cover}
+.feature-copy .btn{margin-top:16px}
+.collection-preview{border-top:1px solid rgba(255,255,255,.06)}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:55px}
+.section-head .text-link{margin:0;white-space:nowrap}
+.collection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.collection-card{display:block;color:var(--ink);text-decoration:none;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#080808}
+.collection-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .5s ease}
+.collection-card:hover img{transform:scale(1.035)}
+.collection-card span{display:block;padding:17px 18px;color:var(--gold);font-size:10px;letter-spacing:.22em}
+.cta-band{text-align:center;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.cta-band p{margin:25px auto 30px}
+.footer{padding:55px 6vw;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}
+.footer strong{display:block;letter-spacing:.3em;font-size:13px}
+.footer span,.footer small{display:block;color:#777;font-size:10px;margin-top:9px}
+.socials{display:flex;gap:12px;align-items:center}
+.social-btn{display:inline-flex;align-items:center;gap:7px;color:var(--gold);border:1px solid var(--line);padding:10px 14px;text-decoration:none;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.social-btn:hover{border-color:var(--gold);transform:translateY(-1px)}
+.footer small{grid-column:1/-1}
+.whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:100;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 8px 25px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:.2s}
+.whatsapp-float:hover{transform:scale(1.06)}
+.whatsapp-float img{width:34px;height:34px;display:block}
+@media(max-width:800px){
+.nav{height:70px;padding:0 18px}
+.brand{gap:12px;font-size:12px;letter-spacing:.28em}
+.brand img{width:58px;height:58px}
+.menu-toggle{display:block}
+.menu{position:absolute;top:70px;left:0;right:0;display:none;flex-direction:column;gap:0;background:#080808;border-bottom:1px solid var(--line)}
+.menu.open{display:flex}
+.menu a{padding:18px 22px;border-top:1px solid rgba(255,255,255,.05)}
+.hero{padding:110px 22px 65px}
+.hero-monogram{width:260px;height:260px}
+.eyebrow{font-size:9px;letter-spacing:.26em}
+h1{font-size:60px}
+.hero p{font-size:13px;line-height:1.75;margin:24px auto}
+.actions{flex-direction:column;width:100%;max-width:340px}
+.btn{width:100%}
+.scroll-note{margin-top:30px}
+.intro,.feature,.collection-preview{display:block;padding:95px 24px}
+.intro>div+div,.feature-copy{margin-top:45px}
+.feature-image{padding:14px}
+.feature-image img{max-height:none}
+.section-head{display:block;margin-bottom:35px}
+.section-head .text-link{margin-top:18px}
+.collection-grid{grid-template-columns:1fr;gap:18px}
+.cta-band{padding:95px 24px}
+h2{font-size:48px}
+.footer{padding:45px 24px;grid-template-columns:1fr}
+.socials{margin-top:5px;flex-wrap:wrap}
+.footer small{grid-column:auto}
+.whatsapp-float{right:16px;bottom:16px;width:54px;height:54px}
+.whatsapp-float img{width:32px;height:32px}
+}
 @media(max-width:380px){h1{font-size:52px}.hero-monogram{width:235px;height:235px}}

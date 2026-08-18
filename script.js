@@ -1,1 +1,2 @@
-const t=document.querySelector('.menu-toggle'),m=document.querySelector('.menu');if(t&&m)t.onclick=()=>{let o=m.classList.toggle('open');t.setAttribute('aria-expanded',o)};
+const t=document.querySelector('.menu-toggle'),m=document.querySelector('.menu');
+if(t&&m)t.onclick=()=>{const o=m.classList.toggle('open');t.setAttribute('aria-expanded',o)};
