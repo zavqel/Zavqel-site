@@ -1,0 +1,58 @@
+ZAVQEL — V16
+Atualização manual do site
+
+IMPORTANTE
+A conexão de escrita do GitHub está retornando 403, então esta V16 deve ser aplicada manualmente.
+
+ARQUIVO ALTERADO
+- index.html
+
+1) BOTÃO DO X
+No bloco:
+<div class="social-links" aria-label="Redes sociais da ZAVQEL">
+
+adicione este botão entre Threads e Facebook:
+
+<a href="https://x.com/zavqel" target="_blank" rel="noopener noreferrer" aria-label="X" title="X"><span class="xmark">𝕏</span></a>
+
+2) ESTILO DO BOTÃO X
+Na mesma parte do CSS dos botões sociais, acrescente:
+
+.social-links .xmark{font:400 17px Arial,sans-serif}
+
+3) FAVICON
+Dentro do <head>, acrescente:
+
+<link rel="icon" type="image/png" href="monograma-zq.png">
+
+4) SEO / COMPARTILHAMENTO
+Dentro do <head>, depois da description, acrescente:
+
+<meta name="theme-color" content="#070707">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ZAVQEL — Maison de Parfum">
+<meta property="og:title" content="ZAVQEL — Maison de Parfum">
+<meta property="og:description" content="Uma fragrância. Uma assinatura. Conheça a ZAVQEL e a edição Black Signature.">
+<meta property="og:url" content="https://zavqel.com.br/">
+<meta property="og:image" content="https://zavqel.com.br/black-signature-zavqel.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ZAVQEL — Maison de Parfum">
+<meta name="twitter:description" content="Uma fragrância. Uma assinatura. Conheça a ZAVQEL e a edição Black Signature.">
+<meta name="twitter:image" content="https://zavqel.com.br/black-signature-zavqel.png">
+
+5) DADOS ESTRUTURADOS
+Também dentro do <head>:
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ZAVQEL","url":"https://zavqel.com.br/","logo":"https://zavqel.com.br/monograma-zq.png","sameAs":["https://x.com/zavqel","https://www.instagram.com/zavqel.maison/","https://www.youtube.com/@zavqel.maison","https://www.tiktok.com/@zavqel.maison","https://www.threads.com/@zavqel.maison"]}</script>
+
+6) V16
+A V16 também altera o CTA inicial para:
+"Conheça a Black Signature"
+
+E acrescenta os CTAs:
+"Conheça a proposta"
+"Ver assinaturas"
+"Solicitar minha assinatura"
+
+OBSERVAÇÃO
+As imagens e demais arquivos do site continuam os mesmos. Não é necessário reenviar as PNGs.
