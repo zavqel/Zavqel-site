@@ -1,3 +1,1 @@
-const b=document.getElementById('menuBtn'),m=document.getElementById('menu');
-if(b&&m){b.addEventListener('click',()=>{const open=m.classList.toggle('open');b.setAttribute('aria-expanded',open?'true':'false')});
-document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>m.classList.remove('open')));}
+const t=document.querySelector('.menu-toggle'),m=document.querySelector('.menu');if(t&&m)t.onclick=()=>{let o=m.classList.toggle('open');t.setAttribute('aria-expanded',o)};
