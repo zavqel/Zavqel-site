@@ -1,1 +1,0 @@
-V17.1 — mantenha as imagens existentes da V17. Substitua index.html/style.css/script.js e atualize as páginas. WhatsApp: https://wa.me/qr/6DVOZCYNCYXPB1
