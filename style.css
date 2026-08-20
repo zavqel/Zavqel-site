@@ -519,10 +519,12 @@ footer{
 }
 .xmark{
   font:400 15px Arial,sans-serif
+  transform:scale(.85);
 }
 
 .fb{
   font:600 18px Arial,sans-serif
+  transform:scale(.85);
 }
 
 .pin{
