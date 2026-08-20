@@ -480,6 +480,7 @@ footer{
   justify-content:space-between;
   flex-wrap:nowrap;
   margin-top:22px
+  width:100%;
 }
 
 .social-links a{
@@ -519,17 +520,17 @@ footer{
   object-fit:contain;
 }
 .xmark{
-  font:400 15px Arial,sans-serif
+  font:400 15px Arial,sans-serif;
   transform:scale(.85);
 }
 
 .fb{
-  font:600 18px Arial,sans-serif
+  font:600 18px Arial,sans-serif;
   transform:scale(.85);
 }
 
 .pin{
-  font:600 18px Georgia,serif
+  font:600 18px Georgia,serif;
 }
 
 @media(max-width:800px){
