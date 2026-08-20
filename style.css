@@ -512,6 +512,11 @@ footer{
   stroke:none
 }
 
+.social-links a img{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+}
 .xmark{
   font:400 17px Arial,sans-serif
 }
