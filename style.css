@@ -606,6 +606,103 @@ footer{
   font:600 18px Georgia,serif;
 }
 
+/* =========================
+   BLACK SIGNATURE — HOME V18
+   ========================= */
+
+.signature-feature{
+  position:relative;
+  overflow:hidden;
+  padding:150px 0;
+  background:
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(199,164,91,.08),
+      transparent 34%
+    ),
+    #050505;
+}
+
+.signature-feature-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:80px;
+}
+
+.signature-feature-visual{
+  position:relative;
+  min-height:620px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+
+.signature-feature-visual:before{
+  content:"";
+  position:absolute;
+  width:65%;
+  height:65%;
+  border-radius:50%;
+  background:rgba(199,164,91,.08);
+  filter:blur(80px);
+  z-index:0;
+}
+
+.signature-feature-visual img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:620px;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .8s ease;
+}
+
+.signature-feature-visual:hover img{
+  transform:scale(1.025);
+}
+
+.signature-feature-content{
+  max-width:520px;
+}
+
+.signature-feature-content .eyebrow{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.signature-feature-content .eyebrow:before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:rgba(199,164,91,.65);
+  display:block;
+  flex:0 0 34px;
+}
+
+.signature-feature-title{
+  font:500 clamp(64px,8vw,110px)/.82 'Cormorant Garamond',serif;
+  margin:24px 0 30px;
+  letter-spacing:-.035em;
+}
+
+.signature-feature-title em{
+  display:block;
+  color:var(--gold);
+  font-weight:400;
+}
+
+.signature-feature-text{
+  max-width:430px;
+  margin:0 0 38px;
+  color:#aaa39a;
+  font-size:14px;
+  line-height:2;
+  letter-spacing:.01em;
+}
+
 @media(max-width:800px){
 
   .wrap{
@@ -732,6 +829,42 @@ footer{
     opacity:1;
     transform:scale(1);
   }
+.signature-feature{
+  padding:100px 0 90px;
+}
+
+.signature-feature-grid{
+  grid-template-columns:1fr;
+  gap:35px;
+}
+
+.signature-feature-visual{
+  min-height:0;
+  height:auto;
+}
+
+.signature-feature-visual img{
+  width:100%;
+  height:auto;
+  aspect-ratio:2/2.7;
+  object-fit:cover;
+}
+
+.signature-feature-content{
+  max-width:none;
+}
+
+.signature-feature-title{
+  font-size:clamp(60px,17vw,86px);
+  margin:22px 0 25px;
+}
+
+.signature-feature-text{
+  max-width:520px;
+  font-size:14px;
+  line-height:1.85;
+  margin-bottom:32px;
+
 }
 
 
