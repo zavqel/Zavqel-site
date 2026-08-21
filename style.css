@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
 
 :root{
-  --bg:#070707;
+  --bg:#050505;
   --ink:#eee9df;
   --muted:#9d968d;
   --gold:#c7a45b;
@@ -149,17 +149,22 @@ img{
   position:relative;
   overflow:hidden;
   background:
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(110,82,35,.20),
-      transparent 38%
-    ),
-    radial-gradient(
-      ellipse at center,
-      rgba(199,164,91,.055),
-      transparent 58%
-    ),
-    #070707;
+  radial-gradient(
+    ellipse at 0% 50%,
+    rgba(199,164,91,.12),
+    transparent 24%
+  ),
+  radial-gradient(
+    ellipse at 100% 50%,
+    rgba(199,164,91,.12),
+    transparent 24%
+  ),
+  radial-gradient(
+    circle at 50% 42%,
+    rgba(110,82,35,.20),
+    transparent 38%
+  ),
+  #050505;
 }
 
 .hero:before{
@@ -274,17 +279,17 @@ img{
   position:relative;
   overflow:hidden;
   background:
-    radial-gradient(
-      circle at 18% 38%,
-      rgba(110,82,35,.075),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 82% 70%,
-      rgba(199,164,91,.035),
-      transparent 30%
-    ),
-    #070707;
+  radial-gradient(
+    ellipse at 0% 50%,
+    rgba(199,164,91,.055),
+    transparent 22%
+  ),
+  radial-gradient(
+    ellipse at 100% 50%,
+    rgba(199,164,91,.055),
+    transparent 22%
+  ),
+  #050505;
 }
 
 .page-head{
@@ -614,13 +619,7 @@ footer{
   position:relative;
   overflow:hidden;
   padding:150px 0;
-  background:
-    radial-gradient(
-      circle at 70% 50%,
-      rgba(199,164,91,.08),
-      transparent 34%
-    ),
-    #050505;
+  background:#050505;
 }
 
 .signature-feature-grid{
