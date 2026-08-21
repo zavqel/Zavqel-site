@@ -839,7 +839,7 @@ footer{
 
 .signature-feature-grid{
   grid-template-columns:1fr;
-  gap:42px;
+  gap:60px;
 }
 
 .signature-feature-visual{
