@@ -829,44 +829,51 @@ footer{
     opacity:1;
     transform:scale(1);
   }
+}
+
+@media(max-width:800px){
+  
 .signature-feature{
-  padding:100px 0 90px;
+  padding:110px 0 100px;
 }
 
 .signature-feature-grid{
   grid-template-columns:1fr;
-  gap:35px;
+  gap:42px;
 }
 
 .signature-feature-visual{
   min-height:0;
   height:auto;
+  margin:0 -4px;
 }
 
 .signature-feature-visual img{
   width:100%;
   height:auto;
-  aspect-ratio:2/2.7;
+  aspect-ratio:2/2.65;
   object-fit:cover;
 }
 
 .signature-feature-content{
   max-width:none;
+  padding:0 4px;
 }
 
 .signature-feature-title{
-  font-size:clamp(60px,17vw,86px);
-  margin:22px 0 25px;
+  font-size:clamp(64px,18vw,92px);
+  line-height:.82;
+  margin:24px 0 28px;
 }
 
 .signature-feature-text{
   max-width:520px;
   font-size:14px;
-  line-height:1.85;
-  margin-bottom:32px;
+  line-height:1.9;
+  margin-bottom:34px;
 
 }
-
+}
 
 
 /* =========================
