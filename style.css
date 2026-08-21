@@ -13,6 +13,33 @@
 
 html{scroll-behavior:smooth}
 
+main{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      ellipse at 0% 18%,
+      rgba(199,164,91,.10),
+      transparent 24%
+    ),
+    radial-gradient(
+      ellipse at 100% 18%,
+      rgba(199,164,91,.10),
+      transparent 24%
+    ),
+    radial-gradient(
+      ellipse at 0% 52%,
+      rgba(199,164,91,.055),
+      transparent 22%
+    ),
+    radial-gradient(
+      ellipse at 100% 52%,
+      rgba(199,164,91,.055),
+      transparent 22%
+    ),
+    #050505;
+}
+
 body{
   margin:0;
   background:var(--bg);
@@ -148,36 +175,13 @@ img{
   text-align:center;
   position:relative;
   overflow:hidden;
-  background:
-  radial-gradient(
-    ellipse at 0% 50%,
-    rgba(199,164,91,.12),
-    transparent 24%
-  ),
-  radial-gradient(
-    ellipse at 100% 50%,
-    rgba(199,164,91,.12),
-    transparent 24%
-  ),
-  radial-gradient(
-    circle at 50% 42%,
-    rgba(110,82,35,.20),
-    transparent 38%
-  ),
-  #050505;
+  background:trasparent;
+
 }
 
 .hero:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(
-      ellipse at center,
-      transparent 25%,
-      rgba(0,0,0,.78) 100%
-    );
-  pointer-events:none
+  display:none;
+  
 }
 
 .hero-content{
@@ -278,23 +282,8 @@ img{
   min-height:100svh;
   position:relative;
   overflow:hidden;
-  background:
-    radial-gradient(
-      ellipse at 0% 50%,
-      rgba(199,164,91,.12),
-      transparent 24%
-    ),
-    radial-gradient(
-      ellipse at 100% 50%,
-      rgba(199,164,91,.12),
-      transparent 24%
-    ),
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(110,82,35,.20),
-      transparent 38%
-    ),
-    #050505;
+  background:transparent;
+
 }
 
 .page-head{
@@ -624,23 +613,8 @@ footer{
   position:relative;
   overflow:hidden;
   padding:150px 0;
-  background:
-    radial-gradient(
-      ellipse at 0% 50%,
-      rgba(199,164,91,.12),
-      transparent 24%
-    ),
-    radial-gradient(
-      ellipse at 100% 50%,
-      rgba(199,164,91,.12),
-      transparent 24%
-    ),
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(110,82,35,.20),
-      transparent 38%
-    ),
-    #050505;
+  background:trasparent;
+    
 }
 
 .signature-feature-grid{
