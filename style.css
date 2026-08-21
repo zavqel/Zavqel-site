@@ -278,18 +278,7 @@ img{
   min-height:100svh;
   position:relative;
   overflow:hidden;
-  background:
-  radial-gradient(
-    ellipse at 0% 50%,
-    rgba(199,164,91,.055),
-    transparent 22%
-  ),
-  radial-gradient(
-    ellipse at 100% 50%,
-    rgba(199,164,91,.055),
-    transparent 22%
-  ),
-  #050505;
+  background:#050505;
 }
 
 .page-head{
