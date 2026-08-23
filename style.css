@@ -456,8 +456,10 @@ img{
   border:1px solid var(--line);
   background:#050505;
   overflow:hidden;
+  box-shadow:
+    0 0 25px rgba(199,164,91,.08),
+    0 12px 35px rgba(0,0,0,.45);
 }
-
 .certificate-image img{
   width:100%;
   height:auto;
