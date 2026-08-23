@@ -451,6 +451,20 @@ img{
   color:#69635b!important
 }
 
+.certificate-image{
+  width:100%;
+  border:1px solid var(--line);
+  background:#050505;
+  overflow:hidden;
+}
+
+.certificate-image img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+
 .certificate-card{
   border:1px solid var(--line);
   padding:45px;
