@@ -31,16 +31,33 @@
 
   </div>
 </section>
-  <!-- FORMULÁRIO PRÉ-LANÇAMENTO ZAVQEL -->
+<!-- =========================================================
+     ZAVQEL — FORMULÁRIO DE PRÉ-LANÇAMENTO
+     Brevo + Cloudflare Turnstile
+     ========================================================= -->
 
 <style>
+  /* =========================
+     FONTES
+     ========================= */
   @font-face {
-    font-display: block;
     font-family: Roboto;
-    src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"),
-         url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff");
+    font-display: block;
+    src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2)
+      format("woff2");
   }
 
+  @font-face {
+    font-family: Roboto;
+    font-weight: 700;
+    font-display: block;
+    src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2)
+      format("woff2");
+  }
+
+  /* =========================
+     ÁREA PRINCIPAL
+     ========================= */
   #zavqel-prelaunch {
     width: 100%;
     box-sizing: border-box;
@@ -52,201 +69,354 @@
     justify-content: center;
   }
 
-  #zavqel-prelaunch * {
+  #zavqel-prelaunch *,
+  #zavqel-prelaunch *::before,
+  #zavqel-prelaunch *::after {
     box-sizing: border-box;
   }
 
+  /* =========================
+     CONTAINER DO FORMULÁRIO
+     ========================= */
   #sib-container {
-    width: 100%;
-    max-width: 600px !important;
-    margin: 0 auto;
-    padding: 48px 42px !important;
+    width: 100% !important;
+    max-width: 640px !important;
+    margin: 0 auto !important;
+    padding: 55px 48px !important;
+
     background: #0b0b0b !important;
-    border: 1px solid rgba(190, 150, 65, 0.55) !important;
+
+    border: 1px solid rgba(190, 150, 65, 0.65) !important;
     border-radius: 2px !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.45),
+      inset 0 0 40px rgba(180, 140, 50, 0.025);
+
+    color: #f2eee5 !important;
   }
 
-  #sib-form {
-    width: 100%;
-  }
-
-  .zavqel-eyebrow {
-    margin-bottom: 18px;
-    color: #b8964e;
-    font-family: Georgia, serif;
-    font-size: 12px;
-    letter-spacing: 4px;
+  /* =========================
+     TÍTULO
+     ========================= */
+  #sib-container .zavqel-eyebrow {
+    margin: 0 0 18px;
+    color: #c3a354;
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 5px;
     text-transform: uppercase;
   }
 
-  .zavqel-title {
-    margin: 0 !important;
+  #sib-container .zavqel-title {
+    margin: 0;
     color: #f2eee5 !important;
-    font-family: Georgia, "Times New Roman", serif !important;
-    font-size: 34px !important;
-    line-height: 1.15 !important;
-    font-weight: 400 !important;
-    text-align: left !important;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 6vw, 58px);
+    font-weight: 400;
+    line-height: 1.05;
+    text-align: left;
   }
 
-  .zavqel-title em {
-    color: #c5a15a;
+  #sib-container .zavqel-title em {
+    color: #c3a354;
     font-style: italic;
   }
 
-  .zavqel-description {
-    margin: 0 !important;
-    color: #aaa59b !important;
-    font-family: Arial, sans-serif !important;
-    font-size: 15px !important;
-    line-height: 1.7 !important;
-    text-align: left !important;
+  /* =========================
+     TEXTO
+     ========================= */
+  #sib-container .zavqel-description {
+    margin: 25px 0 40px;
+    color: #9d9a94 !important;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.8;
+    text-align: left;
   }
 
+  /* =========================
+     LABEL
+     ========================= */
   #sib-container .entry__label {
     display: block;
     margin-bottom: 10px;
-    color: #e8e3d8 !important;
-    font-family: Arial, sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 600 !important;
-    letter-spacing: 1.5px;
+    color: #eee9df !important;
+    font-family: Roboto, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px;
     text-transform: uppercase;
   }
 
+  /* =========================
+     CAMPO DE E-MAIL
+     ========================= */
   #sib-container .entry__field {
-    background: transparent !important;
-    border: 1px solid rgba(190, 150, 65, 0.45) !important;
+    border: 1px solid rgba(190, 150, 65, 0.65) !important;
+    background: #111111 !important;
     border-radius: 0 !important;
+    box-shadow: none !important;
   }
 
   #sib-container input.input {
     width: 100% !important;
-    height: 52px !important;
-    padding: 0 16px !important;
-    background: #111111 !important;
+    height: 58px !important;
+    padding: 0 18px !important;
+
     border: 0 !important;
     outline: none !important;
-    color: #f2eee5 !important;
-    font-family: Arial, sans-serif !important;
-    font-size: 15px !important;
-  }
 
-  #sib-container input.input::placeholder {
-    color: #77736b !important;
-    opacity: 1;
+    background: #111111 !important;
+    color: #f2eee5 !important;
+
+    font-family: Roboto, sans-serif !important;
+    font-size: 16px !important;
   }
 
   #sib-container input.input:focus {
-    box-shadow: inset 0 0 0 1px #b8964e !important;
+    background: #111111 !important;
+    box-shadow: 0 0 0 1px #c3a354 !important;
   }
 
+  #sib-container input.input::placeholder {
+    color: #77736c !important;
+    opacity: 1;
+  }
+
+  /* =========================
+     TEXTO DE AJUDA
+     ========================= */
   #sib-container .entry__specification {
-    margin-top: 9px;
-    color: #77736b !important;
-    font-family: Arial, sans-serif !important;
-    font-size: 11px !important;
+    display: block;
+    margin-top: 10px;
+    color: #77736c !important;
+    font-family: Roboto, sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.6;
+  }
+
+  /* =========================
+     CONSENTIMENTO
+     ========================= */
+  #sib-container .sib-optin {
+    margin-top: 20px;
+  }
+
+  #sib-container .sib-optin .entry__choice span:last-child {
+    color: #8e8a83 !important;
+    font-family: Roboto, sans-serif !important;
+    font-size: 12px !important;
     line-height: 1.5;
   }
 
+  #sib-container .sib-optin input {
+    accent-color: #c3a354;
+  }
+
+  /* =========================
+     AVISO DE PRIVACIDADE
+     ========================= */
+  #sib-container .sib-form__declaration {
+    margin-top: 25px;
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(190, 150, 65, 0.18);
+  }
+
+  #sib-container .sib-form__declaration p {
+    margin: 0;
+    color: #66635e !important;
+    font-family: Roboto, sans-serif !important;
+    font-size: 11px !important;
+    line-height: 1.6;
+  }
+
+  #sib-container .sib-form__declaration a {
+    color: #a98a4b !important;
+  }
+
+  /* =========================
+     CLOUDFLARE TURNSTILE
+     ========================= */
+  #sib-container .sib-captcha {
+    margin-top: 25px;
+  }
+
+  #sib-container .sib-captcha .entry__specification {
+    color: #66635e !important;
+  }
+
+  /* =========================
+     BOTÃO
+     ========================= */
   #sib-container .sib-form-block__button {
     width: 100% !important;
-    min-height: 52px !important;
-    margin-top: 5px !important;
-    background: #b8964e !important;
-    border: 1px solid #b8964e !important;
+    min-height: 60px !important;
+    margin-top: 15px;
+
+    border: 1px solid #c3a354 !important;
     border-radius: 0 !important;
+
+    background: #c3a354 !important;
     color: #080808 !important;
-    font-family: Arial, sans-serif !important;
-    font-size: 12px !important;
+
+    font-family: Roboto, sans-serif !important;
+    font-size: 14px !important;
     font-weight: 700 !important;
-    letter-spacing: 2px !important;
+    letter-spacing: 4px !important;
     text-align: center !important;
-    text-transform: uppercase;
+
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
   }
 
   #sib-container .sib-form-block__button:hover {
-    background: #d0ad65 !important;
-    border-color: #d0ad65 !important;
+    background: #d2b56d !important;
+    border-color: #d2b56d !important;
+    transform: translateY(-1px);
   }
 
-  #sib-container .sib-form-message-panel {
-    max-width: 100% !important;
+  /* =========================
+     MENSAGENS
+     ========================= */
+  #sib-container .entry__error {
+    color: #d98c82 !important;
+    background: transparent !important;
+    border: 0 !important;
   }
 
+  #error-message,
+  #success-message {
+    max-width: 640px !important;
+    margin: 0 auto 20px !important;
+    border-radius: 0 !important;
+  }
+
+  /* =========================
+     MOBILE
+     ========================= */
   @media (max-width: 600px) {
+
     #zavqel-prelaunch {
       padding: 45px 15px;
     }
 
     #sib-container {
-      padding: 36px 25px !important;
+      padding: 38px 25px !important;
     }
 
-    .zavqel-title {
-      font-size: 29px !important;
+    #sib-container .zavqel-eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    #sib-container .zavqel-title {
+      font-size: 39px;
+    }
+
+    #sib-container .zavqel-description {
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    #sib-container .sib-form-block__button {
+      min-height: 58px !important;
+      font-size: 12px !important;
+      letter-spacing: 3px !important;
     }
   }
 </style>
 
-<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
+<!-- =========================
+     FORMULÁRIO ZAVQEL
+     ========================= -->
 
 <div id="zavqel-prelaunch">
 
-  <div id="sib-form-container" class="sib-form-container">
+  <div class="sib-form-container">
 
-    <div id="error-message"
-         class="sib-form-message-panel"
-         style="font-family:Arial,sans-serif;font-size:14px;text-align:left;color:#f1c7c7;background-color:#241313;border-color:#7d3434;border-radius:0;max-width:600px;">
-      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-        <span class="sib-form-message-panel__inner-text">
-          Não foi possível realizar sua inscrição. Verifique o e-mail e tente novamente.
+    <!-- MENSAGEM DE ERRO -->
+    <div
+      id="error-message"
+      class="sib-form-message-panel"
+      style="display:none;"
+    >
+      <div class="sib-form-message-panel__text">
+        <span>
+          Sua assinatura não pôde ser validada.
         </span>
       </div>
     </div>
 
-    <div></div>
-
-    <div id="success-message"
-         class="sib-form-message-panel"
-         style="font-family:Arial,sans-serif;font-size:14px;text-align:left;color:#d8c79f;background-color:#111b14;border-color:#8e7740;border-radius:0;max-width:600px;">
-      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-        <span class="sib-form-message-panel__inner-text">
-          Sua inscrição foi realizada com sucesso.
+    <!-- MENSAGEM DE SUCESSO -->
+    <div
+      id="success-message"
+      class="sib-form-message-panel"
+      style="display:none;"
+    >
+      <div class="sib-form-message-panel__text">
+        <span>
+          Você fez sua assinatura com sucesso.
         </span>
       </div>
     </div>
 
-    <div></div>
 
-    <div id="sib-container"
-         class="sib-container--large sib-container--vertical">
+    <!-- FORMULÁRIO -->
+    <div
+      id="sib-container"
+      class="sib-container--large sib-container--vertical"
+    >
 
-      <form id="sib-form"
-            method="POST"
-            action="https://67cd8517.sibforms.com/serve/MUIFAAlZy41RGT4Ok_bLN-O1_PlRSiBiVt5t0wYNeaTZS0D32yLuuTozmoUTWfqFGwYkcjZIdUUEK7Ga6asA38-mQceO43u8HuvB5YjlVE4U46UBAjrQ7r7g8SXc4cPuF_hLvs9eZX6NZvRAufWgSNZcK95tWu2AnadEWjldYPCGV-J70ECkIzsyKCb_RdAXj4X4CgVsxTporvQqMg=="
-            data-type="subscription">
+      <form
+        id="sib-form"
+        method="POST"
+        action="https://67cd8517.sibforms.com/serve/MUIFAAlZy41RGT4Ok_bLN-O1_PlRSiBiVt5t0wYNeaTZS0D32yLuuTozmoUTWfqFGwYkcjZIdUUEK7Ga6asA38-mQceO43u8HuvB5YjlVE4U46UBAjrQ7r7g8SXc4cPuF_hLvs9eZX6NZvRAufWgSNZcK95tWu2AnadEWjldYPCGV-J70ECkIzsyKCb_RdAXj4X4CgVsxTporvQqMg=="
+        data-type="subscription"
+      >
 
-        <div style="padding:0 0 12px 0;">
-          <div class="zavqel-eyebrow">
-            Pré-lançamento ZAVQEL
+        <!-- TÍTULO -->
+        <div style="padding:0 0 10px;">
+
+          <div class="sib-form-block">
+
+            <p class="zavqel-eyebrow">
+              PRÉ-LANÇAMENTO ZAVQEL
+            </p>
+
+            <h2 class="zavqel-title">
+              O início de uma
+              <br>
+              <em>assinatura.</em>
+            </h2>
+
           </div>
 
-          <div class="zavqel-title">
-            O início de uma <em>assinatura.</em>
-          </div>
         </div>
 
-        <div style="padding:0 0 25px 0;">
-          <div class="zavqel-description">
-            Faça parte do pré-lançamento ZAVQEL e seja um dos primeiros a conhecer nossa primeira coleção.
+
+        <!-- DESCRIÇÃO -->
+        <div style="padding:0;">
+
+          <div class="sib-form-block">
+
+            <p class="zavqel-description">
+              Faça parte do pré-lançamento ZAVQEL e seja
+              um dos primeiros a conhecer nossa primeira
+              coleção.
+            </p>
+
           </div>
+
         </div>
 
-        <div style="padding:0 0 20px 0;">
+
+        <!-- E-MAIL -->
+        <div style="padding:0 0 8px;">
 
           <div class="sib-input sib-form-block">
 
@@ -254,29 +424,36 @@
 
               <div class="form__label-row">
 
-                <label class="entry__label"
-                       for="EMAIL"
-                       data-required="*">
-                  Seu e-mail
+                <label
+                  class="entry__label"
+                  for="EMAIL"
+                  data-required="*"
+                >
+                  SEU E-MAIL *
                 </label>
 
                 <div class="entry__field">
 
-                  <input class="input"
-                         type="email"
-                         id="EMAIL"
-                         name="EMAIL"
-                         autocomplete="email"
-                         value=""
-                         placeholder="seu@email.com"
-                         data-required="true"
-                         required>
+                  <input
+                    class="input"
+                    type="text"
+                    id="EMAIL"
+                    name="EMAIL"
+                    autocomplete="off"
+                    value=""
+                    placeholder="seu@email.com"
+                    data-required="true"
+                    required
+                  />
 
                 </div>
 
               </div>
 
-              <label class="entry__error entry__error--primary"></label>
+
+              <label class="entry__error entry__error--primary">
+              </label>
+
 
               <label class="entry__specification">
                 Seu e-mail será utilizado para comunicação relacionada ao pré-lançamento ZAVQEL.
@@ -288,17 +465,149 @@
 
         </div>
 
+
+        <!-- CONSENTIMENTO -->
+        <div style="padding:0;">
+
+          <div class="sib-optin sib-form-block">
+
+            <div class="form__entry entry_mcq">
+
+              <div class="form__label-row">
+
+                <div class="entry__choice">
+
+                  <label>
+
+                    <input
+                      type="checkbox"
+                      class="input_replaced"
+                      value="1"
+                      id="OPT_IN"
+                      name="OPT_IN"
+                    />
+
+                    <span
+                      class="checkbox checkbox_tick_positive"
+                    ></span>
+
+                    <span>
+                      <p>
+                        Eu concordo em receber comunicações da ZAVQEL e com os termos e condições.
+                      </p>
+                    </span>
+
+                  </label>
+
+                </div>
+
+              </div>
+
+              <label class="entry__error entry__error--primary">
+              </label>
+
+              <label class="entry__specification">
+                Você pode cancelar a assinatura a qualquer momento.
+              </label>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PRIVACIDADE -->
+        <div style="padding:0;">
+
+          <div class="sib-form__declaration">
+
+            <div>
+              <p>
+                Ao enviar este formulário, você concorda que os dados
+                fornecidos sejam processados pela Brevo para gerenciamento
+                da sua assinatura, de acordo com a
+                <a
+                  href="https://www.brevo.com/pt/legal/privacypolicy/"
+                  target="_blank"
+                  rel="nofollow noopener"
+                >
+                  Política de Privacidade da Brevo.
+                </a>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- CLOUDFLARE TURNSTILE -->
+        <div style="padding:0;">
+
+          <div class="sib-captcha sib-form-block">
+
+            <div class="form__entry entry_block">
+
+              <div class="form__label-row">
+
+                <script>
+                  function handleCaptchaResponse() {
+                    var event = new Event('captchaChange');
+
+                    var captcha =
+                      document.getElementById('sib-captcha');
+
+                    if (captcha) {
+                      captcha.dispatchEvent(event);
+                    }
+
+                    window.grecaptcha = window.turnstile;
+                  }
+                </script>
+
+                <div
+                  class="cf-turnstile g-recaptcha"
+                  data-sitekey="0x4AAAAAAEanoqJ5TZHRN7u8"
+                  id="sib-captcha"
+                  data-callback="handleCaptchaResponse"
+                  data-language="pt"
+                ></div>
+
+              </div>
+
+              <label class="entry__error entry__error--primary">
+              </label>
+
+              <label class="entry__specification">
+                Formulário protegido por Cloudflare Turnstile.
+              </label>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- BOTÃO -->
         <div style="padding:0;">
 
           <div class="sib-form-block">
 
-            <button class="sib-form-block__button sib-form-block__button-with-loader"
-                    form="sib-form"
-                    type="submit">
+            <button
+              class="sib-form-block__button sib-form-block__button-with-loader"
+              form="sib-form"
+              type="submit"
+            >
 
-              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon"
-                   viewBox="0 0 512 512">
-                <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/>
+              <svg
+                class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"
+                />
               </svg>
 
               QUERO FAZER PARTE
@@ -309,14 +618,20 @@
 
         </div>
 
-        <input type="text"
-               name="email_address_check"
-               value=""
-               class="input--hidden">
 
-        <input type="hidden"
-               name="locale"
-               value="pt">
+        <!-- CAMPOS OCULTOS DA BREVO -->
+        <input
+          type="text"
+          name="email_address_check"
+          value=""
+          class="input--hidden"
+        />
+
+        <input
+          type="hidden"
+          name="locale"
+          value="pt"
+        />
 
       </form>
 
@@ -326,16 +641,36 @@
 
 </div>
 
+
+<!-- =========================
+     CONFIGURAÇÕES BREVO
+     ========================= -->
+
 <script>
-  window.REQUIRED_CODE_ERROR_MESSAGE = 'Escolha um código de país';
+
+  window.REQUIRED_CODE_ERROR_MESSAGE =
+    'Escolha um código de país';
+
   window.LOCALE = 'pt';
-  window.EMAIL_INVALID_MESSAGE = 'A informação fornecida não é válida. Verifique o formato do campo e tente novamente.';
-  window.SMS_INVALID_MESSAGE = window.EMAIL_INVALID_MESSAGE;
-  window.REQUIRED_ERROR_MESSAGE = 'Este campo não pode ser deixado em branco.';
-  window.GENERIC_INVALID_MESSAGE = window.EMAIL_INVALID_MESSAGE;
-  window.INVALID_NUMBER = window.EMAIL_INVALID_MESSAGE;
-  window.INVALID_DATE = 'Insira uma data válida';
-  window.REQUIRED_MULTISELECT_MESSAGE = 'Selecione pelo menos 1 opção';
+
+  window.EMAIL_INVALID_MESSAGE =
+    window.SMS_INVALID_MESSAGE =
+    "A informação fornecida não é válida. Verifique o formato do campo e tente novamente.";
+
+  window.REQUIRED_ERROR_MESSAGE =
+    "Este campo não pode ser deixado em branco.";
+
+  window.GENERIC_INVALID_MESSAGE =
+    window.EMAIL_INVALID_MESSAGE;
+
+  window.INVALID_NUMBER =
+    window.EMAIL_INVALID_MESSAGE;
+
+  window.INVALID_DATE =
+    'Insira uma data válida';
+
+  window.REQUIRED_MULTISELECT_MESSAGE =
+    'Selecione pelo menos 1 opção';
 
   window.translation = {
     common: {
@@ -347,11 +682,27 @@
   };
 
   var AUTOHIDE = Boolean(0);
+
 </script>
 
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
-<!-- FIM FORMULÁRIO PRÉ-LANÇAMENTO ZAVQEL -->
+<!-- SCRIPT DA BREVO -->
+<script
+  defer
+  src="https://sibforms.com/forms/end-form/build/main.js">
+</script>
+
+
+<!-- SCRIPT DO CLOUDFLARE TURNSTILE -->
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer>
+</script>
+
+<!-- =========================================================
+     FIM FORMULÁRIO ZAVQEL
+     ========================================================= -->
 </main><footer><div class="wrap footer-grid"><div class="footer-brand">ZAVQEL<div class="social-links" aria-label="Redes sociais da ZAVQEL">
 <a href="https://www.youtube.com/@zavqel.maison" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
 <a href="https://www.instagram.com/zavqel.maison/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
