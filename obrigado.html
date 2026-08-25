@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Sua assinatura foi registrada na ZAVQEL."
+  >
+
+  <meta
+    name="theme-color"
+    content="#070707"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="monograma-zq.png"
+  >
+
+  <title>Assinatura registrada — ZAVQEL</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+
+      width: 100%;
+      min-height: 100%;
+
+      background: #070707;
+      color: #f1eee7;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+    }
+
+
+    body {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px 18px;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================
+       CONTAINER
+       ========================= */
+
+    .confirmation {
+      width: 100%;
+      max-width: 720px;
+
+      min-height: 620px;
+
+      padding: 70px 55px;
+
+      border: 1px solid rgba(195, 163, 84, 0.65);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(195, 163, 84, 0.035),
+          transparent 65%
+        );
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      position: relative;
+    }
+
+
+    /* =========================
+       DETALHE SUPERIOR
+       ========================= */
+
+    .top-line {
+      width: 45px;
+      height: 1px;
+
+      background: #c3a354;
+
+      margin-bottom: 32px;
+    }
+
+
+    /* =========================
+       MONOGRAMA
+       ========================= */
+
+    .logo {
+      width: 82px;
+      height: 82px;
+
+      object-fit: contain;
+
+      margin-bottom: 28px;
+    }
+
+
+    /* =========================
+       EYEBROW
+       ========================= */
+
+    .eyebrow {
+      margin: 0 0 20px;
+
+      color: #c3a354;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       TÍTULO
+       ========================= */
+
+    h1 {
+      margin: 0;
+
+      max-width: 600px;
+
+      font-size: 56px;
+
+      font-weight: 400;
+
+      line-height: 1.05;
+
+      letter-spacing: -1px;
+    }
+
+
+    h1 em {
+      display: block;
+
+      color: #c3a354;
+
+      font-style: italic;
+
+      margin-top: 5px;
+    }
+
+
+    /* =========================
+       TEXTO
+       ========================= */
+
+    .message {
+      max-width: 530px;
+
+      margin: 30px auto 0;
+
+      color: rgba(241, 238, 231, 0.72);
+
+      font-size: 17px;
+
+      line-height: 1.7;
+    }
+
+
+    .highlight {
+      color: #c3a354;
+    }
+
+
+    /* =========================
+       FRASE
+       ========================= */
+
+    .signature {
+      margin-top: 34px;
+
+      color: rgba(241, 238, 231, 0.55);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size: 10px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       BOTÃO
+       ========================= */
+
+    .back {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-width: 230px;
+      height: 52px;
+
+      margin-top: 38px;
+
+      padding: 0 28px;
+
+      border: 1px solid #c3a354;
+
+      background: #c3a354;
+
+      color: #070707;
+
+      text-decoration: none;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+
+    .back:hover {
+      background: transparent;
+
+      color: #c3a354;
+
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       MARCA
+       ========================= */
+
+    .brand {
+      position: absolute;
+
+      bottom: 28px;
+
+      left: 0;
+      right: 0;
+
+      color: rgba(241, 238, 231, 0.4);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size: 9px;
+
+      letter-spacing: 5px;
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 600px) {
+
+      body {
+        padding: 18px 14px;
+      }
+
+
+      .confirmation {
+        min-height: calc(100vh - 36px);
+
+        padding: 45px 25px 65px;
+      }
+
+
+      .top-line {
+        margin-bottom: 25px;
+      }
+
+
+      .logo {
+        width: 68px;
+        height: 68px;
+
+        margin-bottom: 23px;
+      }
+
+
+      .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 17px;
+      }
+
+
+      h1 {
+        font-size: 39px;
+
+        line-height: 1.02;
+      }
+
+
+      .message {
+        margin-top: 25px;
+
+        font-size: 15px;
+
+        line-height: 1.6;
+      }
+
+
+      .signature {
+        margin-top: 28px;
+
+        font-size: 8px;
+
+        letter-spacing: 2.5px;
+      }
+
+
+      .back {
+        width: 100%;
+
+        max-width: 280px;
+
+        height: 50px;
+
+        margin-top: 32px;
+
+        font-size: 9px;
+
+        letter-spacing: 2.5px;
+      }
+
+
+      .brand {
+        bottom: 20px;
+
+        font-size: 8px;
+
+        letter-spacing: 4px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <main class="confirmation">
+
+
+    <div class="top-line"></div>
+
+
+    <img
+      class="logo"
+      src="monograma-zq.png"
+      alt="Monograma ZAVQEL"
+    >
+
+
+    <p class="eyebrow">
+      Assinatura registrada
+    </p>
+
+
+    <h1>
+      Bem-vindo à
+      <em>ZAVQEL.</em>
+    </h1>
+
+
+    <p class="message">
+
+      Sua assinatura foi registrada com sucesso.
+
+      <br><br>
+
+      Você agora faz parte da lista de
+      <span class="highlight">
+        pré-lançamento ZAVQEL
+      </span>
+      e será um dos primeiros a conhecer nossa primeira coleção.
+
+    </p>
+
+
+    <p class="signature">
+      Uma fragrância. Uma assinatura.
+    </p>
+
+
+    <a
+      class="back"
+      href="index.html"
+    >
+      Voltar para a ZAVQEL
+    </a>
+
+
+    <div class="brand">
+      ZAVQEL · MAISON DE PARFUM · BRASIL
+    </div>
+
+
+  </main>
+
+
+</body>
+
+</html>
