@@ -1373,6 +1373,47 @@
   defer>
 </script>
 
+  <script>
+  /* =====================================================
+     ZAVQEL — REDIRECIONAMENTO APÓS CADASTRO
+     ===================================================== */
+
+  (function () {
+
+    const successMessage =
+      document.getElementById('success-message');
+
+    if (!successMessage) return;
+
+    const observer = new MutationObserver(function () {
+
+      const isVisible =
+        window.getComputedStyle(successMessage).display !== 'none' &&
+        successMessage.offsetHeight > 0;
+
+      if (isVisible) {
+
+        observer.disconnect();
+
+        setTimeout(function () {
+
+          window.location.href =
+            'https://zavqel.com.br/obrigado.html';
+
+        }, 300);
+
+      }
+
+    });
+
+    observer.observe(successMessage, {
+      attributes: true,
+      childList: true,
+      subtree: true
+    });
+
+  })();
+</script>
 
 <!-- =========================================================
      FIM FORMULÁRIO ZAVQEL
