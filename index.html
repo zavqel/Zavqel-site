@@ -1472,51 +1472,88 @@
 
 (function () {
 
-  const toast =
-    document.getElementById('zavqel-toast');
+  let redirecionando = false;
 
-  const success =
-    document.getElementById('success-message');
+  function verificarSucesso() {
 
-  if (!toast || !success) return;
+    if (redirecionando) return;
 
+    const success =
+      document.getElementById('success-message');
 
-  const observer =
-    new MutationObserver(function () {
+    const toast =
+      document.getElementById('zavqel-toast');
 
-      const visible =
-        window.getComputedStyle(success).display !== 'none' &&
-        success.offsetHeight > 0;
+    if (!success || !toast) return;
 
 
-      if (!visible) return;
+    const estilo =
+      window.getComputedStyle(success);
+
+    const visivel =
+      estilo.display !== 'none' &&
+      estilo.visibility !== 'hidden' &&
+      success.offsetHeight > 0;
 
 
-      observer.disconnect();
+    if (!visivel) return;
 
 
-      toast.classList.add('show');
+    redirecionando = true;
 
 
-      setTimeout(function () {
+    toast.classList.add('show');
 
-        window.location.href =
-          'https://zavqel.com.br/obrigado.html';
 
-      }, 1200);
+    setTimeout(function () {
+
+      window.location.href =
+        'https://zavqel.com.br/obrigado.html';
+
+    }, 1200);
+
+  }
+
+
+  /* Verifica continuamente se a Brevo exibiu
+     a mensagem de sucesso. */
+
+  const intervalo =
+    setInterval(verificarSucesso, 200);
+
+
+  /* Também observa mudanças na estrutura
+     do formulário. */
+
+  const container =
+    document.getElementById('sib-form-container');
+
+  if (container) {
+
+    const observer =
+      new MutationObserver(verificarSucesso);
+
+    observer.observe(container, {
+
+      childList: true,
+
+      subtree: true,
+
+      attributes: true,
+
+      attributeFilter: [
+        'style',
+        'class'
+      ]
 
     });
 
+  }
 
-  observer.observe(success, {
 
-    attributes: true,
+  /* Primeira verificação */
 
-    childList: true,
-
-    subtree: true
-
-  });
+  verificarSucesso();
 
 })();
 </script>
