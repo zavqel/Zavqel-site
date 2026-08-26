@@ -932,6 +932,87 @@
   }
 
 }
+
+/* =====================================================
+   ZAVQEL — NOTIFICAÇÃO DE CADASTRO
+   ===================================================== */
+
+#zavqel-toast {
+  position: fixed;
+
+  right: 24px;
+  bottom: 24px;
+
+  z-index: 99999;
+
+  width: min(360px, calc(100vw - 32px));
+
+  padding: 16px 18px;
+
+  background: #090909;
+
+  border: 1px solid rgba(195, 163, 84, 0.75);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.45);
+
+  color: #f1eee7;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  opacity: 0;
+
+  transform: translateY(15px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+#zavqel-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#zavqel-toast strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #c3a354;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+#zavqel-toast span {
+  display: block;
+
+  color: rgba(241, 238, 231, 0.72);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+
+  #zavqel-toast {
+    right: 16px;
+    bottom: 16px;
+
+    width: calc(100vw - 32px);
+  }
+
+}
   
 </style>
 
@@ -1271,7 +1352,22 @@
 
         </div>
 
+<!-- =====================================================
+     ZAVQEL — NOTIFICAÇÃO DE CADASTRO
+     ===================================================== -->
 
+<div id="zavqel-toast">
+
+  <strong>
+    Cadastro realizado
+  </strong>
+
+  <span>
+    Você já faz parte do pré-lançamento ZAVQEL.
+  </span>
+
+</div>
+        
         <!-- CAMPOS OCULTOS DA BREVO -->
 
         <input
@@ -1369,7 +1465,61 @@
   defer>
 </script>
 
+<script>
+/* =====================================================
+   ZAVQEL — SUCESSO DO CADASTRO
+   ===================================================== */
 
+(function () {
+
+  const toast =
+    document.getElementById('zavqel-toast');
+
+  const success =
+    document.getElementById('success-message');
+
+  if (!toast || !success) return;
+
+
+  const observer =
+    new MutationObserver(function () {
+
+      const visible =
+        window.getComputedStyle(success).display !== 'none' &&
+        success.offsetHeight > 0;
+
+
+      if (!visible) return;
+
+
+      observer.disconnect();
+
+
+      toast.classList.add('show');
+
+
+      setTimeout(function () {
+
+        window.location.href =
+          'https://zavqel.com.br/obrigado.html';
+
+      }, 1200);
+
+    });
+
+
+  observer.observe(success, {
+
+    attributes: true,
+
+    childList: true,
+
+    subtree: true
+
+  });
+
+})();
+</script>
 
 <!-- =========================================================
      FIM FORMULÁRIO ZAVQEL
