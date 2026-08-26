@@ -6,177 +6,340 @@
 
     <title>E-mail confirmado | ZAVQEL</title>
 
-    <meta name="description" content="Seu e-mail foi confirmado. Você agora faz parte do pré-lançamento ZAVQEL.">
+    <meta
+        name="description"
+        content="Seu e-mail foi confirmado. Você agora faz parte do pré-lançamento ZAVQEL."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
+
+        :root {
+            --bg: #050505;
+            --gold: #c7a45b;
+            --gold-light: #d8bd82;
+            --text: #eee9df;
+            --muted: #9d968d;
+            --line: rgba(199,164,91,.28);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            min-height: 100vh;
-            background: #050505;
-            color: #f5f5f5;
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 20px;
+        html {
+            min-height: 100%;
         }
 
-        .container {
+        body {
+            min-height: 100vh;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            font-family: "Inter", Arial, sans-serif;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 35px 20px;
+        }
+
+        .page {
             width: 100%;
-            max-width: 680px;
+
+            max-width: 760px;
+
+            min-height: 720px;
+
+            border: 1px solid var(--line);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 70px 35px;
+        }
+
+        .content {
+            width: 100%;
+
+            max-width: 570px;
+
             text-align: center;
         }
 
+        /* MONOGRAMA */
+
         .monogram {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 48px;
-            letter-spacing: 8px;
-            color: #c9a96a;
-            margin-bottom: 55px;
+            width: 58px;
+
+            height: 58px;
+
+            object-fit: contain;
+
+            margin: 0 auto 40px;
+
+            display: block;
         }
+
+        /* CHECK */
 
         .check {
-            width: 72px;
-            height: 72px;
-            border: 1px solid #c9a96a;
+            width: 58px;
+
+            height: 58px;
+
+            border: 1px solid var(--gold);
+
             border-radius: 50%;
-            margin: 0 auto 35px;
+
+            margin: 0 auto 32px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
-            color: #c9a96a;
+            color: var(--gold-light);
+
+            font-family: "Cormorant Garamond", Georgia, serif;
+
             font-size: 30px;
+
+            font-weight: 400;
         }
 
-        .line {
-            width: 55px;
+        .top-line {
+            width: 48px;
+
             height: 1px;
-            background: #c9a96a;
+
+            background: var(--gold);
+
             margin: 0 auto 35px;
+        }
+
+        .eyebrow {
+            font-size: 10px;
+
+            font-weight: 500;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            color: var(--gold);
+
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(32px, 7vw, 56px);
-            font-weight: normal;
-            letter-spacing: 4px;
-            margin-bottom: 25px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+
+            font-size: clamp(44px, 8vw, 68px);
+
+            font-weight: 400;
+
+            line-height: .95;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 30px;
         }
 
         .subtitle {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #cfcfcf;
-            max-width: 540px;
-            margin: 0 auto 20px;
+            max-width: 500px;
+
+            margin: 0 auto;
+
+            color: #c9c4bb;
+
+            font-size: 15px;
+
+            font-weight: 300;
+
+            line-height: 1.9;
         }
 
         .highlight {
-            color: #c9a96a;
+            color: var(--gold-light);
         }
 
         .message {
-            margin-top: 35px;
-            padding: 25px;
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
+            max-width: 500px;
+
+            margin: 38px auto 0;
+
+            padding: 26px 20px;
+
+            border-top: 1px solid var(--line);
+
+            border-bottom: 1px solid var(--line);
         }
 
         .message p {
-            color: #999;
-            font-size: 14px;
-            line-height: 1.8;
+            color: var(--muted);
+
+            font-size: 13px;
+
+            font-weight: 300;
+
+            line-height: 1.9;
+        }
+
+        .message p + p {
+            margin-top: 8px;
         }
 
         .button {
             display: inline-block;
-            margin-top: 35px;
+
+            margin-top: 38px;
+
             padding: 15px 34px;
 
-            background: #c9a96a;
+            background: var(--gold);
+
             color: #050505;
 
             text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 2px;
+
+            font-size: 10px;
+
+            font-weight: 500;
+
+            letter-spacing: 3px;
+
             text-transform: uppercase;
 
-            transition: all 0.3s ease;
+            transition: .3s ease;
         }
 
         .button:hover {
-            background: #e0c48a;
+            background: var(--gold-light);
         }
 
         .footer {
-            margin-top: 65px;
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: #555;
+            margin-top: 58px;
+
+            color: #55504a;
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
             text-transform: uppercase;
         }
 
         @media (max-width: 600px) {
+
+            body {
+                padding: 20px 14px;
+            }
+
+            .page {
+                min-height: 650px;
+
+                padding: 55px 22px;
+            }
+
             .monogram {
-                margin-bottom: 40px;
-                font-size: 40px;
+                width: 48px;
+
+                height: 48px;
             }
 
             .check {
-                width: 64px;
-                height: 64px;
+                width: 54px;
+
+                height: 54px;
+            }
+
+            h1 {
+                font-size: 45px;
             }
 
             .subtitle {
-                font-size: 15px;
+                font-size: 14px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <main class="container">
+    <main class="page">
 
-        <div class="monogram">ZAVQEL</div>
+        <div class="content">
 
-        <div class="check">✓</div>
+            <!-- MONOGRAMA OFICIAL -->
+            <img
+                src="monograma-zq.png"
+                alt="ZAVQEL"
+                class="monogram"
+            >
 
-        <div class="line"></div>
+            <div class="check">
+                ✓
+            </div>
 
-        <h1>VOCÊ ESTÁ DENTRO.</h1>
+            <div class="top-line"></div>
 
-        <p class="subtitle">
-            Seu e-mail foi
-            <span class="highlight">confirmado com sucesso.</span>
-        </p>
+            <div class="eyebrow">
+                Assinatura registrada
+            </div>
 
-        <div class="message">
-            <p>
-                Agora você faz parte do
-                <span class="highlight">pré-lançamento ZAVQEL</span>.
+            <h1>
+                Você está dentro.
+            </h1>
+
+            <p class="subtitle">
+                Seu e-mail foi
+                <span class="highlight">confirmado com sucesso.</span>
             </p>
 
-            <p>
-                Prepare-se para descobrir uma nova expressão
-                de identidade, exclusividade e personalidade.
-            </p>
-        </div>
+            <div class="message">
 
-        <a href="/" class="button">
-            Conhecer ZAVQEL
-        </a>
+                <p>
+                    Agora você faz parte do
+                    <span class="highlight">
+                        pré-lançamento ZAVQEL.
+                    </span>
+                </p>
 
-        <div class="footer">
-            Maison de Fragrâncias
+                <p>
+                    Prepare-se para descobrir uma nova expressão
+                    de identidade, exclusividade e personalidade.
+                </p>
+
+            </div>
+
+            <a href="/" class="button">
+                Conhecer ZAVQEL
+            </a>
+
+            <div class="footer">
+                Maison de Fragrâncias
+            </div>
+
         </div>
 
     </main>
