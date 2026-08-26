@@ -8,126 +8,243 @@
 
     <meta name="description" content="Confirme seu e-mail para participar do pré-lançamento ZAVQEL.">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --bg: #050505;
+            --gold: #c7a45b;
+            --gold-light: #d8bd82;
+            --text: #eee9df;
+            --muted: #9d968d;
+            --line: rgba(199,164,91,.28);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            min-height: 100%;
+        }
+
         body {
             min-height: 100vh;
-            background: #050505;
-            color: #f5f5f5;
-            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Inter", Arial, sans-serif;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px 20px;
+
+            padding: 35px 20px;
         }
 
-        .container {
+        .page {
             width: 100%;
-            max-width: 650px;
+            max-width: 760px;
+
+            min-height: 720px;
+
+            border: 1px solid var(--line);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 70px 35px;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 570px;
             text-align: center;
         }
 
+        /* MONOGRAMA */
         .monogram {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 48px;
-            letter-spacing: 8px;
-            color: #c9a96a;
-            margin-bottom: 55px;
+            width: 58px;
+            height: 58px;
+
+            object-fit: contain;
+
+            margin: 0 auto 42px;
+
+            display: block;
         }
 
-        .line {
-            width: 55px;
+        .top-line {
+            width: 48px;
             height: 1px;
-            background: #c9a96a;
-            margin: 0 auto 35px;
+
+            background: var(--gold);
+
+            margin: 0 auto 38px;
+        }
+
+        .eyebrow {
+            font-family: "Inter", Arial, sans-serif;
+
+            font-size: 10px;
+            font-weight: 500;
+
+            letter-spacing: 4px;
+            text-transform: uppercase;
+
+            color: var(--gold);
+
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(34px, 7vw, 58px);
-            font-weight: normal;
-            letter-spacing: 4px;
-            margin-bottom: 25px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+
+            font-size: clamp(48px, 8vw, 72px);
+
+            font-weight: 400;
+
+            line-height: .95;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 30px;
         }
 
         .subtitle {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #cfcfcf;
-            max-width: 520px;
-            margin: 0 auto 30px;
+            max-width: 500px;
+
+            margin: 0 auto 18px;
+
+            color: #c9c4bb;
+
+            font-size: 15px;
+
+            font-weight: 300;
+
+            line-height: 1.9;
         }
 
         .highlight {
-            color: #c9a96a;
-            font-weight: 600;
+            color: var(--gold-light);
         }
 
         .notice {
-            border: 1px solid #292929;
-            background: #0b0b0b;
-            padding: 24px;
-            margin: 30px auto;
-            max-width: 520px;
+            max-width: 500px;
+
+            margin: 38px auto 0;
+
+            padding: 25px 28px;
+
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+
+            background: rgba(255,255,255,.015);
         }
 
-        .notice strong {
-            display: block;
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 15px;
-            letter-spacing: 1px;
+        .notice-title {
+            font-family: "Cormorant Garamond", Georgia, serif;
+
+            font-size: 22px;
+
+            font-weight: 500;
+
+            color: var(--text);
+
+            margin-bottom: 8px;
         }
 
         .notice p {
-            color: #aaa;
-            font-size: 14px;
-            line-height: 1.7;
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+            font-weight: 300;
+        }
+
+        .notice strong {
+            color: var(--gold-light);
+            font-weight: 400;
         }
 
         .button {
             display: inline-block;
-            margin-top: 15px;
-            padding: 14px 30px;
-            border: 1px solid #c9a96a;
-            color: #c9a96a;
+
+            margin-top: 38px;
+
+            padding: 15px 32px;
+
+            border: 1px solid var(--gold);
+
+            color: var(--gold-light);
+
             text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 2px;
+
+            font-size: 10px;
+
+            font-weight: 500;
+
+            letter-spacing: 3px;
+
             text-transform: uppercase;
-            transition: all 0.3s ease;
+
+            transition: .3s ease;
         }
 
         .button:hover {
-            background: #c9a96a;
+            background: var(--gold);
+
             color: #050505;
         }
 
         .footer {
-            margin-top: 65px;
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: #555;
+            margin-top: 58px;
+
+            color: #55504a;
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
             text-transform: uppercase;
         }
 
         @media (max-width: 600px) {
-            .monogram {
-                margin-bottom: 40px;
-                font-size: 40px;
+
+            body {
+                padding: 20px 14px;
             }
 
-            .notice {
-                padding: 20px;
+            .page {
+                min-height: 650px;
+
+                padding: 55px 22px;
+            }
+
+            .monogram {
+                width: 48px;
+                height: 48px;
+
+                margin-bottom: 35px;
+            }
+
+            h1 {
+                font-size: 48px;
             }
 
             .subtitle {
-                font-size: 15px;
+                font-size: 14px;
+            }
+
+            .notice {
+                padding: 22px 18px;
             }
         }
     </style>
@@ -135,42 +252,59 @@
 
 <body>
 
-    <main class="container">
+    <main class="page">
 
-        <div class="monogram">ZAVQEL</div>
+        <div class="content">
 
-        <div class="line"></div>
+            <!-- MONOGRAMA OFICIAL -->
+            <img
+                src="monograma-zq.png"
+                alt="ZAVQEL"
+                class="monogram"
+            >
 
-        <h1>QUASE LÁ.</h1>
+            <div class="top-line"></div>
 
-        <p class="subtitle">
-            Seu e-mail foi recebido com sucesso.
-            Enviamos um <span class="highlight">link de confirmação</span>
-            para o seu e-mail.
-        </p>
+            <div class="eyebrow">
+                Pré-lançamento ZAVQEL
+            </div>
 
-        <p class="subtitle">
-            Clique no link enviado para confirmar sua participação
-            no <span class="highlight">pré-lançamento ZAVQEL</span>.
-        </p>
+            <h1>Quase lá.</h1>
 
-        <div class="notice">
-            <strong>Não encontrou o e-mail?</strong>
-
-            <p>
-                Verifique também sua pasta de
-                <strong style="display:inline; color:#c9a96a;">
-                    spam, lixo eletrônico ou promoções
-                </strong>.
+            <p class="subtitle">
+                Seu e-mail foi recebido com sucesso.
+                Enviamos um
+                <span class="highlight">link de confirmação</span>
+                para o seu e-mail.
             </p>
-        </div>
 
-        <a href="/" class="button">
-            Voltar para ZAVQEL
-        </a>
+            <p class="subtitle">
+                Clique no link enviado para confirmar
+                sua participação no
+                <span class="highlight">pré-lançamento ZAVQEL.</span>
+            </p>
 
-        <div class="footer">
-            Maison de Fragrâncias
+            <div class="notice">
+
+                <div class="notice-title">
+                    Não encontrou o e-mail?
+                </div>
+
+                <p>
+                    Verifique também sua pasta de
+                    <strong>spam, lixo eletrônico ou promoções</strong>.
+                </p>
+
+            </div>
+
+            <a href="/" class="button">
+                Voltar para ZAVQEL
+            </a>
+
+            <div class="footer">
+                Maison de Fragrâncias
+            </div>
+
         </div>
 
     </main>
