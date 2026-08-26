@@ -1467,93 +1467,87 @@
 
 <script>
 /* =====================================================
-   ZAVQEL — SUCESSO DO CADASTRO
+   ZAVQEL — CONFIRMAÇÃO DO CADASTRO
    ===================================================== */
 
 (function () {
 
-  let redirecionando = false;
+  const form =
+    document.getElementById('sib-form');
 
-  function verificarSucesso() {
+  const toast =
+    document.getElementById('zavqel-toast');
 
-    if (redirecionando) return;
-
-    const success =
-      document.getElementById('success-message');
-
-    const toast =
-      document.getElementById('zavqel-toast');
-
-    if (!success || !toast) return;
+  if (!form || !toast) return;
 
 
-    const estilo =
-      window.getComputedStyle(success);
-
-    const visivel =
-      estilo.display !== 'none' &&
-      estilo.visibility !== 'hidden' &&
-      success.offsetHeight > 0;
+  let processando = false;
 
 
-    if (!visivel) return;
+  form.addEventListener('submit', function () {
+
+    if (processando) return;
+
+    /*
+      A Brevo continua responsável pelo envio.
+      Aqui apenas aguardamos o processamento.
+    */
+
+    processando = true;
 
 
-    redirecionando = true;
-
-
-    toast.classList.add('show');
-
+    /*
+      Pequena espera para a Brevo concluir
+      o cadastro antes da confirmação visual.
+    */
 
     setTimeout(function () {
 
-      window.location.href =
-        'https://zavqel.com.br/obrigado.html';
+      /*
+        Verifica se o formulário ainda está
+        presente e se não apareceu uma mensagem
+        de erro.
+      */
 
-    }, 1200);
+      const erro =
+        document.getElementById('error-message');
 
-  }
-
-
-  /* Verifica continuamente se a Brevo exibiu
-     a mensagem de sucesso. */
-
-  const intervalo =
-    setInterval(verificarSucesso, 200);
-
-
-  /* Também observa mudanças na estrutura
-     do formulário. */
-
-  const container =
-    document.getElementById('sib-form-container');
-
-  if (container) {
-
-    const observer =
-      new MutationObserver(verificarSucesso);
-
-    observer.observe(container, {
-
-      childList: true,
-
-      subtree: true,
-
-      attributes: true,
-
-      attributeFilter: [
-        'style',
-        'class'
-      ]
-
-    });
-
-  }
+      const erroVisivel =
+        erro &&
+        window.getComputedStyle(erro).display !== 'none' &&
+        erro.offsetHeight > 0;
 
 
-  /* Primeira verificação */
+      if (erroVisivel) {
 
-  verificarSucesso();
+        processando = false;
+
+        return;
+
+      }
+
+
+      /*
+        Cadastro confirmado visualmente.
+      */
+
+      toast.classList.add('show');
+
+
+      /*
+        Abre a página personalizada ZAVQEL.
+      */
+
+      setTimeout(function () {
+
+        window.location.href =
+          'https://zavqel.com.br/obrigado.html';
+
+      }, 1200);
+
+    }, 1800);
+
+  });
 
 })();
 </script>
