@@ -935,3 +935,62 @@ a.whatsapp-float img{
     max-height:32px !important;
   }
   }
+
+/* =====================================================
+   ZAVQEL — ACESSO ANTECIPADO
+   ===================================================== */
+
+.prelaunch-cta {
+  padding: 110px 20px;
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(195, 163, 84, 0.055),
+      transparent 60%
+    ),
+    #070707;
+
+  border-top: 1px solid rgba(180, 140, 50, 0.25);
+  border-bottom: 1px solid rgba(180, 140, 50, 0.25);
+}
+
+.prelaunch-cta .wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.prelaunch-cta .eyebrow {
+  margin-bottom: 28px;
+}
+
+.prelaunch-cta .page-title {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.prelaunch-cta .page-title em {
+  display: inline;
+}
+
+.prelaunch-cta .lead {
+  max-width: 650px;
+  margin: 30px auto 45px;
+}
+
+@media (max-width: 600px) {
+
+  .prelaunch-cta {
+    padding: 75px 20px;
+  }
+
+  .prelaunch-cta .page-title {
+    font-size: 42px;
+  }
+
+  .prelaunch-cta .lead {
+    font-size: 15px;
+  }
+
+}
