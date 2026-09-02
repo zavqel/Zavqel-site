@@ -278,6 +278,7 @@ form.addEventListener("submit", async (event) => {
       email: document.getElementById("zqEmail").value.trim(),
       birthYear: document.getElementById("zqBirthYear").value.trim(),
       notes: document.getElementById("zqNotes").value.trim(),
+      turnstileToken: document.querySelector('[name="cf-turnstile-response"]')?.value || "",
       signature
     };
 
