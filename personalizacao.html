@@ -164,7 +164,10 @@
         <input id="zqConsent" type="checkbox" required>
         <span>Autorizo a ZAVQEL a utilizar os dados enviados para entrar em contato sobre minha solicitação de personalização e preparar a prévia do frasco.</span>
       </label>
-
+<div class="cf-turnstile"
+     data-sitekey="0x4AAAAAAEk610GBdQ9e-bJN">
+</div>
+      
       <div class="zq-status" id="zqStatus" role="status" aria-live="polite"></div>
 
       <div class="zq-submit">
@@ -204,6 +207,7 @@
   <img src="whatsapp.svg" alt="WhatsApp">
 </a>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="script.js"></script>
 <script>
 /* Cole aqui a URL /exec do Google Apps Script depois de publicar o backend. */
