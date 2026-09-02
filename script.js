@@ -19,7 +19,6 @@ const path=window.location.pathname.split('/').pop()||'index.html';
 const internalPages=[
   'black-signature.html',
   'colecao.html',
-  'personalizacao.html',
   'zavqel.html'
 ];
 
