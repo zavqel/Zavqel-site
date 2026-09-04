@@ -220,6 +220,57 @@ const previewImage = document.getElementById("zqPreviewImage");
 const statusBox = document.getElementById("zqStatus");
 const submitButton = document.getElementById("zqSubmit");
 
+  const whatsappInput = document.getElementById("zqWhatsapp");
+
+function validateWhatsApp(value) {
+  const digits = String(value || "").replace(/\D/g, "");
+
+  if (!digits) {
+    return "";
+  }
+
+  let brNumber = digits;
+
+  if (digits.startsWith("55")) {
+    if (digits.length !== 12 && digits.length !== 13) {
+      return "Número de WhatsApp inválido. Confira o DDD e o número.";
+    }
+
+    brNumber = digits.substring(2);
+  } else {
+    if (digits.length !== 10 && digits.length !== 11) {
+      return "Número de WhatsApp inválido. Digite DDD + número.";
+    }
+  }
+
+  const ddd = brNumber.substring(0, 2);
+  const dddNumber = Number(ddd);
+
+  if (ddd.length !== 2 || dddNumber < 11 || dddNumber > 99) {
+    return "DDD inválido. Confira o número informado.";
+  }
+
+  if (brNumber.length === 11 && brNumber.charAt(2) !== "9") {
+    return "Número de celular inválido. O celular deve começar com 9 após o DDD.";
+  }
+
+  if (brNumber.length === 10 && brNumber.charAt(2) === "9") {
+    return "Número de telefone inválido.";
+  }
+
+  if (/^(\d)\1+$/.test(brNumber)) {
+    return "Número de WhatsApp inválido.";
+  }
+
+  return "";
+}
+
+whatsappInput.addEventListener("input", () => {
+  whatsappInput.setCustomValidity(
+    validateWhatsApp(whatsappInput.value)
+  );
+});
+
 fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
   if (!file) { preview.style.display = "none"; return; }
