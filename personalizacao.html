@@ -359,14 +359,16 @@
           WhatsApp
         </label>
 
-        <input
-          id="zqWhatsapp"
-          name="whatsapp"
-          type="tel"
-          autocomplete="tel"
-          placeholder="(00) 00000-0000"
-          required
-        >
+       <input
+  id="zqWhatsapp"
+  name="whatsapp"
+  type="tel"
+  autocomplete="tel"
+  placeholder="(00) 00000-0000"
+  pattern="^(?:(?:\+?55\s?)?(?:\(?[1-9][0-9]\)?\s?)?(?:9[0-9]{4}[-\s]?[0-9]{4}|[2-5][0-9]{3}[-\s]?[0-9]{4}))$"
+  title="Digite um WhatsApp válido com DDD. Ex.: (16) 99203-8802"
+  required
+>
 
       </div>
 
