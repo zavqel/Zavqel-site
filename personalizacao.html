@@ -365,8 +365,6 @@
   type="tel"
   autocomplete="tel"
   placeholder="(00) 00000-0000"
-  pattern="^(?:(?:\+?55\s?)?(?:\(?[1-9][0-9]\)?\s?)?(?:9[0-9]{4}[-\s]?[0-9]{4}|[2-5][0-9]{3}[-\s]?[0-9]{4}))$"
-  title="Digite um WhatsApp válido com DDD. Ex.: (16) 99203-8802"
   required
 >
 
@@ -706,6 +704,25 @@ whatsappInput.addEventListener("input", () => {
 });
 
 
+whatsappInput.addEventListener("invalid", () => {
+
+  const error = validateWhatsApp(
+    whatsappInput.value
+  );
+
+  if (error) {
+
+    whatsappInput.setCustomValidity(error);
+
+  } else {
+
+    whatsappInput.setCustomValidity("");
+
+  }
+
+});
+
+
 /* PRÉVIA DA ASSINATURA */
 
 fileInput.addEventListener("change", () => {
@@ -973,22 +990,6 @@ form.addEventListener(
 
       Isso gera o balãozinho preso ao campo.
     */
-
-    const whatsappError =
-      validateWhatsApp(
-        whatsappInput.value
-      );
-
-
-    if (whatsappError) {
-
-      whatsappInput.setCustomValidity(
-        whatsappError
-      );
-
-      whatsappInput.reportValidity();
-
-      return;
 
     }
 
