@@ -679,6 +679,13 @@ document.getElementById("zqStatus");
 const submitButton =
 document.getElementById("zqSubmit");
 
+  const whatsappInput =
+document.getElementById("zqWhatsapp");
+
+whatsappInput.addEventListener("input", () => {
+  whatsappInput.setCustomValidity("");
+});
+
 
 /* PRÉVIA DA ASSINATURA */
 
@@ -950,24 +957,21 @@ form.addEventListener(
       );
 
 
-    const whatsappError =
-      validateWhatsApp(
-        whatsappInput.value
-      );
+   const whatsappError =
+  validateWhatsApp(
+    whatsappInput.value
+  );
 
+if (whatsappError) {
 
-    if (whatsappError) {
+  whatsappInput.setCustomValidity(whatsappError);
+  whatsappInput.reportValidity();
 
-      showStatus(
-        whatsappError,
-        true
-      );
+  return;
 
-      whatsappInput.focus();
+}
 
-      return;
-
-    }
+whatsappInput.setCustomValidity("");
 
 
     submitButton.disabled = true;
