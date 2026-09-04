@@ -153,6 +153,7 @@
 }
 
 @media(max-width:760px){
+
   .zq-form{
     grid-template-columns:1fr
   }
@@ -167,6 +168,7 @@
   .personalization-request{
     margin-top:65px
   }
+
 }
 </style>
 </head>
@@ -174,6 +176,7 @@
 <body>
 
 <header class="nav">
+
   <div class="nav-inner">
 
     <a class="brand" href="index.html">
@@ -195,10 +198,14 @@
     </button>
 
   </div>
+
 </header>
 
+
 <div class="menu" id="menu">
+
   <nav>
+
     <small>Navegação</small>
 
     <a href="index.html">Início</a>
@@ -207,8 +214,11 @@
     <a href="colecao.html">Coleção</a>
     <a href="personalizacao.html">Personalização</a>
     <a href="certificado.html">Certificado</a>
+
   </nav>
+
 </div>
+
 
 <main class="page">
 
@@ -421,10 +431,12 @@
             class="zq-preview"
             id="zqPreview"
           >
+
             <img
               id="zqPreviewImage"
               alt="Prévia da assinatura"
             >
+
           </div>
 
         </div>
@@ -679,11 +691,16 @@ document.getElementById("zqStatus");
 const submitButton =
 document.getElementById("zqSubmit");
 
-  const whatsappInput =
+const whatsappInput =
 document.getElementById("zqWhatsapp");
 
+
+/* LIMPA O ERRO NATIVO AO ALTERAR O NÚMERO */
+
 whatsappInput.addEventListener("input", () => {
+
   whatsappInput.setCustomValidity("");
+
 });
 
 
@@ -890,7 +907,9 @@ function validateWhatsApp(value) {
 
   /*
     BLOQUEIA SEQUÊNCIAS ÓBVIAS
-    Ex.: 11111111111
+
+    Exemplo:
+    11111111111
   */
 
   if (/^(\d)\1+$/.test(brNumber)) {
@@ -945,33 +964,34 @@ form.addEventListener(
 
 
     /*
-      VALIDAÇÃO DO WHATSAPP ANTES DO ENVIO
+      VALIDAÇÃO DO WHATSAPP
 
-      Isso impede que um número inválido
-      chegue ao Apps Script.
+      Se estiver inválido, usamos a validação
+      nativa do navegador.
+
+      Isso gera o balãozinho preso ao campo.
     */
 
-    const whatsappInput =
-      document.getElementById(
-        "zqWhatsapp"
+    const whatsappError =
+      validateWhatsApp(
+        whatsappInput.value
       );
 
 
-   const whatsappError =
-  validateWhatsApp(
-    whatsappInput.value
-  );
+    if (whatsappError) {
 
-if (whatsappError) {
+      whatsappInput.setCustomValidity(
+        whatsappError
+      );
 
-  whatsappInput.setCustomValidity(whatsappError);
-  whatsappInput.reportValidity();
+      whatsappInput.reportValidity();
 
-  return;
+      return;
 
-}
+    }
 
-whatsappInput.setCustomValidity("");
+
+    whatsappInput.setCustomValidity("");
 
 
     submitButton.disabled = true;
@@ -998,8 +1018,7 @@ whatsappInput.setCustomValidity("");
           .trim(),
 
         whatsapp:
-          document
-          .getElementById("zqWhatsapp")
+          whatsappInput
           .value
           .trim(),
 
@@ -1057,11 +1076,7 @@ whatsappInput.setCustomValidity("");
 
 
       /*
-        Como usamos no-cors, não conseguimos
-        confirmar a resposta do Apps Script.
-
-        Porém, neste ponto o WhatsApp já foi
-        validado localmente.
+        O número já foi validado antes do envio.
       */
 
       form.reset();
