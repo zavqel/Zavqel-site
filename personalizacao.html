@@ -133,7 +133,16 @@
 
       <div class="zq-field">
         <label for="zqWhatsapp">WhatsApp</label>
-        <input id="zqWhatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" required>
+       <input
+  id="zqWhatsapp"
+  name="whatsapp"
+  type="tel"
+  autocomplete="tel"
+  placeholder="(00) 00000-0000"
+  pattern="(?:\+?55\s?)?(?:\(?[1-9][0-9]\)?\s?)?(?:9[0-9]{4}-?[0-9]{4}|[2-5][0-9]{3}-?[0-9]{4})"
+  title="Digite um número de WhatsApp válido com DDD. Ex.: (11) 99999-9999"
+  required
+>
       </div>
 
       <div class="zq-field">
