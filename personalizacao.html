@@ -9,6 +9,7 @@
 <title>Personalização — ZAVQEL</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 <style>
 .personalization-request{
   margin-top:95px;
@@ -16,73 +17,190 @@
   background:linear-gradient(145deg,#0d0d0d,#070707);
   padding:clamp(28px,5vw,58px);
 }
-.personalization-request-head{max-width:720px;margin-bottom:38px}
+
+.personalization-request-head{
+  max-width:720px;
+  margin-bottom:38px
+}
+
 .personalization-request h2{
   font:500 clamp(42px,5vw,68px)/.92 'Cormorant Garamond',serif;
   margin:16px 0 18px;
 }
+
 .personalization-request p{
-  color:#aaa39a;font-size:14px;line-height:1.9;max-width:650px
+  color:#aaa39a;
+  font-size:14px;
+  line-height:1.9;
+  max-width:650px
 }
-.zq-form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.zq-field{display:flex;flex-direction:column;gap:9px}
-.zq-field.full{grid-column:1/-1}
+
+.zq-form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px
+}
+
+.zq-field{
+  display:flex;
+  flex-direction:column;
+  gap:9px
+}
+
+.zq-field.full{
+  grid-column:1/-1
+}
+
 .zq-field label{
-  color:#c7a45b;font-size:9px;letter-spacing:.2em;text-transform:uppercase
+  color:#c7a45b;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase
 }
-.zq-field input,.zq-field textarea{
-  width:100%;border:1px solid rgba(238,233,223,.16);
-  background:#080808;color:#eee9df;padding:15px 16px;
-  font:300 13px Inter,Arial,sans-serif;outline:none;
+
+.zq-field input,
+.zq-field textarea{
+  width:100%;
+  border:1px solid rgba(238,233,223,.16);
+  background:#080808;
+  color:#eee9df;
+  padding:15px 16px;
+  font:300 13px Inter,Arial,sans-serif;
+  outline:none;
 }
-.zq-field textarea{min-height:115px;resize:vertical}
-.zq-field input:focus,.zq-field textarea:focus{
+
+.zq-field textarea{
+  min-height:115px;
+  resize:vertical
+}
+
+.zq-field input:focus,
+.zq-field textarea:focus{
   border-color:rgba(199,164,91,.7)
 }
+
 .zq-upload{
   border:1px dashed rgba(199,164,91,.45);
-  background:#080808;padding:22px;cursor:pointer;
+  background:#080808;
+  padding:22px;
+  cursor:pointer;
 }
-.zq-upload input{border:0;padding:0;background:none;cursor:pointer}
-.zq-upload small{display:block;color:#777168;margin-top:9px;font-size:11px;line-height:1.6}
+
+.zq-upload input{
+  border:0;
+  padding:0;
+  background:none;
+  cursor:pointer
+}
+
+.zq-upload small{
+  display:block;
+  color:#777168;
+  margin-top:9px;
+  font-size:11px;
+  line-height:1.6
+}
+
 .zq-preview{
-  display:none;margin-top:14px;padding:10px;border:1px solid rgba(199,164,91,.18);
+  display:none;
+  margin-top:14px;
+  padding:10px;
+  border:1px solid rgba(199,164,91,.18);
   background:#050505;
 }
-.zq-preview img{max-height:150px;max-width:100%;object-fit:contain;margin:auto}
+
+.zq-preview img{
+  max-height:150px;
+  max-width:100%;
+  object-fit:contain;
+  margin:auto
+}
+
 .zq-consent{
-  grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;
-  color:#777168;font-size:11px;line-height:1.6
+  grid-column:1/-1;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color:#777168;
+  font-size:11px;
+  line-height:1.6
 }
-.zq-consent input{margin-top:3px;accent-color:#c7a45b}
+
+.zq-consent input{
+  margin-top:3px;
+  accent-color:#c7a45b
+}
+
 .zq-status{
-  grid-column:1/-1;display:none;padding:14px 16px;
-  border:1px solid rgba(199,164,91,.3);color:#c7a45b;font-size:12px;line-height:1.6
+  grid-column:1/-1;
+  display:none;
+  padding:14px 16px;
+  border:1px solid rgba(199,164,91,.3);
+  color:#c7a45b;
+  font-size:12px;
+  line-height:1.6
 }
-.zq-status.error{color:#d6aaa0;border-color:rgba(214,170,160,.35)}
-.zq-submit{grid-column:1/-1;display:flex;justify-content:flex-start}
+
+.zq-status.error{
+  color:#d6aaa0;
+  border-color:rgba(214,170,160,.35)
+}
+
+.zq-submit{
+  grid-column:1/-1;
+  display:flex;
+  justify-content:flex-start
+}
+
 @media(max-width:760px){
-  .zq-form{grid-template-columns:1fr}
-  .zq-field.full,.zq-consent,.zq-status,.zq-submit{grid-column:auto}
-  .personalization-request{margin-top:65px}
+  .zq-form{
+    grid-template-columns:1fr
+  }
+
+  .zq-field.full,
+  .zq-consent,
+  .zq-status,
+  .zq-submit{
+    grid-column:auto
+  }
+
+  .personalization-request{
+    margin-top:65px
+  }
 }
 </style>
 </head>
+
 <body>
+
 <header class="nav">
   <div class="nav-inner">
+
     <a class="brand" href="index.html">
-      <img src="monograma-zq.png" alt="Monograma ZAVQEL"><span>ZAVQEL</span>
+      <img src="monograma-zq.png" alt="Monograma ZAVQEL">
+      <span>ZAVQEL</span>
     </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
-      <span class="hamb"><i></i><i></i><i></i></span>
+
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+    >
+      <span class="hamb">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
     </button>
+
   </div>
 </header>
 
 <div class="menu" id="menu">
   <nav>
     <small>Navegação</small>
+
     <a href="index.html">Início</a>
     <a href="black-signature.html">Black Signature</a>
     <a href="zavqel.html">A ZAVQEL</a>
@@ -93,212 +211,887 @@
 </div>
 
 <main class="page">
+
 <div class="wrap">
 
   <div class="page-head">
-    <p class="eyebrow">05 · Personalização</p>
-    <h1 class="page-title">Personalização como <em>assinatura.</em></h1>
-    <p class="lead">A ZAVQEL parte da pessoa para construir uma fragrância. Preferências, memórias e presença orientam uma composição pensada para pertencer a alguém.</p>
+
+    <p class="eyebrow">
+      05 · Personalização
+    </p>
+
+    <h1 class="page-title">
+      Personalização como <em>assinatura.</em>
+    </h1>
+
+    <p class="lead">
+      A ZAVQEL parte da pessoa para construir uma fragrância.
+      Preferências, memórias e presença orientam uma composição
+      pensada para pertencer a alguém.
+    </p>
+
   </div>
+
 
   <div class="grid2">
+
     <div class="visual">
-      <img src="zavqel-001-higor.png" alt="ZAVQEL Black Signature — by Higor Monteiro">
+
+      <img
+        src="zavqel-001-higor.png"
+        alt="ZAVQEL Black Signature — by Higor Monteiro"
+      >
+
     </div>
+
+
     <div>
+
       <div class="cards">
-        <article class="card"><span>01 · ESCUTA</span><h3>Entender você.</h3><p>Referências, preferências e a presença que você deseja transmitir.</p></article>
-        <article class="card"><span>02 · COMPOSIÇÃO</span><h3>Construir identidade.</h3><p>Notas e proporções são pensadas para formar uma composição pessoal.</p></article>
-        <article class="card"><span>03 · ASSINATURA</span><h3>Deixar presença.</h3><p>O resultado é uma expressão olfativa criada para pertencer a alguém.</p></article>
-        <article class="card"><span>04 · LEGADO</span><h3>Fazer permanecer.</h3><p>Uma assinatura verdadeira continua na memória.</p></article>
+
+        <article class="card">
+          <span>01 · ESCUTA</span>
+          <h3>Entender você.</h3>
+          <p>
+            Referências, preferências e a presença que você deseja transmitir.
+          </p>
+        </article>
+
+        <article class="card">
+          <span>02 · COMPOSIÇÃO</span>
+          <h3>Construir identidade.</h3>
+          <p>
+            Notas e proporções são pensadas para formar uma composição pessoal.
+          </p>
+        </article>
+
+        <article class="card">
+          <span>03 · ASSINATURA</span>
+          <h3>Deixar presença.</h3>
+          <p>
+            O resultado é uma expressão olfativa criada para pertencer a alguém.
+          </p>
+        </article>
+
+        <article class="card">
+          <span>04 · LEGADO</span>
+          <h3>Fazer permanecer.</h3>
+          <p>
+            Uma assinatura verdadeira continua na memória.
+          </p>
+        </article>
+
       </div>
+
+
       <div class="actions">
-        <a class="cta" href="certificado.html">Conheça o Certificado</a>
+
+        <a class="cta" href="certificado.html">
+          Conheça o Certificado
+        </a>
+
       </div>
+
     </div>
+
   </div>
 
-  <section class="personalization-request" id="solicitar-previa">
+
+  <section
+    class="personalization-request"
+    id="solicitar-previa"
+  >
+
     <div class="personalization-request-head">
-      <p class="eyebrow">Sua assinatura · ZAVQEL</p>
-      <h2>Solicite uma prévia da sua <em>criação.</em></h2>
-      <p>Envie seus dados e uma foto da sua assinatura. A ZAVQEL usará essas informações para preparar uma visualização do seu frasco personalizado.</p>
+
+      <p class="eyebrow">
+        Sua assinatura · ZAVQEL
+      </p>
+
+      <h2>
+        Solicite uma prévia da sua <em>criação.</em>
+      </h2>
+
+      <p>
+        Envie seus dados e uma foto da sua assinatura.
+        A ZAVQEL usará essas informações para preparar uma
+        visualização do seu frasco personalizado.
+      </p>
+
     </div>
 
-    <form class="zq-form" id="zqPersonalizationForm">
-      <div class="zq-field">
-        <label for="zqName">Nome</label>
-        <input id="zqName" name="name" type="text" autocomplete="name" required>
-      </div>
+
+    <form
+      class="zq-form"
+      id="zqPersonalizationForm"
+    >
 
       <div class="zq-field">
-        <label for="zqWhatsapp">WhatsApp</label>
-        <input id="zqWhatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" required>
+
+        <label for="zqName">
+          Nome
+        </label>
+
+        <input
+          id="zqName"
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+        >
+
       </div>
 
-      <div class="zq-field">
-        <label for="zqEmail">E-mail</label>
-        <input id="zqEmail" name="email" type="email" autocomplete="email" required>
-      </div>
 
       <div class="zq-field">
-        <label for="zqBirthYear">Ano de nascimento</label>
-        <input id="zqBirthYear" name="birthYear" type="number" min="1900" max="2026" placeholder="1996">
+
+        <label for="zqWhatsapp">
+          WhatsApp
+        </label>
+
+        <input
+          id="zqWhatsapp"
+          name="whatsapp"
+          type="tel"
+          autocomplete="tel"
+          placeholder="(00) 00000-0000"
+          required
+        >
+
       </div>
+
+
+      <div class="zq-field">
+
+        <label for="zqEmail">
+          E-mail
+        </label>
+
+        <input
+          id="zqEmail"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+        >
+
+      </div>
+
+
+      <div class="zq-field">
+
+        <label for="zqBirthYear">
+          Ano de nascimento
+        </label>
+
+        <input
+          id="zqBirthYear"
+          name="birthYear"
+          type="number"
+          min="1900"
+          max="2026"
+          placeholder="1996"
+        >
+
+      </div>
+
 
       <div class="zq-field full">
-        <label for="zqSignature">Sua assinatura</label>
+
+        <label for="zqSignature">
+          Sua assinatura
+        </label>
+
         <div class="zq-upload">
-          <input id="zqSignature" name="signature" type="file" accept="image/png,image/jpeg,image/webp" required>
-          <small>Envie uma foto nítida da assinatura. PNG, JPG ou WEBP · máximo 5 MB.</small>
-          <div class="zq-preview" id="zqPreview"><img id="zqPreviewImage" alt="Prévia da assinatura"></div>
+
+          <input
+            id="zqSignature"
+            name="signature"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            required
+          >
+
+          <small>
+            Envie uma foto nítida da assinatura.
+            PNG, JPG ou WEBP · máximo 5 MB.
+          </small>
+
+          <div
+            class="zq-preview"
+            id="zqPreview"
+          >
+            <img
+              id="zqPreviewImage"
+              alt="Prévia da assinatura"
+            >
+          </div>
+
         </div>
+
       </div>
 
+
       <div class="zq-field full">
-        <label for="zqNotes">Preferências (opcional)</label>
-        <textarea id="zqNotes" name="notes" placeholder="Conte, se quiser, referências, notas, estilo ou sensação que gostaria de transmitir."></textarea>
+
+        <label for="zqNotes">
+          Preferências (opcional)
+        </label>
+
+        <textarea
+          id="zqNotes"
+          name="notes"
+          placeholder="Conte, se quiser, referências, notas, estilo ou sensação que gostaria de transmitir."
+        ></textarea>
+
       </div>
+
 
       <label class="zq-consent">
-        <input id="zqConsent" type="checkbox" required>
-        <span>Autorizo a ZAVQEL a utilizar os dados enviados para entrar em contato sobre minha solicitação de personalização e preparar a prévia do frasco.</span>
+
+        <input
+          id="zqConsent"
+          type="checkbox"
+          required
+        >
+
+        <span>
+          Autorizo a ZAVQEL a utilizar os dados enviados
+          para entrar em contato sobre minha solicitação de
+          personalização e preparar a prévia do frasco.
+        </span>
+
       </label>
-<div class="cf-turnstile"
-     data-sitekey="0x4AAAAAAEk610GBdQ9e-bJN">
-</div>
-      
-      <div class="zq-status" id="zqStatus" role="status" aria-live="polite"></div>
+
+
+      <div
+        class="cf-turnstile"
+        data-sitekey="0x4AAAAAAEk610GBdQ9e-bJN"
+      ></div>
+
+
+      <div
+        class="zq-status"
+        id="zqStatus"
+        role="status"
+        aria-live="polite"
+      ></div>
+
 
       <div class="zq-submit">
-        <button class="cta" type="submit" id="zqSubmit">SOLICITAR MINHA PRÉVIA</button>
+
+        <button
+          class="cta"
+          type="submit"
+          id="zqSubmit"
+        >
+          SOLICITAR MINHA PRÉVIA
+        </button>
+
       </div>
+
     </form>
+
   </section>
 
 </div>
+
 </main>
 
+
 <footer>
+
   <div class="wrap footer-grid">
+
     <div class="footer-brand">
+
       ZAVQEL
-      <div class="social-links" aria-label="Redes sociais da ZAVQEL">
-        <a href="https://www.youtube.com/@zavqel.maison" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://www.instagram.com/zavqel.maison/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@zavqel.maison" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="https://k.kwai.com/u/@zavqel/Brg7Chgj" target="_blank" rel="noopener noreferrer" aria-label="Kwai"><img src="kwai.svg" alt="Kwai"></a>
-        <a href="https://pin.it/1Xuu3FSyJ" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
-        <a href="https://www.threads.com/@zavqel.maison" target="_blank" rel="noopener noreferrer" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
-        <a href="https://x.com/zavqel" target="_blank" rel="noopener noreferrer" aria-label="X"><span class="xmark"><i class="fa-brands fa-x-twitter"></i></span></a>
-        <a href="https://www.facebook.com/share/193j7HJuvn/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><span class="fb"><i class="fa-brands fa-facebook-f"></i></span></a>
+
+      <div
+        class="social-links"
+        aria-label="Redes sociais da ZAVQEL"
+      >
+
+        <a
+          href="https://www.youtube.com/@zavqel.maison"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a
+          href="https://www.instagram.com/zavqel.maison/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@zavqel.maison"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok"
+        >
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+
+        <a
+          href="https://k.kwai.com/u/@zavqel/Brg7Chgj"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Kwai"
+        >
+          <img src="kwai.svg" alt="Kwai">
+        </a>
+
+        <a
+          href="https://pin.it/1Xuu3FSyJ"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Pinterest"
+        >
+          <i class="fa-brands fa-pinterest-p"></i>
+        </a>
+
+        <a
+          href="https://www.threads.com/@zavqel.maison"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Threads"
+        >
+          <i class="fa-brands fa-threads"></i>
+        </a>
+
+        <a
+          href="https://x.com/zavqel"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="X"
+        >
+          <span class="xmark">
+            <i class="fa-brands fa-x-twitter"></i>
+          </span>
+        </a>
+
+        <a
+          href="https://www.facebook.com/share/193j7HJuvn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <span class="fb">
+            <i class="fa-brands fa-facebook-f"></i>
+          </span>
+        </a>
+
       </div>
-      <small>© 2026 ZAVQEL · Maison de Parfum · Brasil</small>
-      <small>Exclusividade · Legado · Identidade · Assinatura · Black Signature</small>
+
+
+      <small>
+        © 2026 ZAVQEL · Maison de Parfum · Brasil
+      </small>
+
+      <small>
+        Exclusividade · Legado · Identidade · Assinatura · Black Signature
+      </small>
+
     </div>
+
+
     <div class="footer-links">
-      <a href="index.html">Início</a><a href="black-signature.html">Black Signature</a><a href="colecao.html">Coleção</a>
-      <a href="personalizacao.html">Personalização</a><a href="certificado.html">Certificado</a><a href="zavqel.html">A ZAVQEL</a>
+
+      <a href="index.html">Início</a>
+
+      <a href="black-signature.html">
+        Black Signature
+      </a>
+
+      <a href="colecao.html">
+        Coleção
+      </a>
+
+      <a href="personalizacao.html">
+        Personalização
+      </a>
+
+      <a href="certificado.html">
+        Certificado
+      </a>
+
+      <a href="zavqel.html">
+        A ZAVQEL
+      </a>
+
     </div>
+
   </div>
+
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/qr/6DVOZCYNCYXPB1" target="_blank" rel="noopener noreferrer" aria-label="Fale com a ZAVQEL pelo WhatsApp">
+
+<a
+  class="whatsapp-float"
+  href="https://wa.me/qr/6DVOZCYNCYXPB1"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Fale com a ZAVQEL pelo WhatsApp"
+>
   <img src="whatsapp.svg" alt="WhatsApp">
 </a>
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="script.js"></script>
-<script>
-/* Cole aqui a URL /exec do Google Apps Script depois de publicar o backend. */
-const PERSONALIZACAO_ENDPOINT = "https://script.google.com/macros/s/AKfycbxatjd37gjrcoeyf25riFbviLsxqlrybfPe5Vtqyvcr-7dcSzK6qaCcfEL5_k5WHin6sQ/exec";
 
-const form = document.getElementById("zqPersonalizationForm");
-const fileInput = document.getElementById("zqSignature");
-const preview = document.getElementById("zqPreview");
-const previewImage = document.getElementById("zqPreviewImage");
-const statusBox = document.getElementById("zqStatus");
-const submitButton = document.getElementById("zqSubmit");
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* ENDPOINT DO GOOGLE APPS SCRIPT */
+
+const PERSONALIZACAO_ENDPOINT =
+"https://script.google.com/macros/s/AKfycbxatjd37gjrcoeyf25riFbviLsxqlrybfPe5Vtqyvcr-7dcSzK6qaCcfEL5_k5WHin6sQ/exec";
+
+
+const form =
+document.getElementById("zqPersonalizationForm");
+
+const fileInput =
+document.getElementById("zqSignature");
+
+const preview =
+document.getElementById("zqPreview");
+
+const previewImage =
+document.getElementById("zqPreviewImage");
+
+const statusBox =
+document.getElementById("zqStatus");
+
+const submitButton =
+document.getElementById("zqSubmit");
+
+
+/* PRÉVIA DA ASSINATURA */
 
 fileInput.addEventListener("change", () => {
-  const file = fileInput.files[0];
-  if (!file) { preview.style.display = "none"; return; }
 
-  const allowed = ["image/png","image/jpeg","image/webp"];
-  if (!allowed.includes(file.type) || file.size > 5 * 1024 * 1024) {
-    fileInput.value = "";
+  const file = fileInput.files[0];
+
+  if (!file) {
+
     preview.style.display = "none";
-    showStatus("Envie PNG, JPG ou WEBP com no máximo 5 MB.", true);
+
     return;
+
   }
+
+
+  const allowed = [
+    "image/png",
+    "image/jpeg",
+    "image/webp"
+  ];
+
+
+  if (
+    !allowed.includes(file.type) ||
+    file.size > 5 * 1024 * 1024
+  ) {
+
+    fileInput.value = "";
+
+    preview.style.display = "none";
+
+    showStatus(
+      "Envie PNG, JPG ou WEBP com no máximo 5 MB.",
+      true
+    );
+
+    return;
+
+  }
+
 
   const reader = new FileReader();
+
+
   reader.onload = e => {
+
     previewImage.src = e.target.result;
+
     preview.style.display = "block";
+
   };
+
+
   reader.readAsDataURL(file);
+
 });
+
+
+/* STATUS */
 
 function showStatus(message, error=false) {
+
   statusBox.textContent = message;
-  statusBox.className = "zq-status" + (error ? " error" : "");
+
+  statusBox.className =
+    "zq-status" +
+    (error ? " error" : "");
+
   statusBox.style.display = "block";
+
 }
+
+
+/* CONVERTER ARQUIVO PARA DATA URL */
 
 function fileToDataUrl(file) {
+
   return new Promise((resolve, reject) => {
+
     const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
+
+    reader.onload = () =>
+      resolve(reader.result);
+
     reader.onerror = reject;
+
     reader.readAsDataURL(file);
+
   });
+
 }
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
 
-  if (PERSONALIZACAO_ENDPOINT.startsWith("COLE_AQUI")) {
-    showStatus("O formulário está pronto, mas ainda falta conectar o endereço do backend gratuito. Depois de publicar o Apps Script, coloque a URL /exec neste arquivo.", true);
-    return;
+/* VALIDAÇÃO INTELIGENTE DO WHATSAPP */
+
+function validateWhatsApp(value) {
+
+  const digits =
+    String(value || "").replace(/\D/g, "");
+
+
+  if (!digits) {
+
+    return "Digite seu número de WhatsApp.";
+
   }
 
-  const file = fileInput.files[0];
-  if (!file) return showStatus("Selecione sua assinatura.", true);
 
-  submitButton.disabled = true;
-  submitButton.textContent = "ENVIANDO…";
-  statusBox.style.display = "none";
+  let brNumber = digits;
 
-  try {
-    const signature = await fileToDataUrl(file);
-    const payload = {
-      name: document.getElementById("zqName").value.trim(),
-      whatsapp: document.getElementById("zqWhatsapp").value.trim(),
-      email: document.getElementById("zqEmail").value.trim(),
-      birthYear: document.getElementById("zqBirthYear").value.trim(),
-      notes: document.getElementById("zqNotes").value.trim(),
-      turnstileToken: document.querySelector('[name="cf-turnstile-response"]')?.value || "",
-      signature
-    };
 
-    await fetch(PERSONALIZACAO_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type":"text/plain;charset=utf-8"},
-      body: JSON.stringify(payload),
-      mode: "no-cors"
-    });
+  /*
+    Se o cliente já colocou o código do Brasil,
+    removemos o 55 para validar somente o número.
+  */
 
-    form.reset();
-    preview.style.display = "none";
-    showStatus("Solicitação enviada. A ZAVQEL recebeu seus dados e sua assinatura. Entraremos em contato pelo WhatsApp.");
-  } catch (error) {
-    showStatus("Não foi possível enviar agora. Tente novamente em alguns instantes.", true);
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = "SOLICITAR MINHA PRÉVIA";
+  if (digits.startsWith("55")) {
+
+    if (
+      digits.length !== 12 &&
+      digits.length !== 13
+    ) {
+
+      return "Número de WhatsApp inválido. Confira o DDD e o número.";
+
+    }
+
+    brNumber = digits.substring(2);
+
+  } else {
+
+    /*
+      Número nacional:
+      10 dígitos = telefone fixo
+      11 dígitos = celular
+    */
+
+    if (
+      digits.length !== 10 &&
+      digits.length !== 11
+    ) {
+
+      return "Número de WhatsApp inválido. Digite DDD + número.";
+
+    }
+
   }
-});
+
+
+  /* VALIDAÇÃO DO DDD */
+
+  const ddd =
+    brNumber.substring(0,2);
+
+  const dddNumber =
+    Number(ddd);
+
+
+  if (
+    ddd.length !== 2 ||
+    dddNumber < 11 ||
+    dddNumber > 99
+  ) {
+
+    return "DDD inválido. Confira o número informado.";
+
+  }
+
+
+  /*
+    CELULAR BRASILEIRO
+
+    DDD + 9 + oito dígitos
+  */
+
+  if (
+    brNumber.length === 11 &&
+    brNumber.charAt(2) !== "9"
+  ) {
+
+    return "Número de celular inválido. O celular deve começar com 9 após o DDD.";
+
+  }
+
+
+  /*
+    TELEFONE FIXO
+
+    DDD + oito dígitos
+  */
+
+  if (
+    brNumber.length === 10 &&
+    brNumber.charAt(2) === "9"
+  ) {
+
+    return "Número de telefone inválido.";
+
+  }
+
+
+  /*
+    BLOQUEIA SEQUÊNCIAS ÓBVIAS
+    Ex.: 11111111111
+  */
+
+  if (/^(\d)\1+$/.test(brNumber)) {
+
+    return "Número de WhatsApp inválido.";
+
+  }
+
+
+  return "";
+
+}
+
+
+/* ENVIO DO FORMULÁRIO */
+
+form.addEventListener(
+  "submit",
+  async (event) => {
+
+    event.preventDefault();
+
+
+    if (
+      PERSONALIZACAO_ENDPOINT.startsWith(
+        "COLE_AQUI"
+      )
+    ) {
+
+      showStatus(
+        "O formulário está pronto, mas ainda falta conectar o endereço do backend gratuito. Depois de publicar o Apps Script, coloque a URL /exec neste arquivo.",
+        true
+      );
+
+      return;
+
+    }
+
+
+    const file =
+      fileInput.files[0];
+
+
+    if (!file) {
+
+      return showStatus(
+        "Selecione sua assinatura.",
+        true
+      );
+
+    }
+
+
+    /*
+      VALIDAÇÃO DO WHATSAPP ANTES DO ENVIO
+
+      Isso impede que um número inválido
+      chegue ao Apps Script.
+    */
+
+    const whatsappInput =
+      document.getElementById(
+        "zqWhatsapp"
+      );
+
+
+    const whatsappError =
+      validateWhatsApp(
+        whatsappInput.value
+      );
+
+
+    if (whatsappError) {
+
+      showStatus(
+        whatsappError,
+        true
+      );
+
+      whatsappInput.focus();
+
+      return;
+
+    }
+
+
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+      "ENVIANDO…";
+
+    statusBox.style.display =
+      "none";
+
+
+    try {
+
+      const signature =
+        await fileToDataUrl(file);
+
+
+      const payload = {
+
+        name:
+          document
+          .getElementById("zqName")
+          .value
+          .trim(),
+
+        whatsapp:
+          document
+          .getElementById("zqWhatsapp")
+          .value
+          .trim(),
+
+        email:
+          document
+          .getElementById("zqEmail")
+          .value
+          .trim(),
+
+        birthYear:
+          document
+          .getElementById("zqBirthYear")
+          .value
+          .trim(),
+
+        notes:
+          document
+          .getElementById("zqNotes")
+          .value
+          .trim(),
+
+        turnstileToken:
+          document.querySelector(
+            '[name="cf-turnstile-response"]'
+          )?.value || "",
+
+        signature
+
+      };
+
+
+      /*
+        Mantemos no-cors porque o Apps Script
+        não fornece CORS adequado para leitura
+        da resposta pelo navegador.
+      */
+
+      await fetch(
+        PERSONALIZACAO_ENDPOINT,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "text/plain;charset=utf-8"
+          },
+
+          body:
+            JSON.stringify(payload),
+
+          mode: "no-cors"
+
+        }
+      );
+
+
+      /*
+        Como usamos no-cors, não conseguimos
+        confirmar a resposta do Apps Script.
+
+        Porém, neste ponto o WhatsApp já foi
+        validado localmente.
+      */
+
+      form.reset();
+
+      preview.style.display =
+        "none";
+
+
+      showStatus(
+        "Solicitação enviada. A ZAVQEL recebeu seus dados e sua assinatura. Entraremos em contato pelo WhatsApp."
+      );
+
+
+    } catch (error) {
+
+      showStatus(
+        "Não foi possível enviar agora. Tente novamente em alguns instantes.",
+        true
+      );
+
+    } finally {
+
+      submitButton.disabled =
+        false;
+
+      submitButton.textContent =
+        "SOLICITAR MINHA PRÉVIA";
+
+    }
+
+  }
+);
+
 </script>
+
 </body>
 </html>
