@@ -227,6 +227,15 @@ const previewImage = document.getElementById("zqPreviewImage");
 const statusBox = document.getElementById("zqStatus");
 const submitButton = document.getElementById("zqSubmit");
 
+  const whatsappInput = document.getElementById("zqWhatsapp");
+
+submitButton.addEventListener("click", (event) => {
+  if (!whatsappInput.checkValidity()) {
+    event.preventDefault();
+    whatsappInput.reportValidity();
+  }
+});
+
 fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
   if (!file) { preview.style.display = "none"; return; }
