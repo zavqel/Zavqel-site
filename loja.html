@@ -10,22 +10,26 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <style>
-.store-hero{min-height:58vh;display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(199,164,91,.18);background:linear-gradient(145deg,#0d0d0d,#070707);padding:clamp(45px,8vw,90px) 28px;position:relative;overflow:hidden}
-.store-hero:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(199,164,91,.07);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
-.store-content{position:relative;z-index:1;max-width:760px}
-.store-mark{width:58px;height:58px;object-fit:contain;margin:0 auto 28px;opacity:.9}
-.store-hero h2{font:500 clamp(48px,7vw,88px)/.9 'Cormorant Garamond',serif;margin:15px 0 25px}
-.store-hero h2 em{font-style:italic}
-.store-hero p{color:#aaa39a;font-size:14px;line-height:1.9;max-width:620px;margin:0 auto}
-.store-status{display:inline-flex;align-items:center;gap:10px;margin-top:32px;padding:10px 17px;border:1px solid rgba(199,164,91,.35);color:#c7a45b;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
-.store-status:before{content:"";width:6px;height:6px;border-radius:50%;background:#c7a45b}
-.store-info{margin-top:22px!important;color:#777168!important;font-size:11px!important;line-height:1.7!important}
-.store-actions{margin-top:35px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.store-product{display:grid;grid-template-columns:minmax(280px,1fr) minmax(300px,1fr);gap:clamp(35px,7vw,90px);align-items:center;border:1px solid rgba(199,164,91,.18);background:linear-gradient(145deg,#0d0d0d,#070707);padding:clamp(35px,6vw,70px);position:relative;overflow:hidden}
+.store-product:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(199,164,91,.07);border-radius:50%;top:50%;left:25%;transform:translate(-50%,-50%);pointer-events:none}
+.store-product-image{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;min-height:430px}
+.product-placeholder{width:min(300px,75%);aspect-ratio:.72;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(199,164,91,.45);background:linear-gradient(145deg,#111,#050505);box-shadow:0 25px 70px rgba(0,0,0,.45);padding:35px;box-sizing:border-box}
+.product-placeholder span{font-size:11px;letter-spacing:.32em;color:#c7a45b;margin-bottom:55px}
+.product-placeholder strong{font:500 clamp(30px,4vw,48px)/.88 'Cormorant Garamond',serif;letter-spacing:.03em}
+.product-placeholder small{margin-top:55px;color:#777168;font-size:8px;letter-spacing:.16em}
+.store-product-info{position:relative;z-index:1;max-width:520px}
+.store-product-info h2{font:500 clamp(52px,6vw,82px)/.88 'Cormorant Garamond',serif;margin:12px 0 18px}
+.store-product-info h2 em{font-style:italic}
+.product-type{color:#c7a45b!important;font-size:10px!important;letter-spacing:.18em;text-transform:uppercase}
+.product-description{color:#aaa39a!important;font-size:14px!important;line-height:1.9!important;max-width:500px}
+.product-divider{width:55px;height:1px;background:rgba(199,164,91,.5);margin:30px 0 20px}
+.product-price{font:500 30px/1 'Cormorant Garamond',serif;color:#eee9df}
+.store-info{margin-top:12px!important;color:#777168!important;font-size:11px!important;line-height:1.7!important}
+.store-actions{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
 .store-note{margin-top:75px;padding:30px;border-top:1px solid rgba(238,233,223,.10);text-align:center}
 .store-note span{display:block;color:#c7a45b;font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:13px}
 .store-note p{color:#aaa39a;font-size:13px;line-height:1.8;margin:0 auto;max-width:620px}
-@media(max-width:760px){.store-hero{min-height:62vh}.store-actions .cta{width:100%;text-align:center}}
-</style>
+@media(max-width:760px){.store-product{grid-template-columns:1fr;padding:30px 22px;gap:20px}.store-product-image{min-height:340px}.product-placeholder{width:min(245px,72%)}.store-product-info{text-align:center}.product-description{margin-left:auto;margin-right:auto}.product-divider{margin-left:auto;margin-right:auto}.store-actions{justify-content:center}.store-actions .cta{width:100%;text-align:center}}</style>
 </head>
 <body>
 <header class="nav"><div class="nav-inner">
@@ -48,17 +52,25 @@
 <h1 class="page-title">Uma nova experiência <em>está chegando.</em></h1>
 <p class="lead">A loja online ZAVQEL está sendo preparada para receber suas criações com a mesma atenção dedicada a cada assinatura.</p>
 </div>
-<section class="store-hero">
-<div class="store-content">
-<img class="store-mark" src="monograma-zq.png" alt="Monograma ZAVQEL">
-<p class="eyebrow">ZAVQEL · Maison de Parfum</p>
-<h2>Conheça nossa <em>loja online.</em></h2>
-<p>Em breve, você poderá adquirir suas criações ZAVQEL diretamente pela Maison, com uma experiência pensada para acompanhar cada etapa da sua assinatura.</p>
-<div class="store-status">Em breve</div>
-<p class="store-info">Estamos preparando o lançamento da experiência de compra online.</p>
+<section class="store-product">
+<div class="store-product-image">
+<div class="product-placeholder">
+<span>ZAVQEL</span>
+<strong>BLACK<br>SIGNATURE</strong>
+<small>EXTRAIT DE PARFUM · 100 ML</small>
+</div>
+</div>
+<div class="store-product-info">
+<p class="eyebrow">01 · Black Signature</p>
+<h2>Black <em>Signature.</em></h2>
+<p class="product-type">Extrait de Parfum · 100 ml / 3.4 FL OZ</p>
+<p class="product-description">Uma fragrância criada para traduzir presença, personalidade e identidade. Black Signature é a primeira assinatura da ZAVQEL.</p>
+<div class="product-divider"></div>
+<div class="product-price">R$ —</div>
+<p class="store-info">Disponibilidade e condições de compra serão anunciadas no lançamento.</p>
 <div class="store-actions">
-<a class="cta" href="colecao.html">Conheça a Coleção</a>
-<a class="cta secondary" href="personalizacao.html">Personalize sua assinatura</a>
+<a class="cta" href="black-signature.html">Conhecer a fragrância</a>
+<a class="cta secondary" href="personalizacao.html">Personalizar sua assinatura</a>
 </div>
 </div>
 </section>
