@@ -1,1688 +1,1203 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ZAVQEL — Loja Online. Uma fragrância. Uma assinatura.">
-<meta name="theme-color" content="#070707">
-<link rel="icon" type="image/png" href="monograma-zq.png">
-<title>Loja Online — Black Signature — ZAVQEL</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loja Online — ZAVQEL</title>
+<meta name="description" content="Loja oficial ZAVQEL — Black Signature, primeira coleção limitada a 100 exemplares.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-.store-intro{max-width:760px;margin:0 auto 45px;text-align:center}
-.store-intro h2{font:500 clamp(42px,6vw,72px)/.9 'Cormorant Garamond',serif;margin:12px 0 20px}
-.store-intro h2 em{font-style:italic}
-.store-intro p{color:#aaa39a;font-size:14px;line-height:1.9}
-.collection-meta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:25px 0 45px}
-.meta-pill{border:1px solid rgba(199,164,91,.3);padding:10px 15px;color:#c7a45b;font-size:9px;letter-spacing:.15em;text-transform:uppercase}
-.edition-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.edition-card{background:#0b0b0b;border:1px solid rgba(199,164,91,.16);overflow:hidden;display:flex;flex-direction:column}
-.edition-image{position:relative;min-height:330px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#111,#060606)}
-.bottle-generic{width:150px;height:215px;border:1px solid rgba(199,164,91,.55);background:linear-gradient(145deg,#181818,#030303);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 25px 55px rgba(0,0,0,.5)}
-.bottle-generic span{font-size:8px;letter-spacing:.28em;color:#c7a45b;margin-bottom:28px}
-.bottle-generic strong{font:500 23px/.9 'Cormorant Garamond',serif}
-.bottle-generic small{font-size:6px;letter-spacing:.13em;color:#777168;margin-top:28px}
-.edition-number{position:absolute;right:15px;top:15px;color:#c7a45b;font-size:8px;letter-spacing:.14em}
-.edition-body{padding:24px}
-.edition-kicker{color:#c7a45b!important;font-size:8px!important;letter-spacing:.16em;text-transform:uppercase}
-.edition-body h3{font:500 34px/.95 'Cormorant Garamond',serif;margin:12px 0}
-.edition-body h3 em{font-style:italic}
-.edition-signature{color:#777168!important;font-size:11px!important;margin-bottom:20px}
-.edition-price{display:flex;align-items:baseline;gap:10px;margin-bottom:20px}
-.edition-price s{color:#666;font-size:11px}
-.edition-price strong{color:#eee9df;font:500 25px/1 'Cormorant Garamond',serif}
-.add-cart{width:100%;border:1px solid rgba(199,164,91,.55);background:transparent;color:#eee9df;padding:13px 12px;font:inherit;font-size:9px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-.add-cart:hover{background:#c7a45b;color:#070707}
-.shipping-note{margin:45px 0 0;padding:25px;border-top:1px solid rgba(238,233,223,.1);border-bottom:1px solid rgba(238,233,223,.1);text-align:center}
-.shipping-note strong{display:block;color:#c7a45b;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
-.shipping-note span{color:#aaa39a;font-size:12px}
-.cart-fab{position:fixed;right:22px;bottom:22px;z-index:50;border:1px solid rgba(199,164,91,.7);background:#070707;color:#eee9df;padding:13px 17px;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.35);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
-.cart-fab b{color:#c7a45b}
-.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:60;display:none}
-.cart-overlay.open{display:block}
-.cart-panel{position:absolute;right:0;top:0;height:100%;width:min(440px,92vw);background:#0b0b0b;border-left:1px solid rgba(199,164,91,.22);padding:28px;box-sizing:border-box;overflow:auto}
-.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(238,233,223,.1);padding-bottom:18px}
-.cart-head h2{font:500 34px/1 'Cormorant Garamond',serif;margin:0}
-.cart-close{background:none;border:0;color:#aaa;font-size:24px;cursor:pointer}
-.cart-item{padding:18px 0;border-bottom:1px solid rgba(238,233,223,.08)}
-.cart-item-top{display:flex;justify-content:space-between;gap:12px}
-.cart-item-name{color:#eee9df;font-size:12px;line-height:1.5}
-.cart-item-price{color:#c7a45b;font-size:12px;white-space:nowrap}
-.cart-controls{display:flex;align-items:center;gap:9px;margin-top:10px}
-.cart-controls button{background:#151515;border:1px solid #333;color:#eee;padding:4px 9px;cursor:pointer}
-.cart-total{padding:22px 0;font-size:13px;display:flex;justify-content:space-between}
-.cart-total strong{font:500 27px/1 'Cormorant Garamond',serif;color:#eee9df}
-.cart-action{width:100%;padding:14px;background:#c7a45b;border:0;color:#070707;font:inherit;font-size:9px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
-.cart-action.secondary{margin-top:10px;background:transparent;border:1px solid rgba(199,164,91,.45);color:#eee9df}
-@media(max-width:900px){.edition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){.edition-grid{grid-template-columns:1fr}.edition-image{min-height:300px}.cart-fab{right:14px;bottom:14px}}
+:root{--black:#090908;--cream:#f4f1e9;--paper:#f4f3f0;--gold:#c7a45b;--gold2:#e0ca91;--muted:#777269;--line:#dedbd3}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:#191916;font-family:Inter,Arial,sans-serif}button,input{font:inherit}a{color:inherit}
+.top{height:34px;background:#090908;color:#d9d2c5;display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:.18em;text-transform:uppercase}.top b{color:var(--gold2)}
+.header{background:#fff;border-bottom:1px solid #e8e5df;position:sticky;top:0;z-index:50}.nav{max-width:1280px;margin:auto;height:76px;padding:0 28px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:180px}.mark{width:43px;height:43px;border:1px solid var(--gold);transform:rotate(45deg);display:grid;place-items:center}.mark span{transform:rotate(-45deg);font:500 18px 'Cormorant Garamond',serif;color:#96763b}.word{font-size:15px;letter-spacing:.35em}
+.search{flex:1;max-width:520px;position:relative}.search input{width:100%;border:1px solid #ddd9d0;border-radius:30px;padding:13px 46px 13px 18px;background:#faf9f7;outline:0;font-size:12px}.search button{position:absolute;right:6px;top:5px;width:34px;height:34px;border:0;border-radius:50%;background:#111;color:#fff;cursor:pointer}
+.nav-actions{margin-left:auto;display:flex;gap:19px;align-items:center}.nav-actions button,.nav-actions a{border:0;background:none;text-decoration:none;font-size:10px;letter-spacing:.08em;cursor:pointer}
+.hero{background:var(--black);color:var(--cream);min-height:540px;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;width:800px;height:800px;border:1px solid rgba(199,164,91,.09);border-radius:50%;right:-230px;top:-300px}
+.hero-inner{max-width:1280px;margin:auto;min-height:540px;padding:65px 28px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px;position:relative;z-index:1}
+.eyebrow{font-size:9px;letter-spacing:.27em;color:var(--gold);text-transform:uppercase}.hero h1{font:500 clamp(68px,8vw,112px)/.78 'Cormorant Garamond',serif;margin:18px 0 25px}.hero h1 em{color:var(--gold2);font-style:italic}.hero p{max-width:560px;color:#aaa49a;font-size:14px;line-height:1.9}
+.price-line{margin-top:28px;display:flex;align-items:baseline;gap:12px}.price-line del{color:#777;font-size:12px}.price-line strong{font:500 32px 'Cormorant Garamond',serif;color:#eee8dc}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:27px}.cta{padding:14px 22px;background:var(--gold);border:1px solid var(--gold);color:#080807;text-decoration:none;text-transform:uppercase;font-size:9px;letter-spacing:.16em}.cta.alt{background:transparent;color:#eee;border-color:#655637}
+.hero-product{height:420px;display:grid;place-items:center}.hero-product .bottle{transform:scale(1.45)}
+.bottle{width:170px;height:255px;background:linear-gradient(110deg,#20201c,#050504 58%,#18160f);border:1px solid rgba(224,201,145,.72);border-radius:10px 10px 20px 20px;position:relative;box-shadow:0 35px 90px rgba(0,0,0,.65)}
+.cap{position:absolute;left:47px;top:-47px;width:76px;height:48px;border:1px solid rgba(224,201,145,.7);border-bottom:0;border-radius:7px 7px 2px 2px;background:linear-gradient(90deg,#191917,#c7a45b,#2c271b)}
+.bottle-label{position:absolute;left:19px;right:19px;top:74px;bottom:27px;border:1px solid rgba(224,201,145,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.bottle-label small{font-size:7px;letter-spacing:.3em;color:var(--gold);margin-bottom:27px}.bottle-label b{font:500 25px/.83 'Cormorant Garamond',serif}.bottle-label i{font-style:normal;font-size:5px;letter-spacing:.15em;color:#797268;margin-top:27px}
+.trust{background:#fff;border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}.trust-item{max-width:320px;width:100%;margin:auto;text-align:center;padding:21px 15px;border-right:1px solid var(--line)}.trust-item:last-child{border:0}.trust-item b{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}.trust-item span{font-size:9px;color:#858078}
+.container{max-width:1280px;margin:auto;padding:0 28px}.section{padding:72px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}.section-head h2{font:500 clamp(43px,5vw,68px)/.86 'Cormorant Garamond',serif;margin:0}.section-head h2 em{font-style:italic}.section-head p{max-width:450px;color:#777269;font-size:12px;line-height:1.8;margin:0}
+.promo-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:15px}.promo{min-height:215px;background:#0c0c0a;color:#eee;padding:28px;position:relative;overflow:hidden;border:1px solid rgba(199,164,91,.18)}.promo h3{font:500 33px/.95 'Cormorant Garamond',serif;margin:13px 0}.promo p{font-size:10px;color:#918b81;line-height:1.7;max-width:380px}
+.filters{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:22px}.filter-list{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid #d9d6ce;background:#fff;padding:10px 15px;border-radius:20px;font-size:9px;letter-spacing:.08em;cursor:pointer}.filter.active{background:#0b0b09;color:#fff}.count{font-size:10px;color:#888}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product-card{background:#fff;border:1px solid #e2dfd8;overflow:hidden;transition:.2s}.product-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.product-photo{height:330px;background:linear-gradient(145deg,#faf9f6,#e9e6df);display:grid;place-items:center;position:relative}.discount{position:absolute;top:13px;left:13px;background:#334b3e;color:#fff;padding:6px 8px;font-size:8px;letter-spacing:.08em}.fav{position:absolute;right:10px;top:8px;background:none;border:0;font-size:25px;color:#777;cursor:pointer}.fav.selected{color:#a27d32}.edition-number{position:absolute;left:13px;bottom:12px;color:#777269;font-size:8px;letter-spacing:.13em}
+.mini-bottle{width:125px;height:190px;border:1px solid rgba(153,123,62,.65);border-radius:8px 8px 15px 15px;background:linear-gradient(110deg,#24241f,#050504 60%,#1b1811);position:relative;box-shadow:0 25px 45px rgba(0,0,0,.3)}.mini-cap{position:absolute;left:35px;top:-30px;width:55px;height:31px;background:linear-gradient(90deg,#20201e,#c5a35d,#282319);border:1px solid rgba(153,123,62,.55);border-bottom:0;border-radius:5px 5px 0 0}.mini-label{position:absolute;left:14px;right:14px;top:54px;bottom:18px;border:1px solid rgba(224,201,145,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.mini-label small{font-size:5px;letter-spacing:.27em;color:#c7a45b;margin-bottom:18px}.mini-label b{font:500 17px/.84 'Cormorant Garamond',serif;color:#eee9df}.mini-label i{font-size:4px;letter-spacing:.13em;color:#777168;font-style:normal;margin-top:18px}
+.product-copy{padding:17px}.product-tag{font-size:7px;letter-spacing:.15em;color:#8c713a}.product-copy h3{font:500 25px/.95 'Cormorant Garamond',serif;margin:10px 0 5px}.product-copy h3 em{font-style:italic}.product-copy>p{font-size:9px;color:#88827a;margin:0 0 10px}.rating{font-size:9px;color:#a27d32;letter-spacing:1px}.rating span{font-size:7px;letter-spacing:0;color:#999;margin-left:5px}.price{display:flex;gap:8px;align-items:baseline;margin:13px 0 3px}.price del{font-size:9px;color:#999}.price strong{font:500 24px 'Cormorant Garamond',serif}.benefit{font-size:9px;color:#506354;margin-bottom:12px}.add{width:100%;padding:12px;background:#0b0b09;border:1px solid #0b0b09;color:#fff;font-size:8px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}.add:hover{background:var(--gold);color:#080807;border-color:var(--gold)}
+.story{background:#0b0b09;color:#eee;padding:82px 0}.story-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}.story h2{font:500 clamp(50px,6vw,80px)/.86 'Cormorant Garamond',serif;margin:15px 0 25px}.story h2 em{font-style:italic;color:var(--gold2)}.story p{font-size:13px;color:#9b958b;line-height:1.9;max-width:540px}.signature{border:1px solid rgba(199,164,91,.22);min-height:320px;display:grid;place-items:center;background:radial-gradient(circle at center,rgba(199,164,91,.08),transparent 55%)}.scribble{font:italic 66px 'Cormorant Garamond',serif;color:#d7bd7f}.signature small{display:block;color:#777168;font-size:8px;letter-spacing:.18em;margin-top:18px}
+.footer{background:#070706;color:#777168;padding:55px 0 25px;border-top:1px solid rgba(199,164,91,.16)}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}.footer h4{color:#ddd7cc;font-size:9px;letter-spacing:.16em;text-transform:uppercase}.footer a,.footer p{font-size:10px;line-height:2;text-decoration:none;color:#777168}.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:35px;padding-top:18px;font-size:9px}
+.cart-button{position:fixed;right:24px;bottom:24px;z-index:70;background:#0b0b09;color:#fff;border:1px solid var(--gold);padding:14px 18px;font-size:9px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;box-shadow:0 15px 35px rgba(0,0,0,.25)}.cart-button b{color:var(--gold2)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.64);z-index:100;display:none}.overlay.open{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(470px,94vw);background:#0d0d0b;color:#eee;padding:28px;overflow:auto}.drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(225,201,133,.16);padding-bottom:18px}.drawer-head h2{font:500 37px 'Cormorant Garamond',serif;margin:0}.close{border:0;background:none;color:#aaa;font-size:28px;cursor:pointer}.cart-item{padding:17px 0;border-bottom:1px solid rgba(255,255,255,.08)}.cart-row{display:flex;justify-content:space-between;gap:14px}.cart-name{font-size:11px;line-height:1.5}.cart-price{font-size:11px;color:var(--gold2);white-space:nowrap}.qty{display:flex;align-items:center;gap:7px;margin-top:10px}.qty button{background:#171714;border:1px solid #333;color:#eee;padding:4px 9px;cursor:pointer}.total{display:flex;justify-content:space-between;padding:22px 0;font-size:12px}.total strong{font:500 29px 'Cormorant Garamond',serif}.checkout{width:100%;padding:15px;background:var(--gold);border:0;color:#080807;font-size:9px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}.checkout.secondary{margin-top:9px;background:transparent;border:1px solid var(--gold);color:#eee}.cart-note{font-size:9px;color:#777168;line-height:1.7;margin-top:14px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:120;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(680px,100%);background:#f7f5f0;padding:30px;color:#171714}.modal-box h2{font:500 42px 'Cormorant Garamond',serif;margin:0 0 8px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.form-grid input{width:100%;padding:12px;border:1px solid #d7d3cb;background:#fff;outline:0}.full{grid-column:1/-1}.pay-methods{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.pay{border:1px solid #d7d3cb;background:#fff;padding:9px 12px;font-size:9px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.modal-actions button{padding:12px 18px;border:1px solid #111;cursor:pointer;font-size:9px;letter-spacing:.1em;text-transform:uppercase}.modal-actions .confirm{background:#111;color:#fff}
+@media(max-width:1050px){.product-grid{grid-template-columns:repeat(3,1fr)}.nav-actions a{display:none}}
+@media(max-width:760px){.top{font-size:7px}.nav{height:64px;padding:0 15px}.brand{min-width:auto}.word{font-size:11px}.search{display:none}.nav-actions{gap:8px}.hero-inner{grid-template-columns:1fr;padding:60px 22px;min-height:auto}.hero-product{min-height:280px}.hero-product .bottle{transform:scale(1.05)}.trust{grid-template-columns:1fr 1fr}.trust-item{border-bottom:1px solid var(--line)}.container{padding:0 16px}.section{padding:55px 0}.section-head{display:block}.section-head p{margin-top:15px}.promo-grid{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr 1fr;gap:10px}.product-photo{height:285px}.product-copy{padding:13px}.product-copy h3{font-size:23px}.story-inner{grid-template-columns:1fr;gap:35px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:470px){.product-grid{grid-template-columns:1fr}.product-photo{height:330px}.footer-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}}
 </style>
-.store-product{display:grid;grid-template-columns:minmax(280px,1fr) minmax(300px,1fr);gap:clamp(35px,7vw,90px);align-items:center;border:1px solid rgba(199,164,91,.18);background:linear-gradient(145deg,#0d0d0d,#070707);padding:clamp(35px,6vw,70px);position:relative;overflow:hidden}
-.store-product:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(199,164,91,.07);border-radius:50%;top:50%;left:25%;transform:translate(-50%,-50%);pointer-events:none}
-.store-product-image{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;min-height:430px}
-.product-placeholder{width:min(300px,75%);aspect-ratio:.72;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(199,164,91,.45);background:linear-gradient(145deg,#111,#050505);box-shadow:0 25px 70px rgba(0,0,0,.45);padding:35px;box-sizing:border-box}
-.product-placeholder span{font-size:11px;letter-spacing:.32em;color:#c7a45b;margin-bottom:55px}
-.product-placeholder strong{font:500 clamp(30px,4vw,48px)/.88 'Cormorant Garamond',serif;letter-spacing:.03em}
-.product-placeholder small{margin-top:55px;color:#777168;font-size:8px;letter-spacing:.16em}
-.store-product-info{position:relative;z-index:1;max-width:520px}
-.store-product-info h2{font:500 clamp(52px,6vw,82px)/.88 'Cormorant Garamond',serif;margin:12px 0 18px}
-.store-product-info h2 em{font-style:italic}
-.product-type{color:#c7a45b!important;font-size:10px!important;letter-spacing:.18em;text-transform:uppercase}
-.product-description{color:#aaa39a!important;font-size:14px!important;line-height:1.9!important;max-width:500px}
-.product-divider{width:55px;height:1px;background:rgba(199,164,91,.5);margin:30px 0 20px}
-.product-price{font:500 30px/1 'Cormorant Garamond',serif;color:#eee9df}
-.store-info{margin-top:12px!important;color:#777168!important;font-size:11px!important;line-height:1.7!important}
-.store-actions{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
-.store-note{margin-top:75px;padding:30px;border-top:1px solid rgba(238,233,223,.10);text-align:center}
-.store-note span{display:block;color:#c7a45b;font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:13px}
-.store-note p{color:#aaa39a;font-size:13px;line-height:1.8;margin:0 auto;max-width:620px}
-@media(max-width:760px){.store-product{grid-template-columns:1fr;padding:30px 22px;gap:20px}.store-product-image{min-height:340px}.product-placeholder{width:min(245px,72%)}.store-product-info{text-align:center}.product-description{margin-left:auto;margin-right:auto}.product-divider{margin-left:auto;margin-right:auto}.store-actions{justify-content:center}.store-actions .cta{width:100%;text-align:center}}</style>
 </head>
 <body>
-<header class="nav"><div class="nav-inner">
-<a class="brand" href="index.html"><img src="monograma-zq.png" alt="Monograma ZAVQEL"><span>ZAVQEL</span></a>
-<button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false"><span class="hamb"><i></i><i></i><i></i></span></button>
-</div></header>
-<div class="menu" id="menu"><nav>
-<small>Navegação</small>
-<a href="index.html">Início</a>
-<a href="black-signature.html">Black Signature</a>
-<a href="zavqel.html">A ZAVQEL</a>
-<a href="colecao.html">Coleção</a>
-<a href="personalizacao.html">Personalização</a>
-<a href="certificado.html">Certificado</a>
-<a href="loja.html">Loja Online</a>
-</nav></div>
-<main class="page"><div class="wrap">
-<div class="page-head">
-<p class="eyebrow">08 · Loja Online</p>
-<h1 class="page-title">Uma nova experiência <em>está chegando.</em></h1>
-<p class="lead">A loja online ZAVQEL está sendo preparada para receber suas criações com a mesma atenção dedicada a cada assinatura.</p>
-</div>
-<section class="store-section">
-<div class="store-intro">
-<p class="eyebrow">01 · Primeira Coleção</p>
-<h2>Black <em>Signature.</em></h2>
-<p>Uma edição inaugural limitada a 100 exemplares. Cada frasco recebe uma identidade própria, representada aqui por uma assinatura provisória até a substituição pelas imagens oficiais.</p>
-<div class="collection-meta">
-<span class="meta-pill">100 exemplares</span>
-<span class="meta-pill">100 ml · Extrait de Parfum</span>
-<span class="meta-pill">Frete grátis</span>
-<span class="meta-pill">R$ 600,00 lançamento</span>
-</div>
-</div>
-<div class="edition-grid">
+<div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
+<header class="header"><nav class="nav">
+<a href="index.html" class="brand"><span class="mark"><span>ZQ</span></span><span class="word">ZAVQEL</span></a>
+<div class="search"><input id="search" type="search" placeholder="O que você procura hoje?"><button id="searchBtn">⌕</button></div>
+<div class="nav-actions"><a href="#colecao">Coleção</a><a href="personalizacao.html">Personalização</a><button id="openAccount">Minha conta</button><button id="openCart">Sacola (<b id="navCount">0</b>)</button></div>
+</nav></header>
 
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 001/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 001</p>
-    <h3>Alexander <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Alexander</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="001" data-name="Black Signature Nº 001 — Alexander" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 002/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 002</p>
-    <h3>Aurélio <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Aurélio</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="002" data-name="Black Signature Nº 002 — Aurélio" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 003/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 003</p>
-    <h3>Bernardo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Bernardo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="003" data-name="Black Signature Nº 003 — Bernardo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 004/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 004</p>
-    <h3>Caio <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Caio</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="004" data-name="Black Signature Nº 004 — Caio" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 005/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 005</p>
-    <h3>Dante <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Dante</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="005" data-name="Black Signature Nº 005 — Dante" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 006/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 006</p>
-    <h3>Eduardo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Eduardo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="006" data-name="Black Signature Nº 006 — Eduardo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 007/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 007</p>
-    <h3>Felipe <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Felipe</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="007" data-name="Black Signature Nº 007 — Felipe" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 008/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 008</p>
-    <h3>Gabriel <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Gabriel</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="008" data-name="Black Signature Nº 008 — Gabriel" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 009/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 009</p>
-    <h3>Heitor <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Heitor</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="009" data-name="Black Signature Nº 009 — Heitor" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 010/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 010</p>
-    <h3>Henrique <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Henrique</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="010" data-name="Black Signature Nº 010 — Henrique" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 011/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 011</p>
-    <h3>Iago <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Iago</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="011" data-name="Black Signature Nº 011 — Iago" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 012/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 012</p>
-    <h3>Joaquim <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Joaquim</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="012" data-name="Black Signature Nº 012 — Joaquim" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 013/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 013</p>
-    <h3>Leonardo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Leonardo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="013" data-name="Black Signature Nº 013 — Leonardo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 014/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 014</p>
-    <h3>Lorenzo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Lorenzo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="014" data-name="Black Signature Nº 014 — Lorenzo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 015/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 015</p>
-    <h3>Miguel <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Miguel</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="015" data-name="Black Signature Nº 015 — Miguel" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 016/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 016</p>
-    <h3>Nicolas <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Nicolas</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="016" data-name="Black Signature Nº 016 — Nicolas" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 017/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 017</p>
-    <h3>Otávio <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Otávio</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="017" data-name="Black Signature Nº 017 — Otávio" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 018/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 018</p>
-    <h3>Rafael <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Rafael</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="018" data-name="Black Signature Nº 018 — Rafael" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 019/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 019</p>
-    <h3>Samuel <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Samuel</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="019" data-name="Black Signature Nº 019 — Samuel" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 020/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 020</p>
-    <h3>Theo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Theo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="020" data-name="Black Signature Nº 020 — Theo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 021/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 021</p>
-    <h3>Valentim <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Valentim</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="021" data-name="Black Signature Nº 021 — Valentim" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 022/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 022</p>
-    <h3>Vicente <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Vicente</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="022" data-name="Black Signature Nº 022 — Vicente" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 023/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 023</p>
-    <h3>Adrian <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Adrian</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="023" data-name="Black Signature Nº 023 — Adrian" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 024/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 024</p>
-    <h3>Arthur <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Arthur</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="024" data-name="Black Signature Nº 024 — Arthur" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 025/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 025</p>
-    <h3>Augusto <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Augusto</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="025" data-name="Black Signature Nº 025 — Augusto" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 026/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 026</p>
-    <h3>Breno <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Breno</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="026" data-name="Black Signature Nº 026 — Breno" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 027/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 027</p>
-    <h3>Cauã <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Cauã</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="027" data-name="Black Signature Nº 027 — Cauã" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 028/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 028</p>
-    <h3>Cristian <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Cristian</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="028" data-name="Black Signature Nº 028 — Cristian" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 029/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 029</p>
-    <h3>Danilo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Danilo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="029" data-name="Black Signature Nº 029 — Danilo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 030/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 030</p>
-    <h3>Enzo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Enzo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="030" data-name="Black Signature Nº 030 — Enzo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 031/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 031</p>
-    <h3>Fabian <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Fabian</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="031" data-name="Black Signature Nº 031 — Fabian" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 032/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 032</p>
-    <h3>Guilherme <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Guilherme</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="032" data-name="Black Signature Nº 032 — Guilherme" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 033/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 033</p>
-    <h3>Hugo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Hugo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="033" data-name="Black Signature Nº 033 — Hugo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 034/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 034</p>
-    <h3>Isaac <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Isaac</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="034" data-name="Black Signature Nº 034 — Isaac" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 035/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 035</p>
-    <h3>João <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de João</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="035" data-name="Black Signature Nº 035 — João" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 036/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 036</p>
-    <h3>Kaique <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Kaique</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="036" data-name="Black Signature Nº 036 — Kaique" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 037/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 037</p>
-    <h3>Luan <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Luan</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="037" data-name="Black Signature Nº 037 — Luan" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 038/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 038</p>
-    <h3>Matheus <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Matheus</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="038" data-name="Black Signature Nº 038 — Matheus" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 039/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 039</p>
-    <h3>Nathan <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Nathan</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="039" data-name="Black Signature Nº 039 — Nathan" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 040/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 040</p>
-    <h3>Oliver <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Oliver</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="040" data-name="Black Signature Nº 040 — Oliver" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 041/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 041</p>
-    <h3>Pedro <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Pedro</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="041" data-name="Black Signature Nº 041 — Pedro" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 042/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 042</p>
-    <h3>Quintino <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Quintino</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="042" data-name="Black Signature Nº 042 — Quintino" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 043/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 043</p>
-    <h3>Ricardo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Ricardo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="043" data-name="Black Signature Nº 043 — Ricardo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 044/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 044</p>
-    <h3>Santiago <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Santiago</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="044" data-name="Black Signature Nº 044 — Santiago" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 045/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 045</p>
-    <h3>Thiago <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Thiago</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="045" data-name="Black Signature Nº 045 — Thiago" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 046/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 046</p>
-    <h3>Ulisses <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Ulisses</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="046" data-name="Black Signature Nº 046 — Ulisses" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 047/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 047</p>
-    <h3>Victor <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Victor</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="047" data-name="Black Signature Nº 047 — Victor" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 048/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 048</p>
-    <h3>William <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de William</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="048" data-name="Black Signature Nº 048 — William" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 049/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 049</p>
-    <h3>Yuri <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Yuri</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="049" data-name="Black Signature Nº 049 — Yuri" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 050/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 050</p>
-    <h3>Zion <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Zion</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="050" data-name="Black Signature Nº 050 — Zion" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 051/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 051</p>
-    <h3>Alberto <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Alberto</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="051" data-name="Black Signature Nº 051 — Alberto" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 052/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 052</p>
-    <h3>Bruno <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Bruno</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="052" data-name="Black Signature Nº 052 — Bruno" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 053/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 053</p>
-    <h3>César <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de César</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="053" data-name="Black Signature Nº 053 — César" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 054/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 054</p>
-    <h3>Diego <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Diego</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="054" data-name="Black Signature Nº 054 — Diego" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 055/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 055</p>
-    <h3>Erick <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Erick</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="055" data-name="Black Signature Nº 055 — Erick" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 056/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 056</p>
-    <h3>Fernando <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Fernando</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="056" data-name="Black Signature Nº 056 — Fernando" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 057/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 057</p>
-    <h3>Gustavo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Gustavo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="057" data-name="Black Signature Nº 057 — Gustavo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 058/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 058</p>
-    <h3>Igor <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Igor</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="058" data-name="Black Signature Nº 058 — Igor" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 059/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 059</p>
-    <h3>Júlio <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Júlio</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="059" data-name="Black Signature Nº 059 — Júlio" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 060/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 060</p>
-    <h3>Kevin <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Kevin</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="060" data-name="Black Signature Nº 060 — Kevin" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 061/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 061</p>
-    <h3>Lucas <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Lucas</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="061" data-name="Black Signature Nº 061 — Lucas" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 062/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 062</p>
-    <h3>Marco <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Marco</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="062" data-name="Black Signature Nº 062 — Marco" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 063/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 063</p>
-    <h3>Murilo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Murilo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="063" data-name="Black Signature Nº 063 — Murilo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 064/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 064</p>
-    <h3>Nelson <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Nelson</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="064" data-name="Black Signature Nº 064 — Nelson" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 065/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 065</p>
-    <h3>Oscar <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Oscar</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="065" data-name="Black Signature Nº 065 — Oscar" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 066/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 066</p>
-    <h3>Paulo <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Paulo</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="066" data-name="Black Signature Nº 066 — Paulo" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 067/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 067</p>
-    <h3>Renato <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Renato</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="067" data-name="Black Signature Nº 067 — Renato" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 068/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 068</p>
-    <h3>Sérgio <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Sérgio</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="068" data-name="Black Signature Nº 068 — Sérgio" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 069/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 069</p>
-    <h3>Tomás <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Tomás</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="069" data-name="Black Signature Nº 069 — Tomás" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 070/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 070</p>
-    <h3>Vitor <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Vitor</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="070" data-name="Black Signature Nº 070 — Vitor" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 071/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 071</p>
-    <h3>Adriano <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Adriano</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="071" data-name="Black Signature Nº 071 — Adriano" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 072/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 072</p>
-    <h3>Bento <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Bento</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="072" data-name="Black Signature Nº 072 — Bento" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 073/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 073</p>
-    <h3>Conrado <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Conrado</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="073" data-name="Black Signature Nº 073 — Conrado" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 074/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 074</p>
-    <h3>Domingos <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Domingos</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="074" data-name="Black Signature Nº 074 — Domingos" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 075/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 075</p>
-    <h3>Elias <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Elias</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="075" data-name="Black Signature Nº 075 — Elias" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 076/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 076</p>
-    <h3>Fabrício <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Fabrício</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="076" data-name="Black Signature Nº 076 — Fabrício" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 077/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 077</p>
-    <h3>Gael <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Gael</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="077" data-name="Black Signature Nº 077 — Gael" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 078/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 078</p>
-    <h3>Ícaro <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Ícaro</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="078" data-name="Black Signature Nº 078 — Ícaro" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 079/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 079</p>
-    <h3>Jonas <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Jonas</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="079" data-name="Black Signature Nº 079 — Jonas" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 080/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 080</p>
-    <h3>Líbero <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Líbero</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="080" data-name="Black Signature Nº 080 — Líbero" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 081/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 081</p>
-    <h3>Márcio <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Márcio</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="081" data-name="Black Signature Nº 081 — Márcio" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 082/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 082</p>
-    <h3>Noah <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Noah</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="082" data-name="Black Signature Nº 082 — Noah" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 083/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 083</p>
-    <h3>Otto <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Otto</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="083" data-name="Black Signature Nº 083 — Otto" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 084/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 084</p>
-    <h3>Pietro <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Pietro</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="084" data-name="Black Signature Nº 084 — Pietro" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 085/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 085</p>
-    <h3>Raul <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Raul</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="085" data-name="Black Signature Nº 085 — Raul" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 086/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 086</p>
-    <h3>Silas <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Silas</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="086" data-name="Black Signature Nº 086 — Silas" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 087/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 087</p>
-    <h3>Tales <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Tales</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="087" data-name="Black Signature Nº 087 — Tales" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 088/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 088</p>
-    <h3>Valério <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Valério</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="088" data-name="Black Signature Nº 088 — Valério" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 089/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 089</p>
-    <h3>Wagner <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Wagner</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="089" data-name="Black Signature Nº 089 — Wagner" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 090/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 090</p>
-    <h3>Xavier <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Xavier</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="090" data-name="Black Signature Nº 090 — Xavier" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 091/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 091</p>
-    <h3>Yago <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Yago</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="091" data-name="Black Signature Nº 091 — Yago" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 092/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 092</p>
-    <h3>Zacarias <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Zacarias</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="092" data-name="Black Signature Nº 092 — Zacarias" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 093/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 093</p>
-    <h3>Antônio <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Antônio</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="093" data-name="Black Signature Nº 093 — Antônio" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 094/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 094</p>
-    <h3>Benício <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Benício</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="094" data-name="Black Signature Nº 094 — Benício" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 095/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 095</p>
-    <h3>Davi <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Davi</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="095" data-name="Black Signature Nº 095 — Davi" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 096/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 096</p>
-    <h3>Estevão <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Estevão</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="096" data-name="Black Signature Nº 096 — Estevão" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 097/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 097</p>
-    <h3>Frederico <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Frederico</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="097" data-name="Black Signature Nº 097 — Frederico" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 098/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 098</p>
-    <h3>Gregório <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Gregório</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="098" data-name="Black Signature Nº 098 — Gregório" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 099/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 099</p>
-    <h3>Leandro <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Leandro</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="099" data-name="Black Signature Nº 099 — Leandro" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-<article class="edition-card">
-  <div class="edition-image">
-    <div class="bottle-generic">
-      <span>ZAVQEL</span><strong>BLACK<br>SIGNATURE</strong><small>EXTRAIT DE PARFUM</small>
-    </div>
-    <span class="edition-number">Nº 100/100</span>
-  </div>
-  <div class="edition-body">
-    <p class="edition-kicker">Black Signature · Nº 100</p>
-    <h3>Max <em>Edition.</em></h3>
-    <p class="edition-signature">Assinatura de Max</p>
-    <div class="edition-price"><s>R$ 1.200,00</s><strong>R$ 600,00</strong></div>
-    <button class="add-cart" data-id="100" data-name="Black Signature Nº 100 — Max" data-price="600">Adicionar ao carrinho</button>
-  </div>
-</article>
-</div>
-<div class="shipping-note">
-<strong>Primeira coleção · Condição de lançamento</strong>
-<span>De R$ 1.200,00 por R$ 600,00 · Frete grátis para todo o Brasil.</span>
-</div>
-</section>
+<section class="hero"><div class="hero-inner">
+<div><div class="eyebrow">01 · Primeira Coleção ZAVQEL</div><h1>Black<br><em>Signature.</em></h1>
+<p>A primeira assinatura da Maison. Uma edição limitada a apenas 100 exemplares, criada para transformar fragrância em identidade.</p>
+<div class="price-line"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div><p style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#777">Condição especial de lançamento · frete grátis</p>
+<div class="hero-actions"><a class="cta" href="#colecao">Comprar Black Signature</a><a class="cta alt" href="personalizacao.html">Personalizar minha assinatura</a></div></div>
+<div class="hero-product"><div class="bottle"><div class="cap"></div><div class="bottle-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM · 100 ML</i></div></div></div>
+</div></section>
 
-</div></main>
-<footer><div class="wrap footer-grid">
-<div class="footer-brand">ZAVQEL
-<div class="social-links" aria-label="Redes sociais da ZAVQEL">
-<a href="https://www.youtube.com/@zavqel.maison" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-<a href="https://www.instagram.com/zavqel.maison/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-<a href="https://www.tiktok.com/@zavqel.maison" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-<a href="https://k.kwai.com/u/@zavqel/Brg7Chgj" target="_blank" rel="noopener noreferrer" aria-label="Kwai"><img src="kwai.svg" alt="Kwai"></a>
-<a href="https://pin.it/1Xuu3FSyJ" target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
-<a href="https://www.threads.com/@zavqel.maison" target="_blank" rel="noopener noreferrer" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
-<a href="https://x.com/zavqel" target="_blank" rel="noopener noreferrer" aria-label="X"><span class="xmark"><i class="fa-brands fa-x-twitter"></i></span></a>
-<a href="https://www.facebook.com/share/193j7HJuvn/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><span class="fb"><i class="fa-brands fa-facebook-f"></i></span></a>
-</div>
-<small>© 2026 ZAVQEL · Maison de Parfum · Brasil</small>
-<small>Exclusividade · Legado · Identidade · Assinatura · Black Signature</small>
-</div>
-<div class="footer-links">
-<a href="index.html">Início</a><a href="black-signature.html">Black Signature</a><a href="colecao.html">Coleção</a><a href="personalizacao.html">Personalização</a><a href="certificado.html">Certificado</a><a href="zavqel.html">A ZAVQEL</a><a href="loja.html">Loja Online</a>
-</div></div></footer>
+<section class="trust"><div class="trust-item"><b>Edição limitada</b><span>100 exemplares numerados</span></div><div class="trust-item"><b>Frete grátis</b><span>Para todo o Brasil</span></div><div class="trust-item"><b>Pagamento seguro</b><span>Pix, cartão e outros meios</span></div><div class="trust-item"><b>Personalização</b><span>Sua assinatura na Maison</span></div></section>
 
-<button class="cart-fab" id="cartOpen" type="button">Carrinho · <b id="cartCount">0</b></button>
-<div class="cart-overlay" id="cartOverlay" aria-hidden="true">
-  <aside class="cart-panel" aria-label="Carrinho de compras">
-    <div class="cart-head"><h2>Seu carrinho</h2><button class="cart-close" id="cartClose" type="button" aria-label="Fechar">×</button></div>
-    <div id="cartItems"></div>
-    <div class="cart-total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
-    <button class="cart-action" id="checkoutBtn" type="button">Finalizar pedido</button>
-    <button class="cart-action secondary" id="continueBtn" type="button">Continuar comprando</button>
-    <p style="color:#777168;font-size:10px;line-height:1.7;margin-top:16px">O checkout será conectado ao gateway de pagamento na próxima etapa. Nesta versão, nenhum pagamento é processado.</p>
-  </aside>
-</div>
+<section class="section"><div class="container"><div class="section-head"><div><div class="eyebrow">Uma coleção inaugural</div><h2>Escolha sua <em>assinatura.</em></h2></div><p>Uma única criação olfativa, apresentada em 100 exemplares numerados. As assinaturas abaixo são provisórias nesta versão da loja e poderão ser substituídas pelas artes oficiais.</p></div>
+<div class="promo-grid"><div class="promo"><div class="eyebrow">Condição de lançamento</div><h3>50% de lançamento.</h3><p>De R$ 1.200,00 por R$ 600,00 na primeira coleção da ZAVQEL.</p></div><div class="promo"><div class="eyebrow">Exclusividade</div><h3>001 — 100.</h3><p>Escolha seu número e sua identidade.</p></div><div class="promo"><div class="eyebrow">Entrega</div><h3>Frete grátis.</h3><p>Envio sem custo para todo o Brasil.</p></div></div></div></section>
+
+<section class="section" id="colecao" style="padding-top:10px"><div class="container">
+<div class="section-head"><div><div class="eyebrow">Black Signature · Edição I</div><h2>Os 100 <em>exemplares.</em></h2></div><p>Selecione um exemplar para adicionar à sua sacola.</p></div>
+<div class="filters"><div class="filter-list"><button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="favorites">Favoritos</button></div><span class="count" id="visibleCount">100 exemplares</span></div>
+<div class="product-grid" id="products"><article class="product-card" data-name="Black Signature Alexander">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 001 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Alexander</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="001" data-name="Black Signature — Alexander" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Aurélio">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 002 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Aurélio</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="002" data-name="Black Signature — Aurélio" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Bernardo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 003 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Bernardo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="003" data-name="Black Signature — Bernardo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Caio">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 004 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Caio</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="004" data-name="Black Signature — Caio" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Dante">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 005 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Dante</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="005" data-name="Black Signature — Dante" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Eduardo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 006 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Eduardo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="006" data-name="Black Signature — Eduardo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Felipe">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 007 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Felipe</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="007" data-name="Black Signature — Felipe" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Gabriel">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 008 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Gabriel</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="008" data-name="Black Signature — Gabriel" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Heitor">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 009 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Heitor</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="009" data-name="Black Signature — Heitor" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Henrique">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 010 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Henrique</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="010" data-name="Black Signature — Henrique" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Iago">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 011 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Iago</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="011" data-name="Black Signature — Iago" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Joaquim">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 012 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Joaquim</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="012" data-name="Black Signature — Joaquim" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Leonardo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 013 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Leonardo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="013" data-name="Black Signature — Leonardo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Lorenzo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 014 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Lorenzo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="014" data-name="Black Signature — Lorenzo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Miguel">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 015 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Miguel</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="015" data-name="Black Signature — Miguel" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Nicolas">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 016 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Nicolas</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="016" data-name="Black Signature — Nicolas" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Otávio">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 017 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Otávio</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="017" data-name="Black Signature — Otávio" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Rafael">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 018 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Rafael</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="018" data-name="Black Signature — Rafael" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Samuel">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 019 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Samuel</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="019" data-name="Black Signature — Samuel" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Theo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 020 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Theo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="020" data-name="Black Signature — Theo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Valentim">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 021 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Valentim</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="021" data-name="Black Signature — Valentim" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Vicente">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 022 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Vicente</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="022" data-name="Black Signature — Vicente" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Adrian">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 023 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Adrian</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="023" data-name="Black Signature — Adrian" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Arthur">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 024 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Arthur</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="024" data-name="Black Signature — Arthur" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Augusto">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 025 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Augusto</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="025" data-name="Black Signature — Augusto" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Breno">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 026 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Breno</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="026" data-name="Black Signature — Breno" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Cauã">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 027 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Cauã</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="027" data-name="Black Signature — Cauã" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Cristian">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 028 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Cristian</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="028" data-name="Black Signature — Cristian" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Danilo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 029 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Danilo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="029" data-name="Black Signature — Danilo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Enzo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 030 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Enzo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="030" data-name="Black Signature — Enzo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Fabian">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 031 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Fabian</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="031" data-name="Black Signature — Fabian" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Guilherme">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 032 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Guilherme</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="032" data-name="Black Signature — Guilherme" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Hugo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 033 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Hugo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="033" data-name="Black Signature — Hugo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Isaac">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 034 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Isaac</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="034" data-name="Black Signature — Isaac" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature João">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 035 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>João</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="035" data-name="Black Signature — João" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Kaique">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 036 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Kaique</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="036" data-name="Black Signature — Kaique" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Luan">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 037 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Luan</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="037" data-name="Black Signature — Luan" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Matheus">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 038 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Matheus</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="038" data-name="Black Signature — Matheus" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Nathan">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 039 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Nathan</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="039" data-name="Black Signature — Nathan" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Oliver">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 040 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Oliver</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="040" data-name="Black Signature — Oliver" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Pedro">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 041 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Pedro</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="041" data-name="Black Signature — Pedro" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Quintino">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 042 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Quintino</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="042" data-name="Black Signature — Quintino" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Ricardo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 043 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Ricardo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="043" data-name="Black Signature — Ricardo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Santiago">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 044 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Santiago</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="044" data-name="Black Signature — Santiago" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Thiago">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 045 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Thiago</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="045" data-name="Black Signature — Thiago" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Ulisses">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 046 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Ulisses</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="046" data-name="Black Signature — Ulisses" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Victor">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 047 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Victor</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="047" data-name="Black Signature — Victor" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature William">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 048 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>William</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="048" data-name="Black Signature — William" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Yuri">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 049 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Yuri</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="049" data-name="Black Signature — Yuri" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Zion">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 050 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Zion</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="050" data-name="Black Signature — Zion" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Alberto">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 051 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Alberto</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="051" data-name="Black Signature — Alberto" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Bruno">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 052 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Bruno</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="052" data-name="Black Signature — Bruno" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature César">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 053 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>César</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="053" data-name="Black Signature — César" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Diego">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 054 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Diego</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="054" data-name="Black Signature — Diego" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Erick">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 055 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Erick</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="055" data-name="Black Signature — Erick" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Fernando">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 056 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Fernando</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="056" data-name="Black Signature — Fernando" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Gustavo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 057 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Gustavo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="057" data-name="Black Signature — Gustavo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Igor">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 058 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Igor</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="058" data-name="Black Signature — Igor" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Júlio">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 059 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Júlio</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="059" data-name="Black Signature — Júlio" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Kevin">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 060 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Kevin</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="060" data-name="Black Signature — Kevin" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Lucas">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 061 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Lucas</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="061" data-name="Black Signature — Lucas" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Marco">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 062 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Marco</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="062" data-name="Black Signature — Marco" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Murilo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 063 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Murilo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="063" data-name="Black Signature — Murilo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Nelson">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 064 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Nelson</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="064" data-name="Black Signature — Nelson" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Oscar">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 065 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Oscar</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="065" data-name="Black Signature — Oscar" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Paulo">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 066 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Paulo</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="066" data-name="Black Signature — Paulo" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Renato">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 067 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Renato</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="067" data-name="Black Signature — Renato" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Sérgio">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 068 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Sérgio</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="068" data-name="Black Signature — Sérgio" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Tomás">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 069 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Tomás</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="069" data-name="Black Signature — Tomás" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Vitor">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 070 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Vitor</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="070" data-name="Black Signature — Vitor" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Adriano">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 071 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Adriano</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="071" data-name="Black Signature — Adriano" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Bento">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 072 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Bento</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="072" data-name="Black Signature — Bento" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Conrado">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 073 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Conrado</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="073" data-name="Black Signature — Conrado" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Domingos">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 074 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Domingos</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="074" data-name="Black Signature — Domingos" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Elias">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 075 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Elias</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="075" data-name="Black Signature — Elias" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Fabrício">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 076 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Fabrício</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="076" data-name="Black Signature — Fabrício" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Gael">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 077 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Gael</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="077" data-name="Black Signature — Gael" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Ícaro">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 078 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Ícaro</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="078" data-name="Black Signature — Ícaro" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Jonas">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 079 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Jonas</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="079" data-name="Black Signature — Jonas" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Líbero">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 080 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Líbero</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="080" data-name="Black Signature — Líbero" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Márcio">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 081 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Márcio</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="081" data-name="Black Signature — Márcio" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Noah">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 082 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Noah</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="082" data-name="Black Signature — Noah" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Otto">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 083 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Otto</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="083" data-name="Black Signature — Otto" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Pietro">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 084 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Pietro</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="084" data-name="Black Signature — Pietro" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Raul">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 085 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Raul</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="085" data-name="Black Signature — Raul" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Silas">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 086 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Silas</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="086" data-name="Black Signature — Silas" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Tales">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 087 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Tales</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="087" data-name="Black Signature — Tales" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Valério">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 088 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Valério</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="088" data-name="Black Signature — Valério" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Wagner">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 089 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Wagner</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="089" data-name="Black Signature — Wagner" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Xavier">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 090 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Xavier</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="090" data-name="Black Signature — Xavier" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Yago">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 091 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Yago</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="091" data-name="Black Signature — Yago" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Zacarias">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 092 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Zacarias</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="092" data-name="Black Signature — Zacarias" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Antônio">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 093 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Antônio</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="093" data-name="Black Signature — Antônio" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Benício">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 094 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Benício</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="094" data-name="Black Signature — Benício" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Davi">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 095 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Davi</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="095" data-name="Black Signature — Davi" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Estevão">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 096 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Estevão</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="096" data-name="Black Signature — Estevão" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Frederico">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 097 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Frederico</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="097" data-name="Black Signature — Frederico" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Gregório">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 098 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Gregório</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="098" data-name="Black Signature — Gregório" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Leandro">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 099 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Leandro</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="099" data-name="Black Signature — Leandro" data-price="600">Adicionar à sacola</button>
+</div></article>
+<article class="product-card" data-name="Black Signature Max">
+<div class="product-photo"><span class="discount">50% OFF</span><button class="fav">♡</button>
+<div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+<span class="edition-number">Nº 100 / 100</span></div>
+<div class="product-copy"><span class="product-tag">EDIÇÃO I · BLACK SIGNATURE</span>
+<h3>Black Signature <em>Max</em></h3><p>100 ml · Extrait de Parfum</p>
+<div class="rating">★★★★★ <span>Uma assinatura única</span></div>
+<div class="price"><del>R$ 1.200,00</del><strong>R$ 600,00</strong></div>
+<div class="benefit">✓ Frete grátis</div>
+<button class="add" data-id="100" data-name="Black Signature — Max" data-price="600">Adicionar à sacola</button>
+</div></article></div>
+</div></section>
+
+<section class="story"><div class="container story-inner"><div><div class="eyebrow">A assinatura é parte da criação</div><h2>Uma fragrância.<br><em>Uma assinatura.</em></h2><p>Na ZAVQEL, o perfume não termina no aroma. A primeira coleção foi concebida para que cada exemplar carregue uma identidade própria.</p><a class="cta" href="personalizacao.html">Conheça a personalização</a></div><div class="signature"><div><div class="scribble">Alexander</div><small>assinatura provisória · Nº 001/100</small></div></div></div></section>
+
+<footer class="footer"><div class="container footer-grid"><div><div class="word" style="color:#eee">ZAVQEL</div><p>Maison de Parfum.<br>Uma fragrância. Uma assinatura.</p></div><div><h4>Comprar</h4><a href="#colecao">Black Signature</a><br><a href="#colecao">Primeira coleção</a></div><div><h4>Maison</h4><a href="index.html">A ZAVQEL</a><br><a href="colecao.html">Coleção</a><br><a href="personalizacao.html">Personalização</a></div><div><h4>Atendimento</h4><a href="personalizacao.html">Personalização</a><br><a href="#">Entrega</a><br><a href="#">Trocas e devoluções</a></div></div><div class="container copy">© 2026 ZAVQEL — Todos os direitos reservados.</div></footer>
+
+<button class="cart-button" id="cartFloating">SACOLA · <b id="cartCount">0</b></button>
+<div class="overlay" id="cartOverlay"><aside class="drawer"><div class="drawer-head"><h2>Sua sacola</h2><button class="close" id="closeCart">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div><button class="checkout" id="checkout">Continuar para pagamento</button><button class="checkout secondary" id="continue">Continuar comprando</button><p class="cart-note">Frete grátis para todo o Brasil. O checkout desta versão é uma interface de demonstração e será conectado ao gateway de pagamento real.</p></aside></div>
+
+<div class="modal" id="checkoutModal"><div class="modal-box"><div style="display:flex;justify-content:space-between"><div><div class="eyebrow">Finalização</div><h2>Seu pedido.</h2></div><button class="close" id="closeModal" style="color:#222">×</button></div><div id="checkoutSummary" style="font-size:11px;color:#666;line-height:1.7"></div>
+<div class="form-grid"><input placeholder="Nome completo"><input placeholder="E-mail"><input class="full" placeholder="CEP"><input placeholder="Endereço"><input placeholder="Número"><input placeholder="Complemento"><input placeholder="Cidade"><input placeholder="Estado"></div>
+<div class="eyebrow" style="margin-top:20px">Forma de pagamento</div><div class="pay-methods"><span class="pay">PIX</span><span class="pay">Cartão de crédito</span><span class="pay">Cartão de débito</span><span class="pay">Boleto</span></div>
+<div class="modal-actions"><button id="backModal">Voltar</button><button class="confirm" id="confirmOrder">Finalizar pedido</button></div><p style="font-size:8px;color:#888">Demonstração de interface. Nenhum pagamento é processado nesta versão.</p></div></div>
+
 <script>
-(function(){
-  const cart=[];
-  const fmt=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-  const overlay=document.getElementById('cartOverlay'), items=document.getElementById('cartItems');
-  function render(){
-    document.getElementById('cartCount').textContent=cart.reduce((s,i)=>s+i.qty,0);
-    const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
-    document.getElementById('cartTotal').textContent=fmt(total);
-    items.innerHTML=cart.length?cart.map((i,idx)=>`<div class="cart-item"><div class="cart-item-top"><span class="cart-item-name">${i.name}</span><span class="cart-item-price">${fmt(i.price*i.qty)}</span></div><div class="cart-controls"><button data-minus="${idx}" type="button">−</button><span>${i.qty}</span><button data-plus="${idx}" type="button">+</button><button data-remove="${idx}" type="button">Remover</button></div></div>`).join(''):'<p style="color:#777168;font-size:12px;line-height:1.8;padding:25px 0">Seu carrinho está vazio.</p>';
-  }
-  document.querySelectorAll('.add-cart').forEach(btn=>btn.addEventListener('click',()=>{
-    const id=btn.dataset.id, found=cart.find(i=>i.id===id);
-    if(found) found.qty++; else cart.push({id,name:btn.dataset.name,price:Number(btn.dataset.price),qty:1});
-    render(); overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
-  }));
-  items.addEventListener('click',e=>{
-    if(e.target.dataset.plus){cart[e.target.dataset.plus].qty++;}
-    if(e.target.dataset.minus){const i=cart[e.target.dataset.minus];i.qty--;if(i.qty<1)cart.splice(e.target.dataset.minus,1);}
-    if(e.target.dataset.remove){cart.splice(e.target.dataset.remove,1);}
-    render();
-  });
-  document.getElementById('cartOpen').onclick=()=>{overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');render()};
-  document.getElementById('cartClose').onclick=()=>overlay.classList.remove('open');
-  document.getElementById('continueBtn').onclick=()=>overlay.classList.remove('open');
-  overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open')});
-  document.getElementById('checkoutBtn').onclick=()=>alert('Checkout preparado. Na próxima etapa conectaremos o pagamento, endereço e cálculo/isenção de frete.');
-  render();
-})();
+const cart=[];
+const fmt=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const overlay=document.getElementById('cartOverlay'),modal=document.getElementById('checkoutModal');
+function renderCart(){
+ const count=cart.reduce((s,i)=>s+i.qty,0),total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+ document.getElementById('cartCount').textContent=count;document.getElementById('navCount').textContent=count;document.getElementById('cartTotal').textContent=fmt(total);
+ document.getElementById('cartItems').innerHTML=cart.length?cart.map((i,k)=>`<div class="cart-item"><div class="cart-row"><div class="cart-name">${i.name}</div><div class="cart-price">${fmt(i.price*i.qty)}</div></div><div class="qty"><button data-minus="${k}">−</button><span>${i.qty}</span><button data-plus="${k}">+</button><button data-remove="${k}" style="margin-left:auto">Remover</button></div></div>`).join(''):'<p style="color:#777168;font-size:11px;padding:25px 0">Sua sacola está vazia.</p>';
+}
+document.querySelectorAll('.add').forEach(b=>b.onclick=()=>{const f=cart.find(x=>x.id===b.dataset.id);if(f)f.qty++;else cart.push({id:b.dataset.id,name:b.dataset.name,price:+b.dataset.price,qty:1});renderCart();overlay.classList.add('open')});
+document.getElementById('cartItems').onclick=e=>{const t=e.target;if(t.dataset.plus)cart[t.dataset.plus].qty++;if(t.dataset.minus){cart[t.dataset.minus].qty--;if(cart[t.dataset.minus].qty<1)cart.splice(t.dataset.minus,1)}if(t.dataset.remove)cart.splice(t.dataset.remove,1);renderCart()};
+function openCart(){overlay.classList.add('open');renderCart()}function closeCart(){overlay.classList.remove('open')}
+document.getElementById('cartFloating').onclick=openCart;document.getElementById('openCart').onclick=openCart;document.getElementById('closeCart').onclick=closeCart;document.getElementById('continue').onclick=closeCart;
+document.getElementById('checkout').onclick=()=>{if(!cart.length){alert('Adicione um exemplar à sacola primeiro.');return}closeCart();document.getElementById('checkoutSummary').textContent='Itens: '+cart.reduce((s,i)=>s+i.qty,0)+' · Total: '+fmt(cart.reduce((s,i)=>s+i.price*i.qty,0))+' · Frete grátis';modal.classList.add('open')};
+document.getElementById('closeModal').onclick=()=>modal.classList.remove('open');document.getElementById('backModal').onclick=()=>modal.classList.remove('open');document.getElementById('confirmOrder').onclick=()=>alert('Interface pronta. O próximo passo é conectar pagamento e pedidos reais.');
+document.getElementById('search').oninput=e=>{const q=e.target.value.toLowerCase().trim();let n=0;document.querySelectorAll('.product-card').forEach(c=>{const ok=!q||c.dataset.name.toLowerCase().includes(q);c.style.display=ok?'':'none';if(ok)n++});document.getElementById('visibleCount').textContent=n+' exemplares'};
+document.querySelectorAll('.fav').forEach(b=>b.onclick=()=>b.classList.toggle('selected'));
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.product-card').forEach(c=>c.style.display=b.dataset.filter==='all'||(b.dataset.filter==='favorites'&&c.querySelector('.fav').classList.contains('selected'))?'':'none')});
+document.getElementById('searchBtn').onclick=()=>document.getElementById('search').focus();document.getElementById('openAccount').onclick=()=>alert('A área do cliente será conectada ao cadastro e aos pedidos.');
+renderCart();
 </script>
-<a class="whatsapp-float" href="https://wa.me/qr/6DVOZCYNCYXPB1" target="_blank" rel="noopener noreferrer" aria-label="Fale com a ZAVQEL pelo WhatsApp"><img src="whatsapp.svg" alt="WhatsApp"></a>
-<script src="script.js"></script>
-</body>
-</html>
+</body></html>
