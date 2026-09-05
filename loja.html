@@ -25,7 +25,7 @@
 .bottle-label{position:absolute;left:19px;right:19px;top:74px;bottom:27px;border:1px solid rgba(224,201,145,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.bottle-label small{font-size:7px;letter-spacing:.3em;color:var(--gold);margin-bottom:27px}.bottle-label b{font:500 25px/.83 'Cormorant Garamond',serif}.bottle-label i{font-style:normal;font-size:5px;letter-spacing:.15em;color:#797268;margin-top:27px}
 .trust{background:#0d0d0c;border-bottom:1px solid rgba(199,164,91,.16);display:grid;grid-template-columns:repeat(4,1fr)}.trust-item{max-width:320px;width:100%;margin:auto;text-align:center;padding:21px 15px;border-right:1px solid rgba(199,164,91,.14)}.trust-item:last-child{border:0}.trust-item b{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}.trust-item span{font-size:9px;color:#777269}
 .container{max-width:1280px;margin:auto;padding:0 28px}.section{padding:72px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}.section-head h2{font:500 clamp(43px,5vw,68px)/.86 'Cormorant Garamond',serif;margin:0}.section-head h2 em{font-style:italic}.section-head p{max-width:450px;color:#8d877d;font-size:12px;line-height:1.8;margin:0}
-.promo-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:15px}.promo{min-height:215px;background:#0c0c0a;color:#eee;padding:28px;position:relative;overflow:hidden;border:1px solid rgba(199,164,91,.18)}.promo h3{font:500 33px/.95 'Cormorant Garamond',serif;margin:13px 0}.promo p{font-size:10px;color:#918b81;line-height:1.7;max-width:380px}
+.promo-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:15px}.promo{min-height:155px;background:#0c0c0a;color:#eee;padding:28px;position:relative;overflow:hidden;border:1px solid rgba(199,164,91,.18)}.promo h3{font:500 33px/.95 'Cormorant Garamond',serif;margin:13px 0}.promo p{font-size:10px;color:#918b81;line-height:1.7;max-width:380px}
 .filters{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:22px}.filter-list{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid #37352e;background:#11110f;color:#ddd7cc;padding:10px 15px;border-radius:20px;font-size:9px;letter-spacing:.08em;cursor:pointer}.filter.active{background:#0b0b09;color:#fff}.count{font-size:10px;color:#888}
 .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product-card{background:#11110f;border:1px solid rgba(199,164,91,.16);color:#eee9df;overflow:hidden;transition:.2s}.product-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
 .product-photo{height:330px;background:linear-gradient(145deg,#181815,#0b0b09);display:grid;place-items:center;position:relative}.discount{position:absolute;top:13px;left:13px;background:#334b3e;color:#fff;padding:6px 8px;font-size:8px;letter-spacing:.08em}.fav{position:absolute;right:10px;top:8px;background:none;border:0;font-size:25px;color:#aaa;cursor:pointer}.fav.selected{color:#a27d32}.edition-number{position:absolute;left:13px;bottom:12px;color:#777269;font-size:8px;letter-spacing:.13em}
@@ -39,6 +39,13 @@
 @media(max-width:1050px){.product-grid{grid-template-columns:repeat(3,1fr)}.nav-actions a{display:none}}
 @media(max-width:760px){.top{font-size:7px}.nav{height:64px;padding:0 15px}.brand{min-width:auto}.word{font-size:11px}.search{display:none}.nav-actions{gap:8px}.hero-inner{grid-template-columns:1fr;padding:60px 22px;min-height:auto}.hero-product{min-height:280px}.hero-product .bottle{transform:scale(1.05)}.trust{grid-template-columns:1fr 1fr}.trust-item{border-bottom:1px solid var(--line)}.container{padding:0 16px}.section{padding:55px 0}.section-head{display:block}.section-head p{margin-top:15px}.promo-grid{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr 1fr;gap:10px}.product-photo{height:285px}.product-copy{padding:13px}.product-copy h3{font-size:23px}.story-inner{grid-template-columns:1fr;gap:35px}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:470px){.product-grid{grid-template-columns:1fr}.product-photo{height:330px}.footer-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}}
+
+.catalog-pagination{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:34px;flex-wrap:wrap}
+.page-btn{min-width:34px;height:34px;padding:0 9px;border:1px solid #38362f;background:#11110f;color:#bdb6aa;font-size:9px;cursor:pointer}
+.page-btn.active{background:#c7a45b;border-color:#c7a45b;color:#080807}
+.page-btn.arrow{font-size:14px}
+.page-btn:disabled{opacity:.35;cursor:default}
+.catalog-summary{text-align:center;color:#777269;font-size:9px;letter-spacing:.08em;margin-top:13px}
 </style>
 </head>
 <body>
@@ -1165,7 +1172,10 @@
 <div class="benefit">✓ Frete grátis</div>
 <button class="add" data-id="100" data-name="Black Signature — Max" data-price="600">Adicionar à sacola</button>
 </div></article></div>
-</div></section>
+</div>
+<div class="catalog-pagination" id="pagination"></div>
+<div class="catalog-summary" id="catalogSummary">Exibindo 1–8 de 100 exemplares</div>
+</section>
 
 <section class="story"><div class="container story-inner"><div><div class="eyebrow">A assinatura é parte da criação</div><h2>Uma fragrância.<br><em>Uma assinatura.</em></h2><p>Na ZAVQEL, o perfume não termina no aroma. A primeira coleção foi concebida para que cada exemplar carregue uma identidade própria.</p><a class="cta" href="personalizacao.html">Conheça a personalização</a></div><div class="signature"><div><div class="scribble">Alexander</div><small>assinatura provisória · Nº 001/100</small></div></div></div></section>
 
@@ -1188,16 +1198,101 @@ function renderCart(){
  document.getElementById('cartCount').textContent=count;document.getElementById('navCount').textContent=count;document.getElementById('cartTotal').textContent=fmt(total);
  document.getElementById('cartItems').innerHTML=cart.length?cart.map((i,k)=>`<div class="cart-item"><div class="cart-row"><div class="cart-name">${i.name}</div><div class="cart-price">${fmt(i.price*i.qty)}</div></div><div class="qty"><button data-minus="${k}">−</button><span>${i.qty}</span><button data-plus="${k}">+</button><button data-remove="${k}" style="margin-left:auto">Remover</button></div></div>`).join(''):'<p style="color:#777168;font-size:11px;padding:25px 0">Sua sacola está vazia.</p>';
 }
-document.querySelectorAll('.add').forEach(b=>b.onclick=()=>{const f=cart.find(x=>x.id===b.dataset.id);if(f)f.qty++;else cart.push({id:b.dataset.id,name:b.dataset.name,price:+b.dataset.price,qty:1});renderCart();overlay.classList.add('open')});
+document.querySelectorAll('.add').forEach(b=>b.onclick=()=>{const f=cart.find(x=>x.id===b.dataset.id);if(f)f.qty++;else cart.push({id:b.dataset.id,name:b.dataset.name,price:+b.dataset.price,qty:1});
+const perPage=8;
+let currentPage=1;
+function visibleCards(){
+  return Array.from(document.querySelectorAll('.product-card')).filter(c=>c.dataset.hiddenBySearch!=='1');
+}
+function renderPagination(){
+  const all=Array.from(document.querySelectorAll('.product-card'));
+  const active=visibleCards();
+  const totalPages=Math.max(1,Math.ceil(active.length/perPage));
+  if(currentPage>totalPages) currentPage=totalPages;
+  all.forEach(c=>c.style.display='none');
+  active.slice((currentPage-1)*perPage,currentPage*perPage).forEach(c=>c.style.display='');
+  const p=document.getElementById('pagination');
+  const summary=document.getElementById('catalogSummary');
+  p.innerHTML='';
+  const prev=document.createElement('button');
+  prev.className='page-btn arrow'; prev.textContent='‹'; prev.disabled=currentPage===1;
+  prev.onclick=()=>{if(currentPage>1){currentPage--;renderPagination();window.scrollTo({top:document.getElementById('colecao').offsetTop-90,behavior:'smooth'})}};
+  p.appendChild(prev);
+  for(let i=1;i<=totalPages;i++){
+    const b=document.createElement('button'); b.className='page-btn'+(i===currentPage?' active':''); b.textContent=i;
+    b.onclick=()=>{currentPage=i;renderPagination();window.scrollTo({top:document.getElementById('colecao').offsetTop-90,behavior:'smooth'})};
+    p.appendChild(b);
+  }
+  const next=document.createElement('button');
+  next.className='page-btn arrow'; next.textContent='›'; next.disabled=currentPage===totalPages;
+  next.onclick=()=>{if(currentPage<totalPages){currentPage++;renderPagination();window.scrollTo({top:document.getElementById('colecao').offsetTop-90,behavior:'smooth'})}};
+  p.appendChild(next);
+  const start=active.length?((currentPage-1)*perPage)+1:0;
+  const end=Math.min(currentPage*perPage,active.length);
+  summary.textContent=`Exibindo ${start}–${end} de ${active.length} exemplares`;
+}
+
+renderCart();overlay.classList.add('open')});
 document.getElementById('cartItems').onclick=e=>{const t=e.target;if(t.dataset.plus)cart[t.dataset.plus].qty++;if(t.dataset.minus){cart[t.dataset.minus].qty--;if(cart[t.dataset.minus].qty<1)cart.splice(t.dataset.minus,1)}if(t.dataset.remove)cart.splice(t.dataset.remove,1);renderCart()};
 function openCart(){overlay.classList.add('open');renderCart()}function closeCart(){overlay.classList.remove('open')}
 document.getElementById('cartFloating').onclick=openCart;document.getElementById('openCart').onclick=openCart;document.getElementById('closeCart').onclick=closeCart;document.getElementById('continue').onclick=closeCart;
 document.getElementById('checkout').onclick=()=>{if(!cart.length){alert('Adicione um exemplar à sacola primeiro.');return}closeCart();document.getElementById('checkoutSummary').textContent='Itens: '+cart.reduce((s,i)=>s+i.qty,0)+' · Total: '+fmt(cart.reduce((s,i)=>s+i.price*i.qty,0))+' · Frete grátis';modal.classList.add('open')};
 document.getElementById('closeModal').onclick=()=>modal.classList.remove('open');document.getElementById('backModal').onclick=()=>modal.classList.remove('open');document.getElementById('confirmOrder').onclick=()=>alert('Interface pronta. O próximo passo é conectar pagamento e pedidos reais.');
-document.getElementById('search').oninput=e=>{const q=e.target.value.toLowerCase().trim();let n=0;document.querySelectorAll('.product-card').forEach(c=>{const ok=!q||c.dataset.name.toLowerCase().includes(q);c.style.display=ok?'':'none';if(ok)n++});document.getElementById('visibleCount').textContent=n+' exemplares'};
-document.querySelectorAll('.fav').forEach(b=>b.onclick=()=>b.classList.toggle('selected'));
-document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.product-card').forEach(c=>c.style.display=b.dataset.filter==='all'||(b.dataset.filter==='favorites'&&c.querySelector('.fav').classList.contains('selected'))?'':'none')});
+document.getElementById('search').oninput=e=>{
+ const q=e.target.value.toLowerCase().trim();let n=0;
+ document.querySelectorAll('.product-card').forEach(c=>{
+   const ok=!q||c.dataset.name.toLowerCase().includes(q);
+   c.dataset.hiddenBySearch=ok?'0':'1';if(ok)n++;
+ });
+ currentPage=1;
+ document.getElementById('visibleCount').textContent=n+' exemplares';
+ renderPagination();
+};
+document.querySelectorAll('.fav').forEach(b=>b.onclick=()=>{b.classList.toggle('selected');if(document.querySelector('.filter.active')?.dataset.filter==='favorites')renderPagination();});
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+ document.querySelectorAll('.product-card').forEach(c=>{
+   const ok=b.dataset.filter==='all'||(b.dataset.filter==='favorites'&&c.querySelector('.fav').classList.contains('selected'));
+   c.dataset.hiddenBySearch=ok?'0':'1';
+ });
+ currentPage=1;renderPagination();
+});
 document.getElementById('searchBtn').onclick=()=>document.getElementById('search').focus();document.getElementById('openAccount').onclick=()=>alert('A área do cliente será conectada ao cadastro e aos pedidos.');
+
+const perPage=8;
+let currentPage=1;
+function visibleCards(){
+  return Array.from(document.querySelectorAll('.product-card')).filter(c=>c.dataset.hiddenBySearch!=='1');
+}
+function renderPagination(){
+  const all=Array.from(document.querySelectorAll('.product-card'));
+  const active=visibleCards();
+  const totalPages=Math.max(1,Math.ceil(active.length/perPage));
+  if(currentPage>totalPages) currentPage=totalPages;
+  all.forEach(c=>c.style.display='none');
+  active.slice((currentPage-1)*perPage,currentPage*perPage).forEach(c=>c.style.display='');
+  const p=document.getElementById('pagination');
+  const summary=document.getElementById('catalogSummary');
+  p.innerHTML='';
+  const prev=document.createElement('button');
+  prev.className='page-btn arrow'; prev.textContent='‹'; prev.disabled=currentPage===1;
+  prev.onclick=()=>{if(currentPage>1){currentPage--;renderPagination();window.scrollTo({top:document.getElementById('colecao').offsetTop-90,behavior:'smooth'})}};
+  p.appendChild(prev);
+  for(let i=1;i<=totalPages;i++){
+    const b=document.createElement('button'); b.className='page-btn'+(i===currentPage?' active':''); b.textContent=i;
+    b.onclick=()=>{currentPage=i;renderPagination();window.scrollTo({top:document.getElementById('colecao').offsetTop-90,behavior:'smooth'})};
+    p.appendChild(b);
+  }
+  const next=document.createElement('button');
+  next.className='page-btn arrow'; next.textContent='›'; next.disabled=currentPage===totalPages;
+  next.onclick=()=>{if(currentPage<totalPages){currentPage++;renderPagination();window.scrollTo({top:document.getElementById('colecao').offsetTop-90,behavior:'smooth'})}};
+  p.appendChild(next);
+  const start=active.length?((currentPage-1)*perPage)+1:0;
+  const end=Math.min(currentPage*perPage,active.length);
+  summary.textContent=`Exibindo ${start}–${end} de ${active.length} exemplares`;
+}
+
 renderCart();
+renderPagination();
 </script>
 </body></html>
