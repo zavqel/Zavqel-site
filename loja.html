@@ -100,6 +100,29 @@
 }
 </style>
 
+
+<style>
+.customizer{grid-template-columns:1.4fr .8fr}
+.note-option{font-size:13px}
+.pyramid{border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);margin:4px 0 18px}
+.pyramid>div{display:grid;grid-template-columns:74px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.pyramid>div:last-child{border-bottom:0}
+.pyramid span{font-size:9px;letter-spacing:.16em;opacity:.4}
+.pyramid strong{font-size:12px;font-weight:400;color:#d4bd83}
+.olfactive-preview{padding-bottom:15px}
+.preview-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;opacity:.65}
+.metric{display:grid;grid-template-columns:70px 1fr 28px;gap:8px;align-items:center;margin:8px 0}
+.metric span{font-size:10px;opacity:.55}
+.metric i{height:3px;background:#222;display:block;overflow:hidden}
+.metric b{height:100%;width:0;display:block;background:#c6ae73;transition:.35s}
+.metric em{font-style:normal;font-size:9px;opacity:.5;text-align:right}
+.profile-result{padding:15px 0;border-top:1px solid rgba(255,255,255,.1)}
+.profile-result small{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.4}
+.profile-result strong{display:block;font-size:16px;font-weight:400;margin-top:6px;color:#d4bd83}
+.profile-result p{font-size:11px;line-height:1.55;opacity:.55;margin:7px 0 0}
+@media(max-width:850px){.customizer{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
@@ -1358,47 +1381,82 @@ renderCart();
 renderPagination();
 </script>
 
+
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
-  const maxNotes=6;
-  const selected=[];
-  const buttons=document.querySelectorAll('.note-option');
-  const selectedBox=document.getElementById('selectedNotes');
-  const count=document.getElementById('noteCount');
-  const profile=document.getElementById('profileText');
+  const limits={saida:2,coracao:2,fundo:2};
+  const selected={saida:[],coracao:[],fundo:[]};
+  const buttons=[...document.querySelectorAll('.note-option')];
 
-  function render(){
-    selectedBox.innerHTML='';
-    if(!selected.length){
-      const e=document.createElement('span'); e.className='empty-note'; e.textContent='Selecione suas notas'; selectedBox.appendChild(e);
-      profile.textContent='—';
-    }else{
-      selected.forEach(x=>{
-        const s=document.createElement('span'); s.textContent=x.note; selectedBox.appendChild(s);
-      });
-      const families=[...new Set(selected.map(x=>x.family))];
-      profile.textContent=families.slice(0,2).join(' · ') || 'Personalizado';
+  const setMetric=(id,value)=>{
+    const v=Math.max(0,Math.min(5,value));
+    document.getElementById(id+'Bar').style.width=(v*20)+'%';
+    document.getElementById(id+'Text').textContent=v?Math.round(v)+'/5':'—';
+  };
+
+  const render=()=>{
+    ['saida','coracao','fundo'].forEach(type=>{
+      const el=document.getElementById('pyramid'+type[0].toUpperCase()+type.slice(1));
+      el.textContent=selected[type].length?selected[type].map(x=>x.note).join(' · '):'—';
+    });
+
+    const all=[...selected.saida,...selected.coracao,...selected.fundo];
+    const avg=(key)=>all.length?all.reduce((s,x)=>s+Number(x.dataset[key]||0),0)/all.length:0;
+    setMetric('fresh',avg('fresh'));
+    setMetric('sweet',avg('sweet'));
+    setMetric('wood',avg('wood'));
+    setMetric('floral',avg('floral'));
+    setMetric('warm',avg('warm'));
+
+    if(!all.length){
+      document.getElementById('profileText').textContent='Escolha suas notas';
+      document.getElementById('descriptionText').textContent='Sua composição aparecerá aqui conforme você fizer suas escolhas.';
+      return;
     }
-    count.textContent=selected.length+' / '+maxNotes;
-  }
+
+    const scores={
+      Cítrica:all.filter(x=>x.dataset.family==='Cítrica').length,
+      Floral:all.filter(x=>x.dataset.family==='Floral').length,
+      Amadeirada:all.filter(x=>x.dataset.family==='Amadeirada').length,
+      Oriental:all.filter(x=>x.dataset.family==='Oriental').length,
+      Gourmand:all.filter(x=>x.dataset.family==='Gourmand').length,
+      Aromática:all.filter(x=>x.dataset.family==='Aromática').length,
+      Frutada:all.filter(x=>x.dataset.family==='Frutada').length,
+      Especiada:all.filter(x=>x.dataset.family==='Especiada').length,
+      Musk:all.filter(x=>x.dataset.family==='Musk').length
+    };
+    const top=Object.entries(scores).sort((a,b)=>b[1]-a[1]).filter(x=>x[1]>0).slice(0,2).map(x=>x[0]);
+    document.getElementById('profileText').textContent=top.join(' · ') || 'Personalizado';
+
+    const fresh=avg('fresh'), sweet=avg('sweet'), wood=avg('wood'), floral=avg('floral'), warm=avg('warm');
+    let adjectives=[];
+    if(fresh>=3.5) adjectives.push('fresco');
+    if(sweet>=3.5) adjectives.push('adocicado');
+    if(wood>=3.5) adjectives.push('amadeirado');
+    if(floral>=3.5) adjectives.push('floral');
+    if(warm>=3.5) adjectives.push('quente');
+    if(!adjectives.length) adjectives=['equilibrado'];
+    document.getElementById('descriptionText').textContent='Uma composição de perfil '+adjectives.join(', ')+', com evolução própria entre saída, coração e fundo. Esta é uma prévia estimada da personalidade olfativa.';
+  };
 
   buttons.forEach(btn=>{
     btn.addEventListener('click',()=>{
-      const note=btn.dataset.note;
-      const i=selected.findIndex(x=>x.note===note);
-      if(i>=0){
-        selected.splice(i,1); btn.classList.remove('selected');
-      }else if(selected.length<maxNotes){
-        selected.push({note,family:btn.dataset.family}); btn.classList.add('selected');
+      const type=btn.dataset.type;
+      const index=selected[type].findIndex(x=>x===btn);
+      if(index>=0){
+        selected[type].splice(index,1);
+        btn.classList.remove('selected');
+      }else if(selected[type].length<limits[type]){
+        selected[type].push(btn);
+        btn.classList.add('selected');
       }
       render();
     });
   });
 
-  function goPersonalize(){
-    const el=document.getElementById('personalizar');
-    el?.scrollIntoView({behavior:'smooth',block:'start'});
-  }
+  const goPersonalize=()=>{
+    document.getElementById('personalizar')?.scrollIntoView({behavior:'smooth',block:'start'});
+  };
   document.getElementById('startPersonalization')?.addEventListener('click',goPersonalize);
   document.getElementById('signatureCta')?.addEventListener('click',goPersonalize);
 });
