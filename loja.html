@@ -11,7 +11,8 @@
 *{box-sizing:border-box}body{margin:0;background:#080807;color:#eee9df;font-family:Inter,Arial,sans-serif}button,input{font:inherit}a{color:inherit}
 .top{height:34px;background:#090908;color:#d9d2c5;display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:.18em;text-transform:uppercase}.top b{color:var(--gold2)}
 .header{background:#0b0b0a;border-bottom:1px solid rgba(199,164,91,.20);position:sticky;top:0;z-index:50}.nav{max-width:1280px;margin:auto;height:76px;padding:0 28px;display:flex;align-items:center;gap:28px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:180px}.mark{width:43px;height:43px;border:1px solid var(--gold);transform:rotate(45deg);display:grid;place-items:center}.mark span{transform:rotate(-45deg);font:500 18px 'Cormorant Garamond',serif;color:#96763b}.word{font-size:15px;letter-spacing:.35em}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:180px}.mark{width:43px;height:43px;border:1px solid var(--gold);transform:rotate(45deg);display:grid;place-items:center}.mark span{transform:rotate(-45deg);font:500 18px 'Cormorant Garamond',serif;color:#96763b}.word{font-size:15px;letter-spacing:.35em}.header-signature{flex:1;display:flex;justify-content:center;align-items:center;text-align:center}
+.header-signature span{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.28em;color:#bda66d;white-space:nowrap}
 .search{flex:1;max-width:520px;position:relative}.search input{width:100%;border:1px solid #38362f;border-radius:30px;padding:13px 46px 13px 18px;background:#151512;color:#eee9df;outline:0;font-size:12px}.search button{position:absolute;right:6px;top:5px;width:34px;height:34px;border:0;border-radius:50%;background:#111;color:#fff;cursor:pointer}
 .nav-actions{margin-left:auto;display:flex;gap:19px;align-items:center}.nav-actions button,.nav-actions a{border:0;background:none;text-decoration:none;font-size:10px;letter-spacing:.08em;cursor:pointer}
 .hero{background:var(--black);color:var(--cream);min-height:540px;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;width:800px;height:800px;border:1px solid rgba(199,164,91,.09);border-radius:50%;right:-230px;top:-300px}
@@ -67,7 +68,7 @@
 .selection-help strong{display:block;font-size:13px;font-weight:500;color:#eee9df;margin-bottom:5px}.selection-help span{display:block;font-size:10px;color:#777269}.selection-help button{background:transparent;border:1px solid #665535;color:#d4bd83;padding:11px 14px;font-size:8px;letter-spacing:.13em;cursor:pointer}.selection-help button:hover{background:#d4bd83;color:#090908}
 .composition-card{min-height:700px}.note-tooltip{position:fixed;z-index:300;max-width:280px;background:#11110e;border:1px solid rgba(199,164,91,.35);padding:13px 15px;color:#ddd7cc;font-size:10px;line-height:1.55;pointer-events:none;box-shadow:0 15px 40px rgba(0,0,0,.45)}.note-tooltip strong{display:block;color:#d4bd83;font-size:11px;margin-bottom:4px}
 .quiz-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:250;display:none;align-items:center;justify-content:center;padding:20px}.quiz-overlay.open{display:flex}.quiz-box{width:min(620px,100%);background:#0f0f0d;border:1px solid rgba(199,164,91,.25);padding:30px;color:#eee9df}.quiz-box h3{font:500 39px 'Cormorant Garamond',serif;margin:0 0 8px}.quiz-box p{font-size:11px;line-height:1.6;color:#888278}.quiz-q{margin:22px 0;border-top:1px solid rgba(255,255,255,.08);padding-top:17px}.quiz-q strong{display:block;font-size:12px;margin-bottom:10px}.quiz-answers{display:flex;flex-wrap:wrap;gap:7px}.quiz-answer{background:#121210;border:1px solid #35332d;color:#ddd7cc;padding:9px 12px;font-size:9px;cursor:pointer}.quiz-answer.selected{border-color:#c7a45b;color:#d4bd83}.quiz-result{display:none;margin-top:20px;padding:18px;border:1px solid rgba(199,164,91,.2);background:#0b0b09}.quiz-result strong{display:block;color:#d4bd83;font:500 25px 'Cormorant Garamond',serif}.quiz-result p{margin-bottom:0}.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}.quiz-actions button{padding:11px 16px;font-size:8px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer}.quiz-close{background:transparent;border:1px solid #403e36;color:#ddd}.quiz-finish{background:#c7a45b;border:1px solid #c7a45b;color:#090908}
-@media(max-width:700px){.selection-help{align-items:flex-start;flex-direction:column}.selection-help button{width:100%}}
+@media(max-width:700px){.selection-help{align-items:flex-start;flex-direction:column}.selection-help button{width:100%}}@media(max-width:700px){.header-signature{display:none}}
 </style>
 
 <style>
@@ -123,7 +124,9 @@ body.quiz-open{
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
 <header class="header"><nav class="nav">
 <a href="index.html" class="brand"><span class="mark"><span>ZQ</span></span><span class="word">ZAVQEL</span></a>
-<div class="search"><input id="search" type="search" placeholder="O que você procura hoje?"><button id="searchBtn">⌕</button></div>
+<div class="header-signature">
+  <span>UMA FRAGRÂNCIA. UMA ASSINATURA.</span>
+</div>
 <div class="nav-actions"><a href="#colecao">Coleção</a><a href="personalizacao.html">Personalização</a><button id="openAccount">Minha conta</button><button id="openCart">Sacola (<b id="navCount">0</b>)</button></div>
 </nav></header>
 
