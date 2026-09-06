@@ -36,7 +36,8 @@
 .footer{background:#070706;color:#777168;padding:55px 0 25px;border-top:1px solid rgba(199,164,91,.16)}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}.footer h4{color:#ddd7cc;font-size:9px;letter-spacing:.16em;text-transform:uppercase}.footer a,.footer p{font-size:10px;line-height:2;text-decoration:none;color:#777168}.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:35px;padding-top:18px;font-size:9px}
 .cart-button{position:fixed;right:24px;bottom:24px;z-index:70;background:#0b0b09;color:#fff;border:1px solid var(--gold);padding:14px 18px;font-size:9px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;box-shadow:0 15px 35px rgba(0,0,0,.25)}.cart-button b{color:var(--gold2)}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.64);z-index:100;display:none}.overlay.open{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(470px,94vw);background:#0d0d0b;color:#eee;padding:28px;overflow:auto}.drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(225,201,133,.16);padding-bottom:18px}.drawer-head h2{font:500 37px 'Cormorant Garamond',serif;margin:0}.close{border:0;background:none;color:#aaa;font-size:28px;cursor:pointer}.cart-item{padding:17px 0;border-bottom:1px solid rgba(255,255,255,.08)}.cart-row{display:flex;justify-content:space-between;gap:14px}.cart-name{font-size:11px;line-height:1.5}.cart-price{font-size:11px;color:var(--gold2);white-space:nowrap}.qty{display:flex;align-items:center;gap:7px;margin-top:10px}.qty button{background:#171714;border:1px solid #333;color:#eee;padding:4px 9px;cursor:pointer}.total{display:flex;justify-content:space-between;padding:22px 0;font-size:12px}.total strong{font:500 29px 'Cormorant Garamond',serif}.checkout{width:100%;padding:15px;background:var(--gold);border:0;color:#080807;font-size:9px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}.checkout.secondary{margin-top:9px;background:transparent;border:1px solid var(--gold);color:#eee}.cart-note{font-size:9px;color:#777168;line-height:1.7;margin-top:14px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:120;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(680px,100%);background:#f1eee7;padding:30px;color:#171714}.modal-box h2{font:500 42px 'Cormorant Garamond',serif;margin:0 0 8px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.form-grid input{width:100%;padding:12px;border:1px solid #d7d3cb;background:#fff;outline:0}.full{grid-column:1/-1}.pay-methods{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.pay{border:1px solid #d7d3cb;background:#fff;padding:9px 12px;font-size:9px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.modal-actions button{padding:12px 18px;border:1px solid #111;cursor:pointer;font-size:9px;letter-spacing:.1em;text-transform:uppercase}.modal-actions .confirm{background:#111;color:#fff}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:120;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(680px,100%);background:#f1eee7;padding:30px;color:#171714}.modal-box h2{font:500 42px 'Cormorant Garamond',serif;margin:0 0 8px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.form-grid input{width:100%;padding:12px;border:1px solid #d7d3cb;background:#fff;outline:0}.full{grid-column:1/-1}.pay-methods{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.pay{border:1px solid #d7d3cb;background:#fff;padding:9px 12px;font-size:9px;cursor:pointer;transition:.2s}
+.pay.selected{background:#111;color:#fff;border-color:#111}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.modal-actions button{padding:12px 18px;border:1px solid #111;cursor:pointer;font-size:9px;letter-spacing:.1em;text-transform:uppercase}.modal-actions .confirm{background:#111;color:#fff}
 @media(max-width:1050px){.product-grid{grid-template-columns:repeat(3,1fr)}.nav-actions a{display:none}}
 @media(max-width:760px){.top{font-size:7px}.nav{height:64px;padding:0 15px}.brand{min-width:auto}.word{font-size:11px}.search{display:none}.nav-actions{gap:8px}.hero-inner{grid-template-columns:1fr;padding:60px 22px;min-height:auto}.hero-product{min-height:280px}.hero-product .bottle{transform:scale(1.05)}.trust{grid-template-columns:1fr 1fr}.trust-item{border-bottom:1px solid var(--line)}.container{padding:0 16px}.section{padding:55px 0}.section-head{display:block}.section-head p{margin-top:15px}.promo-grid{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr 1fr;gap:10px}.product-photo{height:285px}.product-copy{padding:13px}.product-copy h3{font-size:23px}.story-inner{grid-template-columns:1fr;gap:35px}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:470px){.product-grid{grid-template-columns:1fr}.product-photo{height:330px}.footer-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}}
@@ -446,6 +447,21 @@ document.addEventListener('DOMContentLoaded',()=>{
     } catch (error) {
       alert('Não foi possível consultar o CEP. Verifique sua conexão e tente novamente.');
     }
+  });
+
+  // Seleção do método de pagamento
+  let selectedPayment = '';
+
+  document.querySelectorAll('.pay[data-payment]').forEach(button => {
+    button.addEventListener('click', () => {
+
+      document.querySelectorAll('.pay[data-payment]').forEach(b => {
+        b.classList.remove('selected');
+      });
+
+      button.classList.add('selected');
+      selectedPayment = button.dataset.payment;
+    });
   });
   
   renderCart();renderComposition();
