@@ -47,6 +47,59 @@
 .page-btn:disabled{opacity:.35;cursor:default}
 .catalog-summary{text-align:center;color:#777269;font-size:9px;letter-spacing:.08em;margin-top:13px}
 </style>
+
+<style>
+.customization-section{padding-top:76px}
+.customizer{display:grid;grid-template-columns:1.45fr .75fr;gap:28px;align-items:start;margin-top:36px}
+.note-group{border-top:1px solid rgba(255,255,255,.12);padding:24px 0}
+.note-group-head{display:flex;gap:18px;align-items:center;margin-bottom:17px}
+.note-group-head>span{font-size:12px;letter-spacing:.18em;opacity:.45}
+.note-group-head strong{display:block;font-size:18px;font-weight:500}
+.note-group-head small{display:block;margin-top:4px;opacity:.5}
+.note-options{display:flex;flex-wrap:wrap;gap:9px}
+.note-option{background:#0b0b0b;border:1px solid rgba(255,255,255,.16);color:#eee;border-radius:999px;padding:12px 17px;cursor:pointer;transition:.2s}
+.note-option:hover,.note-option.selected{border-color:#bda46b;color:#d7c08a;background:#111}
+.composition-card{background:#0c0c0c;border:1px solid rgba(255,255,255,.12);padding:28px;position:sticky;top:100px;min-height:510px;display:flex;flex-direction:column}
+.mini-bottle{width:105px;height:145px;margin:0 auto 26px;border-radius:9px 9px 16px 16px;background:linear-gradient(90deg,#050505,#1a1a1a 50%,#050505);box-shadow:0 20px 45px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.08);position:relative}
+.mini-bottle:before{content:"";position:absolute;width:44px;height:22px;left:30px;top:-20px;background:#090909;border:1px solid rgba(255,255,255,.1);border-radius:3px 3px 1px 1px}
+.mini-bottle:after{content:"ZAVQEL";position:absolute;left:0;right:0;top:66px;text-align:center;font-size:9px;letter-spacing:.2em;color:#c4ad76}
+.composition-card h3{font-size:29px;font-weight:400;margin:8px 0 16px}
+.selected-notes{min-height:76px;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:15px 0;display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
+.selected-notes span{font-size:13px;color:#d4c08e}
+.selected-notes span:not(.empty-note):after{content:" ·";opacity:.4}
+.empty-note{opacity:.4}
+.composition-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px 0}
+.composition-meta small{display:block;opacity:.45;margin-bottom:5px}
+.composition-meta strong{font-size:13px;font-weight:400}
+.price-line{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;display:flex;justify-content:space-between;align-items:center}
+.price-line span{font-size:12px;opacity:.55}
+.price-line strong{font-size:22px;font-weight:500}
+.full{width:100%}
+.small-note{text-align:center;font-size:11px;opacity:.4;margin:12px 0 0}
+.signature-section{padding-top:35px}
+.signature-layout{border-top:1px solid rgba(255,255,255,.12);padding-top:70px;display:grid;grid-template-columns:1fr .7fr;gap:50px;align-items:center}
+.signature-layout h2{font-size:clamp(42px,6vw,76px);line-height:.95;font-weight:300;margin:14px 0 25px}
+.signature-layout h2 em{font-family:serif;font-weight:400}
+.signature-layout p{max-width:510px;line-height:1.8;opacity:.65}
+.text-link{margin-top:25px;background:none;border:0;color:#d4bd83;letter-spacing:.12em;font-size:11px;cursor:pointer;padding:0}
+.text-link span{font-size:17px;margin-left:8px}
+.signature-preview{min-height:380px;background:#080808;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.signature-preview .large{transform:scale(1.18);margin-bottom:36px}
+.signature-preview span{letter-spacing:.25em;font-size:11px;opacity:.65}
+.signature-preview strong{font-size:10px;letter-spacing:.18em;color:#bfa66d;margin-top:8px}
+.limited-section{border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);padding:70px 0;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.limited-section h2{font-size:clamp(34px,5vw,58px);font-weight:300;margin:12px 0}
+.limited-section p{max-width:600px;line-height:1.7;opacity:.6}
+.limited-mark{font-size:86px;line-height:.75;text-align:center;color:#c5ad72;font-family:serif;min-width:140px}
+.limited-mark small{font-size:12px;letter-spacing:.25em}
+@media(max-width:850px){
+ .customizer,.signature-layout{grid-template-columns:1fr}
+ .composition-card{position:static}
+ .limited-section{align-items:flex-start}
+ .limited-mark{font-size:62px;min-width:80px}
+}
+</style>
+
 </head>
 <body>
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
@@ -1177,7 +1230,16 @@
 <div class="catalog-summary" id="catalogSummary">Exibindo 1–8 de 100 exemplares</div>
 </section>
 
-<section class="story"><div class="container story-inner"><div><div class="eyebrow">A assinatura é parte da criação</div><h2>Uma fragrância.<br><em>Uma assinatura.</em></h2><p>Na ZAVQEL, o perfume não termina no aroma. A primeira coleção foi concebida para que cada exemplar carregue uma identidade própria.</p><a class="cta" href="personalizacao.html">Conheça a personalização</a></div><div class="signature"><div><div class="scribble">Alexander</div><small>assinatura provisória · Nº 001/100</small></div></div></div></section>
+
+<section class="limited-section">
+  <div>
+    <span class="eyebrow">04 · Edição inaugural</span>
+    <h2>Apenas 100 exemplares.</h2>
+    <p>Cada fragrância da Edição I nasce de uma composição escolhida pelo seu proprietário e recebe uma identidade própria.</p>
+  </div>
+  <div class="limited-mark">I<br><small>100</small></div>
+</section>
+
 
 <footer class="footer"><div class="container footer-grid"><div><div class="word" style="color:#eee">ZAVQEL</div><p>Maison de Parfum.<br>Uma fragrância. Uma assinatura.</p></div><div><h4>Comprar</h4><a href="#colecao">Black Signature</a><br><a href="#colecao">Primeira coleção</a></div><div><h4>Maison</h4><a href="index.html">A ZAVQEL</a><br><a href="colecao.html">Coleção</a><br><a href="personalizacao.html">Personalização</a></div><div><h4>Atendimento</h4><a href="personalizacao.html">Personalização</a><br><a href="#">Entrega</a><br><a href="#">Trocas e devoluções</a></div></div><div class="container copy">© 2026 ZAVQEL — Todos os direitos reservados.</div></footer>
 
@@ -1295,4 +1357,153 @@ function renderPagination(){
 renderCart();
 renderPagination();
 </script>
-</body></html>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const maxNotes=6;
+  const selected=[];
+  const buttons=document.querySelectorAll('.note-option');
+  const selectedBox=document.getElementById('selectedNotes');
+  const count=document.getElementById('noteCount');
+  const profile=document.getElementById('profileText');
+
+  function render(){
+    selectedBox.innerHTML='';
+    if(!selected.length){
+      const e=document.createElement('span'); e.className='empty-note'; e.textContent='Selecione suas notas'; selectedBox.appendChild(e);
+      profile.textContent='—';
+    }else{
+      selected.forEach(x=>{
+        const s=document.createElement('span'); s.textContent=x.note; selectedBox.appendChild(s);
+      });
+      const families=[...new Set(selected.map(x=>x.family))];
+      profile.textContent=families.slice(0,2).join(' · ') || 'Personalizado';
+    }
+    count.textContent=selected.length+' / '+maxNotes;
+  }
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const note=btn.dataset.note;
+      const i=selected.findIndex(x=>x.note===note);
+      if(i>=0){
+        selected.splice(i,1); btn.classList.remove('selected');
+      }else if(selected.length<maxNotes){
+        selected.push({note,family:btn.dataset.family}); btn.classList.add('selected');
+      }
+      render();
+    });
+  });
+
+  function goPersonalize(){
+    const el=document.getElementById('personalizar');
+    el?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  document.getElementById('startPersonalization')?.addEventListener('click',goPersonalize);
+  document.getElementById('signatureCta')?.addEventListener('click',goPersonalize);
+});
+</script>
+
+</body></html
+<section class="section customization-section" id="colecao">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">02 · Sua assinatura</span>
+      <h2>Crie sua composição.</h2>
+      <p>Escolha as notas que irão definir a personalidade da sua fragrância.</p>
+    </div>
+  </div>
+
+  <div class="customizer">
+    <div class="customizer-left">
+      <div class="note-group">
+        <div class="note-group-head">
+          <span>01</span>
+          <div>
+            <strong>Notas de saída</strong>
+            <small>O primeiro encontro</small>
+          </div>
+        </div>
+        <div class="note-options">
+          <button class="note-option" data-note="Bergamota" data-family="Cítrica">Bergamota</button>
+          <button class="note-option" data-note="Limão Siciliano" data-family="Cítrica">Limão Siciliano</button>
+          <button class="note-option" data-note="Maçã Verde" data-family="Frutada">Maçã Verde</button>
+        </div>
+      </div>
+
+      <div class="note-group">
+        <div class="note-group-head">
+          <span>02</span>
+          <div>
+            <strong>Notas de coração</strong>
+            <small>A identidade da fragrância</small>
+          </div>
+        </div>
+        <div class="note-options">
+          <button class="note-option" data-note="Flor de Cerejeira" data-family="Floral">Flor de Cerejeira</button>
+          <button class="note-option" data-note="Canela" data-family="Especiada">Canela</button>
+          <button class="note-option" data-note="Tabaco" data-family="Aromática">Tabaco</button>
+        </div>
+      </div>
+
+      <div class="note-group">
+        <div class="note-group-head">
+          <span>03</span>
+          <div>
+            <strong>Notas de fundo</strong>
+            <small>O rastro que permanece</small>
+          </div>
+        </div>
+        <div class="note-options">
+          <button class="note-option" data-note="Cedro" data-family="Amadeirada">Cedro</button>
+          <button class="note-option" data-note="Sândalo" data-family="Amadeirada">Sândalo</button>
+          <button class="note-option" data-note="Âmbar" data-family="Oriental">Âmbar</button>
+          <button class="note-option" data-note="Almíscar" data-family="Musk">Almíscar</button>
+          <button class="note-option" data-note="Baunilha" data-family="Gourmand">Baunilha</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="composition-card">
+      <div class="mini-bottle"></div>
+      <span class="eyebrow">Sua composição</span>
+      <h3>Black Signature</h3>
+      <div class="selected-notes" id="selectedNotes">
+        <span class="empty-note">Selecione suas notas</span>
+      </div>
+      <div class="composition-meta">
+        <div>
+          <small>Perfil</small>
+          <strong id="profileText">—</strong>
+        </div>
+        <div>
+          <small>Notas escolhidas</small>
+          <strong id="noteCount">0 / 6</strong>
+        </div>
+      </div>
+      <div class="price-line">
+        <span>Edição inaugural</span>
+        <strong>R$ 600,00</strong>
+      </div>
+      <button class="primary full" id="startPersonalization">CRIAR MINHA FRAGRÂNCIA</button>
+      <p class="small-note">Edição I · limitada a 100 exemplares · frete grátis</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section signature-section" id="personalizar">
+  <div class="signature-layout">
+    <div>
+      <span class="eyebrow">03 · Torne-a sua</span>
+      <h2>Uma fragrância.<br><em>Uma assinatura.</em></h2>
+      <p>Depois de definir sua composição, personalize sua edição com seu nome, ano de nascimento e assinatura.</p>
+      <button class="text-link" id="signatureCta">PERSONALIZAR MINHA ASSINATURA <span>→</span></button>
+    </div>
+    <div class="signature-preview">
+      <div class="mini-bottle large"></div>
+      <span>BLACK SIGNATURE</span>
+      <strong>EDIÇÃO I · 001—100</strong>
+    </div>
+  </div>
+</section>
+>
