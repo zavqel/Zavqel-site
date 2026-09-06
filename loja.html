@@ -64,37 +64,11 @@
 
 <style>
 .selection-help{margin:24px 0 10px;padding:20px;border:1px solid rgba(199,164,91,.2);background:#0c0c0a;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.selection-help strong{display:block;font-size:13px;font-weight:500;color:#eee9df;margin-bottom:5px}
-.selection-help span{display:block;font-size:10px;color:#777269}
-.selection-help button{flex:0 0 auto;background:transparent;border:1px solid #665535;color:#d4bd83;padding:11px 14px;font-size:8px;letter-spacing:.13em;cursor:pointer}
-.selection-help button:hover{background:#d4bd83;color:#090908}
-.note-option{position:relative}
-.note-option::after{content:"";position:absolute;right:8px;top:50%;width:4px;height:4px;border-radius:50%;background:#c7a45b;opacity:0;transform:translateY(-50%);transition:.2s}
-.note-option:hover::after,.note-option.selected::after{opacity:.7}
-.note-option.selected{box-shadow:inset 0 0 0 1px rgba(199,164,91,.08)}
-.composition-card{min-height:700px}
-.note-tooltip{position:fixed;z-index:300;max-width:270px;background:#11110e;border:1px solid rgba(199,164,91,.35);padding:13px 15px;color:#ddd7cc;font-size:10px;line-height:1.55;pointer-events:none;box-shadow:0 15px 40px rgba(0,0,0,.45)}
-.note-tooltip strong{display:block;color:#d4bd83;font-size:11px;margin-bottom:4px}
-.quiz-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:250;display:none;align-items:center;justify-content:center;padding:20px}
-.quiz-overlay.open{display:flex}
-.quiz-box{width:min(620px,100%);background:#0f0f0d;border:1px solid rgba(199,164,91,.25);padding:30px;color:#eee9df}
-.quiz-box h3{font:500 39px 'Cormorant Garamond',serif;margin:0 0 8px}
-.quiz-box p{font-size:11px;line-height:1.6;color:#888278}
-.quiz-q{margin:22px 0;border-top:1px solid rgba(255,255,255,.08);padding-top:17px}
-.quiz-q strong{display:block;font-size:12px;margin-bottom:10px}
-.quiz-answers{display:flex;flex-wrap:wrap;gap:7px}
-.quiz-answer{background:#121210;border:1px solid #35332d;color:#ddd7cc;padding:9px 12px;font-size:9px;cursor:pointer}
-.quiz-answer.selected{border-color:#c7a45b;color:#d4bd83}
-.quiz-result{display:none;margin-top:20px;padding:18px;border:1px solid rgba(199,164,91,.2);background:#0b0b09}
-.quiz-result strong{display:block;color:#d4bd83;font:500 25px 'Cormorant Garamond',serif}
-.quiz-result p{margin-bottom:0}
-.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
-.quiz-actions button{padding:11px 16px;font-size:8px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer}
-.quiz-close{background:transparent;border:1px solid #403e36;color:#ddd}
-.quiz-finish{background:#c7a45b;border:1px solid #c7a45b;color:#090908}
+.selection-help strong{display:block;font-size:13px;font-weight:500;color:#eee9df;margin-bottom:5px}.selection-help span{display:block;font-size:10px;color:#777269}.selection-help button{background:transparent;border:1px solid #665535;color:#d4bd83;padding:11px 14px;font-size:8px;letter-spacing:.13em;cursor:pointer}.selection-help button:hover{background:#d4bd83;color:#090908}
+.composition-card{min-height:700px}.note-tooltip{position:fixed;z-index:300;max-width:280px;background:#11110e;border:1px solid rgba(199,164,91,.35);padding:13px 15px;color:#ddd7cc;font-size:10px;line-height:1.55;pointer-events:none;box-shadow:0 15px 40px rgba(0,0,0,.45)}.note-tooltip strong{display:block;color:#d4bd83;font-size:11px;margin-bottom:4px}
+.quiz-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:250;display:none;align-items:center;justify-content:center;padding:20px}.quiz-overlay.open{display:flex}.quiz-box{width:min(620px,100%);background:#0f0f0d;border:1px solid rgba(199,164,91,.25);padding:30px;color:#eee9df}.quiz-box h3{font:500 39px 'Cormorant Garamond',serif;margin:0 0 8px}.quiz-box p{font-size:11px;line-height:1.6;color:#888278}.quiz-q{margin:22px 0;border-top:1px solid rgba(255,255,255,.08);padding-top:17px}.quiz-q strong{display:block;font-size:12px;margin-bottom:10px}.quiz-answers{display:flex;flex-wrap:wrap;gap:7px}.quiz-answer{background:#121210;border:1px solid #35332d;color:#ddd7cc;padding:9px 12px;font-size:9px;cursor:pointer}.quiz-answer.selected{border-color:#c7a45b;color:#d4bd83}.quiz-result{display:none;margin-top:20px;padding:18px;border:1px solid rgba(199,164,91,.2);background:#0b0b09}.quiz-result strong{display:block;color:#d4bd83;font:500 25px 'Cormorant Garamond',serif}.quiz-result p{margin-bottom:0}.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}.quiz-actions button{padding:11px 16px;font-size:8px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer}.quiz-close{background:transparent;border:1px solid #403e36;color:#ddd}.quiz-finish{background:#c7a45b;border:1px solid #c7a45b;color:#090908}
 @media(max-width:700px){.selection-help{align-items:flex-start;flex-direction:column}.selection-help button{width:100%}}
 </style>
-
 </head>
 <body>
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
@@ -121,86 +95,144 @@
 <section class="section customization-section" id="colecao">
   <div class="container">
     <div class="section-head">
-      <div>
-        <span class="eyebrow">02 · Black Signature</span>
-        <h2>Crie sua composição.</h2>
-      </div>
+      <div><span class="eyebrow">02 · Black Signature</span><h2>Crie sua composição.</h2></div>
       <p>Escolha as notas que irão construir a personalidade da sua fragrância. Você não precisa entender de perfumaria — nós traduzimos suas escolhas em um perfil olfativo.</p>
     </div>
-
     <div class="customizer">
-      
-<div class="customizer-left">
-  <div class="note-group">
-    <div class="note-group-head">
-      <span>01</span>
+      <div class="customizer-left">
+        
+      <div class="note-group">
+        <div class="note-group-head"><span>01</span><div><strong>Notas de saída</strong><small>Os primeiros minutos · escolha até 4</small></div></div>
+        <div class="note-options"><button class="note-option" data-type="saida" data-note="Bergamota" data-family="Cítrica" data-fresh="5" data-sweet="1" data-wood="0" data-floral="0" data-warm="1" data-desc="Cítrica, luminosa e elegante. Abre a fragrância com frescor refinado.">Bergamota</button><button class="note-option" data-type="saida" data-note="Limão Siciliano" data-family="Cítrica" data-fresh="5" data-sweet="0" data-wood="0" data-floral="0" data-warm="0" data-desc="Cítrico vibrante e limpo, trazendo luminosidade à saída.">Limão Siciliano</button><button class="note-option" data-type="saida" data-note="Maçã Verde" data-family="Frutada" data-fresh="4" data-sweet="2" data-wood="0" data-floral="0" data-warm="0" data-desc="Frutada, fresca e levemente adocicada, com sensação crocante.">Maçã Verde</button><button class="note-option" data-type="saida" data-note="Mandarina" data-family="Cítrica" data-fresh="5" data-sweet="2" data-wood="0" data-floral="0" data-warm="1" data-desc="Cítrica e suculenta, com uma abertura alegre e sofisticada.">Mandarina</button><button class="note-option" data-type="saida" data-note="Laranja" data-family="Cítrica" data-fresh="4" data-sweet="2" data-wood="0" data-floral="0" data-warm="1" data-desc="Cítrica macia e solar, acrescentando suavidade à abertura.">Laranja</button><button class="note-option" data-type="saida" data-note="Grapefruit" data-family="Cítrica" data-fresh="5" data-sweet="0" data-wood="0" data-floral="0" data-warm="0" data-desc="Cítrico seco e sofisticado, com frescor marcante.">Grapefruit</button><button class="note-option" data-type="saida" data-note="Pimenta Rosa" data-family="Especiada" data-fresh="3" data-sweet="0" data-wood="0" data-floral="0" data-warm="3" data-desc="Especiada e vibrante, acrescenta energia e presença à abertura.">Pimenta Rosa</button><button class="note-option" data-type="saida" data-note="Folhas Verdes" data-family="Verde" data-fresh="5" data-sweet="0" data-wood="0" data-floral="1" data-warm="0" data-desc="Verde e fresca, trazendo uma sensação natural e limpa.">Folhas Verdes</button></div>
+      </div>
+
+      <div class="note-group">
+        <div class="note-group-head"><span>02</span><div><strong>Notas de coração</strong><small>A identidade da fragrância · escolha até 4</small></div></div>
+        <div class="note-options"><button class="note-option" data-type="coracao" data-note="Flor de Cerejeira" data-family="Floral" data-fresh="2" data-sweet="2" data-wood="0" data-floral="5" data-warm="1" data-desc="Floral delicada, limpa e elegante, com aspecto levemente frutado.">Flor de Cerejeira</button><button class="note-option" data-type="coracao" data-note="Jasmim" data-family="Floral" data-fresh="2" data-sweet="2" data-wood="0" data-floral="5" data-warm="2" data-desc="Floral envolvente e sofisticada, dando corpo e presença ao coração.">Jasmim</button><button class="note-option" data-type="coracao" data-note="Rosa" data-family="Floral" data-fresh="2" data-sweet="2" data-wood="0" data-floral="5" data-warm="1" data-desc="Floral clássica e elegante, equilibrando delicadeza e presença.">Rosa</button><button class="note-option" data-type="coracao" data-note="Lavanda" data-family="Aromática" data-fresh="4" data-sweet="0" data-wood="1" data-floral="2" data-warm="1" data-desc="Aromática, fresca e limpa, trazendo serenidade à composição.">Lavanda</button><button class="note-option" data-type="coracao" data-note="Íris" data-family="Floral" data-fresh="1" data-sweet="1" data-wood="1" data-floral="4" data-warm="2" data-desc="Elegante, aveludada e sofisticada, com faceta levemente terrosa.">Íris</button><button class="note-option" data-type="coracao" data-note="Gerânio" data-family="Floral" data-fresh="2" data-sweet="0" data-wood="1" data-floral="4" data-warm="1" data-desc="Floral verde e refinada, ajudando a dar estrutura ao coração.">Gerânio</button><button class="note-option" data-type="coracao" data-note="Canela" data-family="Especiada" data-fresh="0" data-sweet="2" data-wood="1" data-floral="0" data-warm="5" data-desc="Quente e especiada, adiciona intensidade e sensualidade.">Canela</button><button class="note-option" data-type="coracao" data-note="Tabaco" data-family="Aromática" data-fresh="0" data-sweet="1" data-wood="2" data-floral="0" data-warm="5" data-desc="Aromático, profundo e envolvente, com personalidade marcante.">Tabaco</button><button class="note-option" data-type="coracao" data-note="Mel" data-family="Gourmand" data-fresh="0" data-sweet="5" data-wood="0" data-floral="1" data-warm="4" data-desc="Doce, quente e envolvente, criando uma faceta opulenta.">Mel</button><button class="note-option" data-type="coracao" data-note="Cardamomo" data-family="Especiada" data-fresh="3" data-sweet="0" data-wood="1" data-floral="0" data-warm="3" data-desc="Especiado fresco, sofisticado e levemente aromático.">Cardamomo</button></div>
+      </div>
+
+      <div class="note-group">
+        <div class="note-group-head"><span>03</span><div><strong>Notas de fundo</strong><small>O rastro que permanece · escolha até 4</small></div></div>
+        <div class="note-options"><button class="note-option" data-type="fundo" data-note="Cedro" data-family="Amadeirada" data-fresh="1" data-sweet="0" data-wood="5" data-floral="0" data-warm="2" data-desc="Madeira seca, elegante e estruturada, trazendo firmeza ao fundo.">Cedro</button><button class="note-option" data-type="fundo" data-note="Sândalo" data-family="Amadeirada" data-fresh="0" data-sweet="2" data-wood="5" data-floral="0" data-warm="4" data-desc="Madeira cremosa, macia e quente, com sensação luxuosa.">Sândalo</button><button class="note-option" data-type="fundo" data-note="Âmbar" data-family="Oriental" data-fresh="0" data-sweet="3" data-wood="2" data-floral="0" data-warm="5" data-desc="Quente, envolvente e resinoso, prolongando o rastro da fragrância.">Âmbar</button><button class="note-option" data-type="fundo" data-note="Almíscar" data-family="Musk" data-fresh="1" data-sweet="1" data-wood="2" data-floral="0" data-warm="3" data-desc="Macio e envolvente, ajuda a criar um rastro limpo e persistente.">Almíscar</button><button class="note-option" data-type="fundo" data-note="Baunilha" data-family="Gourmand" data-fresh="0" data-sweet="5" data-wood="1" data-floral="0" data-warm="4" data-desc="Cremosa, doce e quente, trazendo conforto e sensualidade.">Baunilha</button><button class="note-option" data-type="fundo" data-note="Patchouli" data-family="Amadeirada" data-fresh="0" data-sweet="0" data-wood="5" data-floral="0" data-warm="4" data-desc="Terroso, amadeirado e profundo, com grande personalidade.">Patchouli</button><button class="note-option" data-type="fundo" data-note="Vetiver" data-family="Amadeirada" data-fresh="2" data-sweet="0" data-wood="5" data-floral="0" data-warm="2" data-desc="Seco, verde e amadeirado, trazendo elegância e contraste.">Vetiver</button><button class="note-option" data-type="fundo" data-note="Couro" data-family="Amadeirada" data-fresh="0" data-sweet="0" data-wood="4" data-floral="0" data-warm="5" data-desc="Intenso, sofisticado e marcante, reforçando a personalidade.">Couro</button><button class="note-option" data-type="fundo" data-note="Fava Tonka" data-family="Gourmand" data-fresh="0" data-sweet="4" data-wood="2" data-floral="0" data-warm="5" data-desc="Doce, cremosa e quente, com sensação aveludada.">Fava Tonka</button></div>
+      </div>
+
+        <div class="selection-help"><div><strong>Não sabe o que escolher?</strong><span>Responda 4 perguntas e receba uma sugestão de perfil.</span></div><button type="button" id="quizOpen">DESCOBRIR MEU PERFIL →</button></div>
+      </div>
+      <aside class="composition-card">
+        <div class="mini-bottle"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+        <span class="eyebrow">Sua assinatura olfativa</span><h3>Black Signature</h3>
+        <div class="pyramid">
+          <div><span>SAÍDA</span><strong id="pyramidSaida">—</strong></div>
+          <div><span>CORAÇÃO</span><strong id="pyramidCoracao">—</strong></div>
+          <div><span>FUNDO</span><strong id="pyramidFundo">—</strong></div>
+        </div>
+        <div class="olfactive-preview"><div class="preview-title">Comparativo olfativo</div>
+          <div class="metric"><span>Frescor</span><i><b id="freshBar"></b></i><em id="freshText">—</em></div>
+          <div class="metric"><span>Doçura</span><i><b id="sweetBar"></b></i><em id="sweetText">—</em></div>
+          <div class="metric"><span>Madeirado</span><i><b id="woodBar"></b></i><em id="woodText">—</em></div>
+          <div class="metric"><span>Floral</span><i><b id="floralBar"></b></i><em id="floralText">—</em></div>
+          <div class="metric"><span>Calor</span><i><b id="warmBar"></b></i><em id="warmText">—</em></div>
+        </div>
+        <div class="profile-result"><small>Perfil estimado</small><strong id="profileText">Escolha suas notas</strong><p id="descriptionText">Sua composição aparecerá aqui conforme você fizer suas escolhas.</p></div>
+        <div class="price-line"><span>Edição inaugural</span><strong>R$ 600,00</strong></div>
+        <button class="cta full" id="startPersonalization">CONTINUAR MINHA ASSINATURA</button>
+        <p class="small-note" id="compositionStatus">Escolha até 4 notas em cada etapa · máximo 12 notas.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+<section class="section signature-section" id="personalizar">
+  <div class="container">
+    <div class="signature-layout">
       <div>
-        <strong>Notas de saída</strong>
-        <small>Os primeiros minutos · escolha até 4</small>
+        <span class="eyebrow">03 · Identidade</span>
+        <h2>Uma fragrância.<br><em>Uma assinatura.</em></h2>
+        <p>Depois de definir sua composição, personalize sua edição com seu nome, ano de nascimento e assinatura.</p>
+        <button class="text-link" id="signatureCta">PERSONALIZAR MINHA ASSINATURA <span>→</span></button>
+      </div>
+      <div class="signature-preview">
+        <div class="mini-bottle large"><div class="mini-cap"></div><div class="mini-label"><small>ZAVQEL</small><b>BLACK<br>SIGNATURE</b><i>EXTRAIT DE PARFUM</i></div></div>
+        <span>BLACK SIGNATURE</span><strong>EDIÇÃO I · 001—100</strong>
       </div>
     </div>
-    <div class="note-options">
-      <button class="note-option" data-note="Bergamota" data-family="Cítrica" data-type="saida" data-fresh="5" data-sweet="1" data-wood="0" data-floral="0" data-warm="1" data-desc="Cítrica, luminosa e elegante. Abre a fragrância com frescor refinado.">Bergamota</button>
-      <button class="note-option" data-note="Limão Siciliano" data-family="Cítrica" data-type="saida" data-fresh="5" data-sweet="0" data-wood="0" data-floral="0" data-warm="0" data-desc="Cítrico vibrante e limpo, trazendo luminosidade à saída.">Limão Siciliano</button>
-      <button class="note-option" data-note="Maçã Verde" data-family="Frutada" data-type="saida" data-fresh="4" data-sweet="2" data-wood="0" data-floral="0" data-warm="0" data-desc="Frutada, fresca e levemente adocicada, com sensação crocante.">Maçã Verde</button>
-      <button class="note-option" data-note="Mandarina" data-family="Cítrica" data-type="saida" data-fresh="5" data-sweet="2" data-wood="0" data-floral="0" data-warm="1" data-desc="Cítrica e suculenta, com uma abertura alegre e sofisticada.">Mandarina</button>
-      <button class="note-option" data-note="Laranja" data-family="Cítrica" data-type="saida" data-fresh="4" data-sweet="2" data-wood="0" data-floral="0" data-warm="1" data-desc="Cítrica macia e solar, acrescentando suavidade à abertura.">Laranja</button>
-      <button class="note-option" data-note="Grapefruit" data-family="Cítrica" data-type="saida" data-fresh="5" data-sweet="0" data-wood="0" data-floral="0" data-warm="0" data-desc="Cítrico seco e sofisticado, com frescor marcante.">Grapefruit</button>
-      <button class="note-option" data-note="Pimenta Rosa" data-family="Especiada" data-type="saida" data-fresh="3" data-sweet="0" data-wood="0" data-floral="0" data-warm="3" data-desc="Especiada e vibrante, acrescenta energia e presença à abertura.">Pimenta Rosa</button>
-      <button class="note-option" data-note="Folhas Verdes" data-family="Verde" data-type="saida" data-fresh="5" data-sweet="0" data-wood="0" data-floral="1" data-warm="0" data-desc="Verde e fresca, trazendo uma sensação natural e limpa.">Folhas Verdes</button>
-    </div>
   </div>
+</section>
 
-  <div class="note-group">
-    <div class="note-group-head">
-      <span>02</span>
-      <div>
-        <strong>Notas de coração</strong>
-        <small>A identidade da fragrância · escolha até 4</small>
-      </div>
-    </div>
-    <div class="note-options">
-      <button class="note-option" data-note="Flor de Cerejeira" data-family="Floral" data-type="coracao" data-fresh="2" data-sweet="2" data-wood="0" data-floral="5" data-warm="1" data-desc="Floral delicada, limpa e elegante, com aspecto levemente frutado.">Flor de Cerejeira</button>
-      <button class="note-option" data-note="Jasmim" data-family="Floral" data-type="coracao" data-fresh="2" data-sweet="2" data-wood="0" data-floral="5" data-warm="2" data-desc="Floral envolvente e sofisticada, dando corpo e presença ao coração.">Jasmim</button>
-      <button class="note-option" data-note="Rosa" data-family="Floral" data-type="coracao" data-fresh="2" data-sweet="2" data-wood="0" data-floral="5" data-warm="1" data-desc="Floral clássica e elegante, equilibrando delicadeza e presença.">Rosa</button>
-      <button class="note-option" data-note="Lavanda" data-family="Aromática" data-type="coracao" data-fresh="4" data-sweet="0" data-wood="1" data-floral="2" data-warm="1" data-desc="Aromática, fresca e limpa, trazendo serenidade à composição.">Lavanda</button>
-      <button class="note-option" data-note="Íris" data-family="Floral" data-type="coracao" data-fresh="1" data-sweet="1" data-wood="1" data-floral="4" data-warm="2" data-desc="Elegante, aveludada e sofisticada, com faceta levemente terrosa.">Íris</button>
-      <button class="note-option" data-note="Gerânio" data-family="Floral" data-type="coracao" data-fresh="2" data-sweet="0" data-wood="1" data-floral="4" data-warm="1" data-desc="Floral verde e refinada, ajudando a dar estrutura ao coração.">Gerânio</button>
-      <button class="note-option" data-note="Canela" data-family="Especiada" data-type="coracao" data-fresh="0" data-sweet="2" data-wood="1" data-floral="0" data-warm="5" data-desc="Quente e especiada, adiciona intensidade e sensualidade.">Canela</button>
-      <button class="note-option" data-note="Tabaco" data-family="Aromática" data-type="coracao" data-fresh="0" data-sweet="1" data-wood="2" data-floral="0" data-warm="5" data-desc="Aromático, profundo e envolvente, com personalidade marcante.">Tabaco</button>
-      <button class="note-option" data-note="Mel" data-family="Gourmand" data-type="coracao" data-fresh="0" data-sweet="5" data-wood="0" data-floral="1" data-warm="4" data-desc="Doce, quente e envolvente, criando uma faceta opulenta.">Mel</button>
-      <button class="note-option" data-note="Cardamomo" data-family="Especiada" data-type="coracao" data-fresh="3" data-sweet="0" data-wood="1" data-floral="0" data-warm="3" data-desc="Especiado fresco, sofisticado e levemente aromático.">Cardamomo</button>
-    </div>
+<section class="limited-section">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:30px">
+    <div><span class="eyebrow">04 · Edição inaugural</span><h2>100 exemplares.<br>100 assinaturas.</h2><p>Cada fragrância da Edição I é composta e personalizada para seu proprietário. O número identifica a peça, não uma fragrância diferente.</p></div>
+    <div class="limited-mark">I<br><small>100</small></div>
   </div>
+</section>
 
-  <div class="note-group">
-    <div class="note-group-head">
-      <span>03</span>
-      <div>
-        <strong>Notas de fundo</strong>
-        <small>O rastro que permanece · escolha até 4</small>
-      </div>
-    </div>
-    <div class="note-options">
-      <button class="note-option" data-note="Cedro" data-family="Amadeirada" data-type="fundo" data-fresh="1" data-sweet="0" data-wood="5" data-floral="0" data-warm="2" data-desc="Madeira seca, elegante e estruturada, trazendo firmeza ao fundo.">Cedro</button>
-      <button class="note-option" data-note="Sândalo" data-family="Amadeirada" data-type="fundo" data-fresh="0" data-sweet="2" data-wood="5" data-floral="0" data-warm="4" data-desc="Madeira cremosa, macia e quente, com sensação luxuosa.">Sândalo</button>
-      <button class="note-option" data-note="Âmbar" data-family="Oriental" data-type="fundo" data-fresh="0" data-sweet="3" data-wood="2" data-floral="0" data-warm="5" data-desc="Quente, envolvente e resinoso, prolongando o rastro da fragrância.">Âmbar</button>
-      <button class="note-option" data-note="Almíscar" data-family="Musk" data-type="fundo" data-fresh="1" data-sweet="1" data-wood="2" data-floral="0" data-warm="3" data-desc="Macio e envolvente, ajuda a criar um rastro limpo e persistente.">Almíscar</button>
-      <button class="note-option" data-note="Baunilha" data-family="Gourmand" data-type="fundo" data-fresh="0" data-sweet="5" data-wood="1" data-floral="0" data-warm="4" data-desc="Cremosa, doce e quente, trazendo conforto e sensualidade.">Baunilha</button>
-      <button class="note-option" data-note="Patchouli" data-family="Amadeirada" data-type="fundo" data-fresh="0" data-sweet="0" data-wood="5" data-floral="0" data-warm="4" data-desc="Terroso, amadeirado e profundo, com grande personalidade.">Patchouli</button>
-      <button class="note-option" data-note="Vetiver" data-family="Amadeirada" data-type="fundo" data-fresh="2" data-sweet="0" data-wood="5" data-floral="0" data-warm="2" data-desc="Seco, verde e amadeirado, trazendo elegância e contraste.">Vetiver</button>
-      <button class="note-option" data-note="Couro" data-family="Amadeirada" data-type="fundo" data-fresh="0" data-sweet="0" data-wood="4" data-floral="0" data-warm="5" data-desc="Intenso, sofisticado e marcante, reforçando a personalidade da composição.">Couro</button>
-      <button class="note-option" data-note="Fava Tonka" data-family="Gourmand" data-type="fundo" data-fresh="0" data-sweet="4" data-wood="2" data-floral="0" data-warm="5" data-desc="Doce, cremosa e quente, com sensação aveludada.">Fava Tonka</button>
-      <button class="note-option" data-note="Baunilha" data-family="Gourmand" data-type="fundo" data-fresh="0" data-sweet="5" data-wood="1" data-floral="0" data-warm="4" data-desc="Cremosa, doce e quente, trazendo conforto e sensualidade.">Baunilha</button>
-    </div>
-  </div>
+<footer class="footer"><div class="container footer-grid"><div><div class="word" style="color:#eee">ZAVQEL</div><p>Maison de Parfum.<br>Uma fragrância. Uma assinatura.</p></div><div><h4>Comprar</h4><a href="#colecao">Black Signature</a><br><a href="#colecao">Primeira coleção</a></div><div><h4>Maison</h4><a href="index.html">A ZAVQEL</a><br><a href="colecao.html">Coleção</a><br><a href="personalizacao.html">Personalização</a></div><div><h4>Atendimento</h4><a href="personalizacao.html">Personalização</a><br><a href="#">Entrega</a><br><a href="#">Trocas e devoluções</a></div></div><div class="container copy">© 2026 ZAVQEL — Todos os direitos reservados.</div></footer>
 
-  <div class="selection-help">
-    <div>
-      <strong>Não sabe o que escolher?</strong>
-      <span>Responda 4 perguntas e receba uma sugestão de perfil.</span>
-    </div>
-    <button type="button" id="quizOpen">DESCOBRIR MEU PERFIL →</button>
-  </div>
-</div>
->
+<button class="cart-button" id="cartFloating">SACOLA · <b id="cartCount">0</b></button>
+<div class="overlay" id="cartOverlay"><aside class="drawer"><div class="drawer-head"><h2>Sua sacola</h2><button class="close" id="closeCart">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div><button class="checkout" id="checkout">Continuar para pagamento</button><button class="checkout secondary" id="continue">Continuar comprando</button><p class="cart-note">Frete grátis para todo o Brasil. O checkout desta versão é uma interface de demonstração e será conectado ao gateway de pagamento real.</p></aside></div>
+
+<div class="modal" id="checkoutModal"><div class="modal-box"><div style="display:flex;justify-content:space-between"><div><div class="eyebrow">Finalização</div><h2>Seu pedido.</h2></div><button class="close" id="closeModal" style="color:#222">×</button></div><div id="checkoutSummary" style="font-size:11px;color:#666;line-height:1.7"></div>
+<div class="form-grid"><input placeholder="Nome completo"><input placeholder="E-mail"><input class="full" placeholder="CEP"><input placeholder="Endereço"><input placeholder="Número"><input placeholder="Complemento"><input placeholder="Cidade"><input placeholder="Estado"></div>
+<div class="eyebrow" style="margin-top:20px">Forma de pagamento</div><div class="pay-methods"><span class="pay">PIX</span><span class="pay">Cartão de crédito</span><span class="pay">Cartão de débito</span><span class="pay">Boleto</span></div>
+<div class="modal-actions"><button id="backModal">Voltar</button><button class="confirm" id="confirmOrder">Finalizar pedido</button></div><p style="font-size:8px;color:#888">Demonstração de interface. Nenhum pagamento é processado nesta versão.</p></div></div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const cart=[];
+  const fmt=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  const overlay=document.getElementById('cartOverlay'),modal=document.getElementById('checkoutModal');
+
+  function renderCart(){
+    const count=cart.reduce((s,i)=>s+i.qty,0),total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+    const cc=document.getElementById('cartCount'),nc=document.getElementById('navCount'),ct=document.getElementById('cartTotal'),items=document.getElementById('cartItems');
+    if(cc)cc.textContent=count;if(nc)nc.textContent=count;if(ct)ct.textContent=fmt(total);
+    if(items)items.innerHTML=cart.length?cart.map((i,k)=>`<div class="cart-item"><div class="cart-row"><div class="cart-name">${i.name}</div><div class="cart-price">${fmt(i.price*i.qty)}</div></div><div class="qty"><button data-minus="${k}">−</button><span>${i.qty}</span><button data-plus="${k}">+</button><button data-remove="${k}" style="margin-left:auto">Remover</button></div></div>`).join(''):'<p style="color:#777168;font-size:11px;padding:25px 0">Sua sacola está vazia.</p>';
+  }
+  function openCart(){overlay?.classList.add('open');renderCart()} function closeCart(){overlay?.classList.remove('open')}
+  document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',()=>{const f=cart.find(x=>x.id===b.dataset.id);if(f)f.qty++;else cart.push({id:b.dataset.id,name:b.dataset.name,price:+b.dataset.price,qty:1});renderCart();openCart()}));
+  document.getElementById('cartItems')?.addEventListener('click',e=>{const x=e.target;if(x.dataset.plus)cart[x.dataset.plus].qty++;if(x.dataset.minus){cart[x.dataset.minus].qty--;if(cart[x.dataset.minus].qty<1)cart.splice(x.dataset.minus,1)}if(x.dataset.remove)cart.splice(x.dataset.remove,1);renderCart()});
+  document.getElementById('cartFloating')?.addEventListener('click',openCart);document.getElementById('closeCart')?.addEventListener('click',closeCart);document.getElementById('continue')?.addEventListener('click',closeCart);
+  document.getElementById('checkout')?.addEventListener('click',()=>{if(!cart.length)return alert('Sua sacola está vazia.');document.getElementById('checkoutSummary').innerHTML=cart.map(i=>`${i.qty}× ${i.name} — ${fmt(i.price*i.qty)}`).join('<br>');modal?.classList.add('open')});
+  document.getElementById('closeModal')?.addEventListener('click',()=>modal?.classList.remove('open'));document.getElementById('backModal')?.addEventListener('click',()=>modal?.classList.remove('open'));
+  document.getElementById('searchBtn')?.addEventListener('click',()=>document.getElementById('search')?.focus());
+  document.getElementById('openAccount')?.addEventListener('click',()=>alert('A área do cliente será conectada ao cadastro e aos pedidos.'));
+
+  const limits={saida:4,coracao:4,fundo:4},selected={saida:[],coracao:[],fundo:[]};
+  const buttons=[...document.querySelectorAll('.note-option')];
+  const metric=(id,val)=>{const v=Math.max(0,Math.min(5,val));document.getElementById(id+'Bar').style.width=(v*20)+'%';document.getElementById(id+'Text').textContent=v?Math.round(v)+'/5':'—'};
+  const renderComposition=()=>{
+    ['saida','coracao','fundo'].forEach(t=>{const el=document.getElementById('pyramid'+t[0].toUpperCase()+t.slice(1));if(el)el.textContent=selected[t].length?selected[t].map(x=>x.dataset.note).join(' · '):'—'});
+    const all=[...selected.saida,...selected.coracao,...selected.fundo],avg=k=>all.length?all.reduce((s,x)=>s+Number(x.dataset[k]||0),0)/all.length:0;
+    ['fresh','sweet','wood','floral','warm'].forEach(k=>metric(k,avg(k)));
+    const profile=document.getElementById('profileText'),desc=document.getElementById('descriptionText');
+    if(!all.length){profile.textContent='Escolha suas notas';desc.textContent='Sua composição aparecerá aqui conforme você fizer suas escolhas.';}
+    else{
+      const fam={};all.forEach(x=>fam[x.dataset.family]=(fam[x.dataset.family]||0)+1);
+      profile.textContent=Object.entries(fam).sort((a,b)=>b[1]-a[1]).slice(0,2).map(x=>x[0]).join(' · ')||'Personalizado';
+      const adj=[];if(avg('fresh')>=3.5)adj.push('fresco');if(avg('sweet')>=3.5)adj.push('adocicado');if(avg('wood')>=3.5)adj.push('amadeirado');if(avg('floral')>=3.5)adj.push('floral');if(avg('warm')>=3.5)adj.push('quente');if(!adj.length)adj.push('equilibrado');
+      desc.textContent='Uma composição de perfil '+adj.join(', ')+', com evolução própria entre saída, coração e fundo. Esta é uma prévia estimada da personalidade olfativa.';
+    }
+    const status=document.getElementById('compositionStatus');if(status)status.textContent=all.length<12?`${all.length}/12 notas selecionadas · até 4 por etapa.`:'Composição completa · 12/12 notas selecionadas.';
+  };
+  buttons.forEach(btn=>{
+    btn.addEventListener('click',()=>{const type=btn.dataset.type,i=selected[type].indexOf(btn);if(i>=0){selected[type].splice(i,1);btn.classList.remove('selected')}else if(selected[type].length<limits[type]){selected[type].push(btn);btn.classList.add('selected')}renderComposition()});
+    btn.addEventListener('mouseenter',()=>{const text=btn.dataset.desc;if(!text)return;const tip=document.createElement('div');tip.className='note-tooltip';tip.id='noteTooltip';tip.innerHTML='<strong>'+btn.dataset.note+'</strong>'+text;document.body.appendChild(tip);const r=btn.getBoundingClientRect();tip.style.left=Math.min(r.left,window.innerWidth-300)+'px';tip.style.top=Math.min(r.bottom+8,window.innerHeight-110)+'px'});
+    btn.addEventListener('mouseleave',()=>document.getElementById('noteTooltip')?.remove());
+  });
+
+  const quiz=document.createElement('div');quiz.className='quiz-overlay';quiz.innerHTML=`<div class="quiz-box"><span class="eyebrow">Assistente ZAVQEL</span><h3>Descubra seu perfil.</h3><p>Responda rapidamente e receba uma sugestão de ponto de partida.</p>
+  <div class="quiz-q"><strong>1. Como você prefere a abertura?</strong><div class="quiz-answers"><button class="quiz-answer" data-q="1" data-v="fresh">Fresca e luminosa</button><button class="quiz-answer" data-q="1" data-v="warm">Quente e intensa</button></div></div>
+  <div class="quiz-q"><strong>2. O coração deve ser mais...</strong><div class="quiz-answers"><button class="quiz-answer" data-q="2" data-v="floral">Floral</button><button class="quiz-answer" data-q="2" data-v="spicy">Especiado</button></div></div>
+  <div class="quiz-q"><strong>3. No fundo, você prefere...</strong><div class="quiz-answers"><button class="quiz-answer" data-q="3" data-v="wood">Madeirado</button><button class="quiz-answer" data-q="3" data-v="sweet">Cremoso e doce</button></div></div>
+  <div class="quiz-q"><strong>4. A presença deve ser...</strong><div class="quiz-answers"><button class="quiz-answer" data-q="4" data-v="soft">Elegante e discreta</button><button class="quiz-answer" data-q="4" data-v="bold">Marcante e envolvente</button></div></div>
+  <div class="quiz-result" id="quizResult"></div><div class="quiz-actions"><button class="quiz-close" id="quizClose">FECHAR</button><button class="quiz-finish" id="quizFinish">VER MEU PERFIL</button></div></div>`;
+  document.body.appendChild(quiz);
+  const qa={};document.getElementById('quizOpen')?.addEventListener('click',()=>quiz.classList.add('open'));document.getElementById('quizClose')?.addEventListener('click',()=>quiz.classList.remove('open'));
+  quiz.querySelectorAll('.quiz-answer').forEach(b=>b.addEventListener('click',()=>{const q=b.dataset.q;quiz.querySelectorAll('.quiz-answer[data-q="'+q+'"]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');qa[q]=b.dataset.v}));
+  document.getElementById('quizFinish')?.addEventListener('click',()=>{if(Object.keys(qa).length<4)return;let p='Elegante e equilibrado';if(qa[1]==='fresh'&&qa[4]==='soft')p='Fresco · Elegante';if(qa[1]==='warm'&&qa[4]==='bold')p='Intenso · Envolvente';if(qa[2]==='floral'&&qa[3]==='sweet')p='Floral · Cremoso';if(qa[2]==='spicy'&&qa[3]==='wood')p='Especiado · Amadeirado';const r=document.getElementById('quizResult');r.style.display='block';r.innerHTML='<strong>'+p+'</strong><p>Esse é um ponto de partida. Agora escolha as notas que mais combinam com esse perfil.</p>'});
+  const go=()=>document.getElementById('personalizar')?.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('startPersonalization')?.addEventListener('click',go);document.getElementById('signatureCta')?.addEventListener('click',go);
+  renderCart();renderComposition();
+});
+</script>
+
+</body></html>
