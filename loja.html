@@ -300,29 +300,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     };
 
     const compositionText=[
-      'Saída: '+composition.saida.join(' · '),
-      'Coração: '+composition.coracao.join(' · '),
-      'Fundo: '+composition.fundo.join(' · ')
-    ].join(' | ');
-
-    const existing=cart.find(x=>x.id==='black-signature');
-
-    if(existing){
-      existing.qty++;
-    }else{
-      cart.push({
-        id:'black-signature',
-        name:'Black Signature — Edição I · '+compositionText,
-        price:600,
-        qty:1
-      });
-    }
-
-    renderCart();
-    openCart();
-  });
-
-    const compositionText=[
       composition.saida.length ? 'Saída: '+composition.saida.join(' · ') : '',
       composition.coracao.length ? 'Coração: '+composition.coracao.join(' · ') : '',
       composition.fundo.length ? 'Fundo: '+composition.fundo.join(' · ') : ''
