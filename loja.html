@@ -187,7 +187,7 @@ body.quiz-open{
         </div>
         <div class="profile-result"><small>Perfil estimado</small><strong id="profileText">Escolha suas notas</strong><p id="descriptionText">Sua composição aparecerá aqui conforme você fizer suas escolhas.</p></div>
         <div class="price-line"><span>Edição inaugural</span><strong>R$ 600,00</strong></div>
-        <button class="cta full" id="startPersonalization">CONTINUAR MINHA ASSINATURA</button>
+        <button class="cta full" id="addBlackSignature">ADICIONAR À SACOLA · R$ 600,00</button>
         <p class="small-note" id="compositionStatus">Escolha até 4 notas em cada etapa · máximo 12 notas.</p>
       </aside>
     </div>
@@ -254,7 +254,35 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(items)items.innerHTML=cart.length?cart.map((i,k)=>`<div class="cart-item"><div class="cart-row"><div class="cart-name">${i.name}</div><div class="cart-price">${fmt(i.price*i.qty)}</div></div><div class="qty"><button data-minus="${k}">−</button><span>${i.qty}</span><button data-plus="${k}">+</button><button data-remove="${k}" style="margin-left:auto">Remover</button></div></div>`).join(''):'<p style="color:#777168;font-size:11px;padding:25px 0">Sua sacola está vazia.</p>';
   }
   function openCart(){overlay?.classList.add('open');renderCart()} function closeCart(){overlay?.classList.remove('open')}
-  document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',()=>{const f=cart.find(x=>x.id===b.dataset.id);if(f)f.qty++;else cart.push({id:b.dataset.id,name:b.dataset.name,price:+b.dataset.price,qty:1});renderCart();openCart()}));
+    document.getElementById('addBlackSignature')?.addEventListener('click',()=>{
+    const composition={
+      saida:selected.saida.map(x=>x.dataset.note),
+      coracao:selected.coracao.map(x=>x.dataset.note),
+      fundo:selected.fundo.map(x=>x.dataset.note)
+    };
+
+    const compositionText=[
+      composition.saida.length ? 'Saída: '+composition.saida.join(' · ') : '',
+      composition.coracao.length ? 'Coração: '+composition.coracao.join(' · ') : '',
+      composition.fundo.length ? 'Fundo: '+composition.fundo.join(' · ') : ''
+    ].filter(Boolean).join(' | ');
+
+    const existing=cart.find(x=>x.id==='black-signature');
+
+    if(existing){
+      existing.qty++;
+    }else{
+      cart.push({
+        id:'black-signature',
+        name:'Black Signature — Edição I'+(compositionText?' · '+compositionText:''),
+        price:600,
+        qty:1
+      });
+    }
+
+    renderCart();
+    openCart();
+  });
   document.getElementById('cartItems')?.addEventListener('click',e=>{const x=e.target;if(x.dataset.plus)cart[x.dataset.plus].qty++;if(x.dataset.minus){cart[x.dataset.minus].qty--;if(cart[x.dataset.minus].qty<1)cart.splice(x.dataset.minus,1)}if(x.dataset.remove)cart.splice(x.dataset.remove,1);renderCart()});
   document.getElementById('cartFloating')?.addEventListener('click',openCart);document.getElementById('closeCart')?.addEventListener('click',closeCart);document.getElementById('continue')?.addEventListener('click',closeCart);
   document.getElementById('checkout')?.addEventListener('click',()=>{if(!cart.length)return alert('Sua sacola está vazia.');document.getElementById('checkoutSummary').innerHTML=cart.map(i=>`${i.qty}× ${i.name} — ${fmt(i.price*i.qty)}`).join('<br>');modal?.classList.add('open')});
