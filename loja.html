@@ -263,12 +263,64 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(items)items.innerHTML=cart.length?cart.map((i,k)=>`<div class="cart-item"><div class="cart-row"><div class="cart-name">${i.name}</div><div class="cart-price">${fmt(i.price*i.qty)}</div></div><div class="qty"><button data-minus="${k}">−</button><span>${i.qty}</span><button data-plus="${k}">+</button><button data-remove="${k}" style="margin-left:auto">Remover</button></div></div>`).join(''):'<p style="color:#777168;font-size:11px;padding:25px 0">Sua sacola está vazia.</p>';
   }
   function openCart(){overlay?.classList.add('open');renderCart()} function closeCart(){overlay?.classList.remove('open')}
-    document.getElementById('addBlackSignature')?.addEventListener('click',()=>{
+      document.getElementById('addBlackSignature')?.addEventListener('click',()=>{
+
+    // A composição precisa ter pelo menos uma nota em cada etapa
+    if(selected.saida.length===0){
+      alert('Escolha pelo menos uma nota de saída para continuar.');
+      document.getElementById('addBlackSignature').scrollIntoView({
+        behavior:'smooth',
+        block:'center'
+      });
+      return;
+    }
+
+    if(selected.coracao.length===0){
+      alert('Escolha pelo menos uma nota de coração para continuar.');
+      document.getElementById('addBlackSignature').scrollIntoView({
+        behavior:'smooth',
+        block:'center'
+      });
+      return;
+    }
+
+    if(selected.fundo.length===0){
+      alert('Escolha pelo menos uma nota de fundo para continuar.');
+      document.getElementById('addBlackSignature').scrollIntoView({
+        behavior:'smooth',
+        block:'center'
+      });
+      return;
+    }
+
     const composition={
       saida:selected.saida.map(x=>x.dataset.note),
       coracao:selected.coracao.map(x=>x.dataset.note),
       fundo:selected.fundo.map(x=>x.dataset.note)
     };
+
+    const compositionText=[
+      'Saída: '+composition.saida.join(' · '),
+      'Coração: '+composition.coracao.join(' · '),
+      'Fundo: '+composition.fundo.join(' · ')
+    ].join(' | ');
+
+    const existing=cart.find(x=>x.id==='black-signature');
+
+    if(existing){
+      existing.qty++;
+    }else{
+      cart.push({
+        id:'black-signature',
+        name:'Black Signature — Edição I · '+compositionText,
+        price:600,
+        qty:1
+      });
+    }
+
+    renderCart();
+    openCart();
+  });
 
     const compositionText=[
       composition.saida.length ? 'Saída: '+composition.saida.join(' · ') : '',
