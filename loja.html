@@ -85,6 +85,39 @@
 .quiz-answer{line-height:1.4}
 </style>
 
+
+<style id="quiz-scroll-fix">
+html.quiz-open,
+body.quiz-open{
+  overflow:hidden !important;
+}
+.quiz-overlay{
+  overflow-y:auto !important;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  align-items:flex-start !important;
+  padding:28px 20px !important;
+}
+.quiz-box{
+  max-height:calc(100vh - 56px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  margin:auto 0;
+}
+@media(max-width:700px){
+  .quiz-overlay{
+    padding:14px 10px !important;
+  }
+  .quiz-box{
+    width:min(620px,100%);
+    max-height:calc(100dvh - 28px);
+    margin:auto 0;
+    padding:24px 18px;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
@@ -275,6 +308,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   const qa={};
   document.getElementById('quizOpen')?.addEventListener('click',()=>quiz.classList.add('open'));
   document.getElementById('quizClose')?.addEventListener('click',()=>quiz.classList.remove('open'));
+
+  quiz?.addEventListener('click',(event)=>{
+    if(event.target===quiz){
+      quiz.classList.remove('open');
+      document.documentElement.classList.remove('quiz-open');
+      document.body.classList.remove('quiz-open');
+    }
+  });
   quiz.querySelectorAll('.quiz-answer').forEach(b=>b.addEventListener('click',()=>{const q=b.dataset.q;quiz.querySelectorAll('.quiz-answer[data-q="'+q+'"]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');qa[q]=b.dataset.v}));
   document.getElementById('quizFinish')?.addEventListener('click',()=>{
     const r=document.getElementById('quizResult');
