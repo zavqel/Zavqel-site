@@ -237,8 +237,16 @@ body.quiz-open{
   <input id="customerCity" placeholder="Cidade" autocomplete="address-level2">
   <input id="customerState" placeholder="Estado" maxlength="2" autocomplete="address-level1">
 </div>
-<div class="eyebrow" style="margin-top:20px">Forma de pagamento</div><div class="pay-methods"><span class="pay">PIX</span><span class="pay">Cartão de crédito</span><span class="pay">Cartão de débito</span><span class="pay">Boleto</span></div>
-<div class="modal-actions"><button id="backModal">Voltar</button><button class="confirm" id="confirmOrder">Finalizar pedido</button></div><p style="font-size:8px;color:#888">Demonstração de interface. Nenhum pagamento é processado nesta versão.</p></div></div>
+<div class="eyebrow" style="margin-top:20px">Forma de pagamento</div><div class="pay-methods">
+  <button type="button" class="pay" data-payment="pix">PIX</button>
+  <button type="button" class="pay" data-payment="credit_card">Cartão de crédito</button>
+  <button type="button" class="pay" data-payment="debit_card">Cartão de débito</button>
+  <button type="button" class="pay" data-payment="ticket">Boleto</button>
+</div>
+<div class="modal-actions">
+  <button id="backModal">Voltar</button>
+  <button class="confirm" id="confirmOrder">Continuar para pagamento</button>
+</div><p style="font-size:8px;color:#888">Demonstração de interface. Nenhum pagamento é processado nesta versão.</p></div></div>
 
 
 <script>
