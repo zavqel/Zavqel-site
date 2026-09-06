@@ -69,6 +69,22 @@
 .quiz-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:250;display:none;align-items:center;justify-content:center;padding:20px}.quiz-overlay.open{display:flex}.quiz-box{width:min(620px,100%);background:#0f0f0d;border:1px solid rgba(199,164,91,.25);padding:30px;color:#eee9df}.quiz-box h3{font:500 39px 'Cormorant Garamond',serif;margin:0 0 8px}.quiz-box p{font-size:11px;line-height:1.6;color:#888278}.quiz-q{margin:22px 0;border-top:1px solid rgba(255,255,255,.08);padding-top:17px}.quiz-q strong{display:block;font-size:12px;margin-bottom:10px}.quiz-answers{display:flex;flex-wrap:wrap;gap:7px}.quiz-answer{background:#121210;border:1px solid #35332d;color:#ddd7cc;padding:9px 12px;font-size:9px;cursor:pointer}.quiz-answer.selected{border-color:#c7a45b;color:#d4bd83}.quiz-result{display:none;margin-top:20px;padding:18px;border:1px solid rgba(199,164,91,.2);background:#0b0b09}.quiz-result strong{display:block;color:#d4bd83;font:500 25px 'Cormorant Garamond',serif}.quiz-result p{margin-bottom:0}.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}.quiz-actions button{padding:11px 16px;font-size:8px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer}.quiz-close{background:transparent;border:1px solid #403e36;color:#ddd}.quiz-finish{background:#c7a45b;border:1px solid #c7a45b;color:#090908}
 @media(max-width:700px){.selection-help{align-items:flex-start;flex-direction:column}.selection-help button{width:100%}}
 </style>
+
+<style>
+.quiz-result{display:none;margin-top:22px;padding:21px;border:1px solid rgba(199,164,91,.28);background:#0b0b09}
+.quiz-result .result-kicker{display:block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8c877d;margin-bottom:8px}
+.quiz-result>strong{display:block;color:#d4bd83;font:500 31px/1.05 'Cormorant Garamond',serif}
+.quiz-result>p{font-size:11px;line-height:1.7;color:#9b958b;margin:10px 0 0}
+.quiz-suggested{margin-top:17px;padding-top:15px;border-top:1px solid rgba(255,255,255,.08)}
+.quiz-suggested>small{font-size:8px;letter-spacing:.16em;color:#b99d60}
+.suggested-row{display:grid;grid-template-columns:72px 1fr;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:10px}
+.suggested-row:last-child{border-bottom:0}
+.suggested-row b{font-size:8px;letter-spacing:.12em;color:#777269;text-transform:uppercase}
+.suggested-row span{color:#d6c18c}
+.quiz-disclaimer{font-size:9px!important;opacity:.55;margin-bottom:0!important}
+.quiz-answer{line-height:1.4}
+</style>
+
 </head>
 <body>
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
@@ -220,16 +236,86 @@ document.addEventListener('DOMContentLoaded',()=>{
     btn.addEventListener('mouseleave',()=>document.getElementById('noteTooltip')?.remove());
   });
 
-  const quiz=document.createElement('div');quiz.className='quiz-overlay';quiz.innerHTML=`<div class="quiz-box"><span class="eyebrow">Assistente ZAVQEL</span><h3>Descubra seu perfil.</h3><p>Responda rapidamente e receba uma sugestão de ponto de partida.</p>
-  <div class="quiz-q"><strong>1. Como você prefere a abertura?</strong><div class="quiz-answers"><button class="quiz-answer" data-q="1" data-v="fresh">Fresca e luminosa</button><button class="quiz-answer" data-q="1" data-v="warm">Quente e intensa</button></div></div>
-  <div class="quiz-q"><strong>2. O coração deve ser mais...</strong><div class="quiz-answers"><button class="quiz-answer" data-q="2" data-v="floral">Floral</button><button class="quiz-answer" data-q="2" data-v="spicy">Especiado</button></div></div>
-  <div class="quiz-q"><strong>3. No fundo, você prefere...</strong><div class="quiz-answers"><button class="quiz-answer" data-q="3" data-v="wood">Madeirado</button><button class="quiz-answer" data-q="3" data-v="sweet">Cremoso e doce</button></div></div>
-  <div class="quiz-q"><strong>4. A presença deve ser...</strong><div class="quiz-answers"><button class="quiz-answer" data-q="4" data-v="soft">Elegante e discreta</button><button class="quiz-answer" data-q="4" data-v="bold">Marcante e envolvente</button></div></div>
-  <div class="quiz-result" id="quizResult"></div><div class="quiz-actions"><button class="quiz-close" id="quizClose">FECHAR</button><button class="quiz-finish" id="quizFinish">VER MEU PERFIL</button></div></div>`;
+  const quiz=document.createElement('div');quiz.className='quiz-overlay';quiz.innerHTML=`
+    <div class="quiz-box">
+      <span class="eyebrow">Assistente ZAVQEL</span>
+      <h3>Descubra seu perfil.</h3>
+      <p>Não precisa entender de perfumaria. Responda pensando apenas na sensação que você gostaria de sentir em sua fragrância.</p>
+      <div class="quiz-q"><strong>1. Quando você sente um perfume, o que mais te atrai?</strong><div class="quiz-answers">
+        <button class="quiz-answer" data-q="1" data-v="fresh">🍋 Aquele cheiro fresco e limpo</button>
+        <button class="quiz-answer" data-q="1" data-v="warm">🔥 Um cheiro quente e envolvente</button>
+      </div></div>
+      <div class="quiz-q"><strong>2. Você gostaria que sua fragrância transmitisse mais...</strong><div class="quiz-answers">
+        <button class="quiz-answer" data-q="2" data-v="floral">🌸 Delicadeza e romantismo</button>
+        <button class="quiz-answer" data-q="2" data-v="spicy">🌶️ Personalidade e intensidade</button>
+      </div></div>
+      <div class="quiz-q"><strong>3. Quando o perfume fica na pele, você prefere uma sensação...</strong><div class="quiz-answers">
+        <button class="quiz-answer" data-q="3" data-v="wood">🪵 Elegante, seca e amadeirada</button>
+        <button class="quiz-answer" data-q="3" data-v="sweet">🍦 Macia, cremosa e adocicada</button>
+      </div></div>
+      <div class="quiz-q"><strong>4. Quando você entra em um ambiente, quer que seu perfume...</strong><div class="quiz-answers">
+        <button class="quiz-answer" data-q="4" data-v="soft">🤍 Seja percebido de perto, de forma discreta</button>
+        <button class="quiz-answer" data-q="4" data-v="bold">🖤 Deixe presença e seja lembrado</button>
+      </div></div>
+      <div class="quiz-result" id="quizResult">
+        <span class="result-kicker">Acreditamos que você vai gostar de uma fragrância...</span>
+        <strong id="quizProfile">—</strong>
+        <p id="quizDescription">—</p>
+        <div class="quiz-suggested">
+          <small>NOTAS QUE COMBINAM COM VOCÊ</small>
+          <div class="suggested-row"><b>Saída</b><span id="suggestedSaida">—</span></div>
+          <div class="suggested-row"><b>Coração</b><span id="suggestedCoracao">—</span></div>
+          <div class="suggested-row"><b>Fundo</b><span id="suggestedFundo">—</span></div>
+        </div>
+        <p class="quiz-disclaimer">Esse é apenas um ponto de partida. Você poderá escolher as notas que realmente deseja na sua fragrância.</p>
+      </div>
+      <div class="quiz-actions"><button class="quiz-close" id="quizClose">FECHAR</button><button class="quiz-finish" id="quizFinish">VER MEU PERFIL</button></div>
+    </div>`;
   document.body.appendChild(quiz);
-  const qa={};document.getElementById('quizOpen')?.addEventListener('click',()=>quiz.classList.add('open'));document.getElementById('quizClose')?.addEventListener('click',()=>quiz.classList.remove('open'));
+  const qa={};
+  document.getElementById('quizOpen')?.addEventListener('click',()=>quiz.classList.add('open'));
+  document.getElementById('quizClose')?.addEventListener('click',()=>quiz.classList.remove('open'));
   quiz.querySelectorAll('.quiz-answer').forEach(b=>b.addEventListener('click',()=>{const q=b.dataset.q;quiz.querySelectorAll('.quiz-answer[data-q="'+q+'"]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');qa[q]=b.dataset.v}));
-  document.getElementById('quizFinish')?.addEventListener('click',()=>{if(Object.keys(qa).length<4)return;let p='Elegante e equilibrado';if(qa[1]==='fresh'&&qa[4]==='soft')p='Fresco · Elegante';if(qa[1]==='warm'&&qa[4]==='bold')p='Intenso · Envolvente';if(qa[2]==='floral'&&qa[3]==='sweet')p='Floral · Cremoso';if(qa[2]==='spicy'&&qa[3]==='wood')p='Especiado · Amadeirado';const r=document.getElementById('quizResult');r.style.display='block';r.innerHTML='<strong>'+p+'</strong><p>Esse é um ponto de partida. Agora escolha as notas que mais combinam com esse perfil.</p>'});
+  document.getElementById('quizFinish')?.addEventListener('click',()=>{
+    const r=document.getElementById('quizResult');
+    r.style.display='block';
+    if(Object.keys(qa).length<4){
+      document.getElementById('quizProfile').textContent='Complete as quatro respostas';
+      document.getElementById('quizDescription').textContent='Assim conseguimos entender melhor o tipo de fragrância que combina com você.';
+      document.getElementById('suggestedSaida').textContent='—';document.getElementById('suggestedCoracao').textContent='—';document.getElementById('suggestedFundo').textContent='—';
+      return;
+    }
+    let profile='Elegante e equilibrado';
+    let description='Você parece buscar uma fragrância versátil, refinada e confortável de usar.';
+    let notes={saida:['Bergamota','Mandarina'],coracao:['Jasmim','Rosa'],fundo:['Sândalo','Almíscar','Âmbar']};
+    if(qa[1]==='fresh'&&qa[2]==='floral'){
+      profile='Fresco, delicado e luminoso';
+      description='Você tende a gostar de perfumes que começam leves e frescos, evoluem com delicadeza e deixam uma sensação limpa e elegante.';
+      notes={saida:['Bergamota','Limão Siciliano','Maçã Verde'],coracao:['Flor de Cerejeira','Jasmim','Rosa'],fundo:['Almíscar','Sândalo']};
+    }else if(qa[1]==='warm'&&qa[2]==='spicy'){
+      profile='Quente, marcante e sofisticado';
+      description='Você tende a gostar de fragrâncias com presença, que passam sensação de segurança e elegância. Especiarias trazem personalidade e madeiras dão profundidade.';
+      notes={saida:['Bergamota','Pimenta Rosa'],coracao:['Canela','Tabaco','Cardamomo'],fundo:['Sândalo','Âmbar','Almíscar','Couro']};
+    }else if(qa[3]==='sweet'&&qa[1]==='warm'){
+      profile='Quente, cremoso e envolvente';
+      description='Você parece se identificar com perfumes macios e envolventes, com uma doçura elegante e um fundo confortável que permanece na pele.';
+      notes={saida:['Mandarina','Laranja'],coracao:['Jasmim','Mel'],fundo:['Baunilha','Fava Tonka','Sândalo','Âmbar']};
+    }else if(qa[3]==='wood'){
+      profile='Elegante, seco e amadeirado';
+      description='Você tende a preferir uma presença sofisticada e estruturada, com madeiras que deixam um rastro elegante e seguro.';
+      notes={saida:['Bergamota','Grapefruit'],coracao:['Lavanda','Gerânio','Tabaco'],fundo:['Cedro','Vetiver','Sândalo','Patchouli']};
+    }else if(qa[4]==='bold'){
+      profile='Intenso, envolvente e memorável';
+      description='Você parece gostar de fragrâncias que não passam despercebidas, com calor, profundidade e presença marcante.';
+      notes={saida:['Bergamota','Pimenta Rosa'],coracao:['Canela','Tabaco'],fundo:['Âmbar','Couro','Sândalo','Baunilha']};
+    }
+    document.getElementById('quizProfile').textContent=profile;
+    document.getElementById('quizDescription').textContent=description;
+    document.getElementById('suggestedSaida').textContent=notes.saida.join(' · ');
+    document.getElementById('suggestedCoracao').textContent=notes.coracao.join(' · ');
+    document.getElementById('suggestedFundo').textContent=notes.fundo.join(' · ');
+  });
+
   const go=()=>document.getElementById('personalizar')?.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('startPersonalization')?.addEventListener('click',go);document.getElementById('signatureCta')?.addEventListener('click',go);
   renderCart();renderComposition();
 });
