@@ -40,7 +40,8 @@
 .pay.selected{background:#111;color:#fff;border-color:#111}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.modal-actions button{padding:12px 18px;border:1px solid #111;cursor:pointer;font-size:9px;letter-spacing:.1em;text-transform:uppercase}.modal-actions .confirm{background:#111;color:#fff}
 @media(max-width:1050px){.product-grid{grid-template-columns:repeat(3,1fr)}.nav-actions a{display:none}}
 @media(max-width:760px){.top{font-size:7px}.nav{height:64px;padding:0 15px}.brand{min-width:auto}.word{font-size:11px}.search{display:none}.nav-actions{gap:8px}.hero-inner{grid-template-columns:1fr;padding:60px 22px;min-height:auto}.hero-product{min-height:280px}.hero-product .bottle{transform:scale(1.05)}.trust{grid-template-columns:1fr 1fr}.trust-item{border-bottom:1px solid var(--line)}.container{padding:0 16px}.section{padding:55px 0}.section-head{display:block}.section-head p{margin-top:15px}.promo-grid{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr 1fr;gap:10px}.product-photo{height:285px}.product-copy{padding:13px}.product-copy h3{font-size:23px}.story-inner{grid-template-columns:1fr;gap:35px}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:470px){.product-grid{grid-template-columns:1fr}.product-photo{height:330px}.footer-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}}
+@media(max-width:470px){.product-grid{grid-template-columns:1fr}.product-photo{height:330px}.footer-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}} 
+  
 
 .catalog-pagination{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:34px;flex-wrap:wrap}
 .page-btn{min-width:34px;height:34px;padding:0 9px;border:1px solid #38362f;background:#11110f;color:#bdb6aa;font-size:9px;cursor:pointer}
@@ -50,6 +51,25 @@
 .catalog-summary{text-align:center;color:#777269;font-size:9px;letter-spacing:.08em;margin-top:13px}
 </style>
 
+  <style>
+/* CORREÇÃO DO CHECKOUT NO CELULAR */
+@media (max-width: 768px) {
+  .modal {
+    overflow-y: auto !important;
+    align-items: flex-start !important;
+    padding: 20px 10px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-box {
+    max-height: none !important;
+    height: auto !important;
+    margin: 0 auto 20px;
+    overflow: visible !important;
+  }
+}
+</style>
+    
 <style>
 .customization-section{background:#080807}
 .customizer{display:grid;grid-template-columns:1.35fr .8fr;gap:34px;align-items:start;margin-top:38px}
@@ -388,8 +408,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     </div>`;
   document.body.appendChild(quiz);
   const qa={};
-  document.getElementById('quizOpen')?.addEventListener('click',()=>quiz.classList.add('open'));
-  document.getElementById('quizClose')?.addEventListener('click',()=>quiz.classList.remove('open'));
+  document.getElementById('quizOpen')?.addEventListener('click',()=>{
+  quiz.classList.add('open');
+  document.documentElement.classList.add('quiz-open');
+  document.body.classList.add('quiz-open');
+});
+  document.getElementById('quizClose')?.addEventListener('click',()=>{
+  quiz.classList.remove('open');
+  document.documentElement.classList.remove('quiz-open');
+  document.body.classList.remove('quiz-open');
+});
 
   quiz?.addEventListener('click',(event)=>{
     if(event.target===quiz){
