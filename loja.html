@@ -221,7 +221,7 @@ body.quiz-open{
 <footer class="footer"><div class="container footer-grid"><div><div class="word" style="color:#eee">ZAVQEL</div><p>Maison de Parfum.<br>Uma fragrância. Uma assinatura.</p></div><div><h4>Comprar</h4><a href="#colecao">Black Signature</a><br><a href="#colecao">Primeira coleção</a></div><div><h4>Maison</h4><a href="index.html">A ZAVQEL</a><br><a href="colecao.html">Coleção</a><br><a href="personalizacao.html">Personalização</a></div><div><h4>Atendimento</h4><a href="personalizacao.html">Personalização</a><br><a href="#">Entrega</a><br><a href="#">Trocas e devoluções</a></div></div><div class="container copy">© 2026 ZAVQEL — Todos os direitos reservados.</div></footer>
 
 <button class="cart-button" id="cartFloating">SACOLA · <b id="cartCount">0</b></button>
-<div class="overlay" id="cartOverlay"><aside class="drawer"><div class="drawer-head"><h2>Sua sacola</h2><button class="close" id="closeCart">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div><button class="checkout" id="checkout">Continuar para pagamento</button><button class="checkout secondary" id="continue">Continuar comprando</button><p class="cart-note">Frete grátis para todo o Brasil. O checkout desta versão é uma interface de demonstração e será conectado ao gateway de pagamento real.</p></aside></div>
+<div class="overlay" id="cartOverlay"><aside class="drawer"><div class="drawer-head"><h2>Sua sacola</h2><button class="close" id="closeCart">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div><button class="checkout" id="checkout">Continuar para pagamento</button><button class="checkout secondary" id="continue">Continuar comprando</button><p class="cart-note">Frete grátis para todo o Brasil. Pagamento seguro processado pelo Mercado Pago.</p></aside></div>
 
 <div class="modal" id="checkoutModal"><div class="modal-box"><div style="display:flex;justify-content:space-between"><div><div class="eyebrow">Finalização</div><h2>Seu pedido.</h2></div><button class="close" id="closeModal" style="color:#222">×</button></div><div id="checkoutSummary" style="font-size:11px;color:#666;line-height:1.7"></div>
 <div class="form-grid">
@@ -238,16 +238,12 @@ body.quiz-open{
   <input id="customerCity" placeholder="Cidade" autocomplete="address-level2">
   <input id="customerState" placeholder="Estado" maxlength="2" autocomplete="address-level1">
 </div>
-<div class="eyebrow" style="margin-top:20px">Forma de pagamento</div><div class="pay-methods">
-  <button type="button" class="pay" data-payment="pix">PIX</button>
-  <button type="button" class="pay" data-payment="credit_card">Cartão de crédito</button>
-  <button type="button" class="pay" data-payment="debit_card">Cartão de débito</button>
-  <button type="button" class="pay" data-payment="ticket">Boleto</button>
-</div>
+<div class="eyebrow" style="margin-top:20px">Pagamento</div>
+<p style="font-size:10px;color:#666;line-height:1.7;margin:10px 0 0">Você será redirecionado ao Mercado Pago para concluir o pagamento com segurança. Os meios disponíveis, como PIX, cartão e boleto, serão apresentados pelo Mercado Pago.</p>
 <div class="modal-actions">
   <button id="backModal">Voltar</button>
   <button class="confirm" id="confirmOrder">Continuar para pagamento</button>
-</div><p style="font-size:8px;color:#888">Demonstração de interface. Nenhum pagamento é processado nesta versão.</p></div></div>
+</div><p style="font-size:8px;color:#888">Você será redirecionado ao Mercado Pago para concluir o pagamento com segurança.</p></div></div>
 
 
 <script>
@@ -309,13 +305,15 @@ document.addEventListener('DOMContentLoaded',()=>{
       composition.fundo.length ? 'Fundo: '+composition.fundo.join(' · ') : ''
     ].filter(Boolean).join(' | ');
 
-    const existing=cart.find(x=>x.id==='black-signature');
+    const existing=cart.find(x=>x.id==='black-signature' && x.compositionText===compositionText);
 
     if(existing){
       existing.qty++;
     }else{
       cart.push({
         id:'black-signature',
+        composition,
+        compositionText,
         name:'Black Signature — Edição I'+(compositionText?' · '+compositionText:''),
         price:600,
         qty:1
@@ -480,21 +478,103 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   });
 
-  // Seleção do método de pagamento
-  let selectedPayment = '';
+  // Mercado Pago - Checkout Pro
+  const MP_CHECKOUT_URL = 'https://api.zavqel.com.br';
+  const confirmOrder = document.getElementById('confirmOrder');
 
-  document.querySelectorAll('.pay[data-payment]').forEach(button => {
-    button.addEventListener('click', () => {
+  confirmOrder?.addEventListener('click', async () => {
+    if (!cart.length) {
+      alert('Sua sacola está vazia.');
+      return;
+    }
 
-      document.querySelectorAll('.pay[data-payment]').forEach(b => {
-        b.classList.remove('selected');
+    const customer = {
+      name: document.getElementById('customerName')?.value.trim() || '',
+      email: document.getElementById('customerEmail')?.value.trim() || '',
+      phone: document.getElementById('customerPhone')?.value.trim() || '',
+      cpf: document.getElementById('customerCpf')?.value.replace(/\D/g, '') || '',
+      cep: document.getElementById('customerCep')?.value.replace(/\D/g, '') || '',
+      address: document.getElementById('customerAddress')?.value.trim() || '',
+      number: document.getElementById('customerNumber')?.value.trim() || '',
+      complement: document.getElementById('customerComplement')?.value.trim() || '',
+      neighborhood: document.getElementById('customerNeighborhood')?.value.trim() || '',
+      city: document.getElementById('customerCity')?.value.trim() || '',
+      state: document.getElementById('customerState')?.value.trim().toUpperCase() || ''
+    };
+
+    const required = [
+      ['Nome completo', customer.name],
+      ['E-mail', customer.email],
+      ['WhatsApp', customer.phone],
+      ['CPF', customer.cpf],
+      ['CEP', customer.cep],
+      ['Endereço', customer.address],
+      ['Número', customer.number],
+      ['Bairro', customer.neighborhood],
+      ['Cidade', customer.city],
+      ['Estado', customer.state]
+    ];
+
+    const missing = required.find(([, value]) => !value);
+    if (missing) {
+      alert(`Preencha o campo: ${missing[0]}.`);
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) {
+      alert('Informe um e-mail válido.');
+      return;
+    }
+
+    if (customer.cpf.length !== 11) {
+      alert('Informe um CPF válido com 11 dígitos.');
+      return;
+    }
+
+    if (customer.cep.length !== 8) {
+      alert('Informe um CEP válido com 8 dígitos.');
+      return;
+    }
+
+    const originalText = confirmOrder.textContent;
+    confirmOrder.disabled = true;
+    confirmOrder.textContent = 'Preparando pagamento...';
+
+    try {
+      const response = await fetch(MP_CHECKOUT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: cart.map(item => ({
+            id: item.id,
+            title: item.name,
+            quantity: item.qty,
+            unit_price: item.price,
+            composition: item.compositionText || ''
+          })),
+          customer
+        })
       });
 
-      button.classList.add('selected');
-      selectedPayment = button.dataset.payment;
-    });
+      let data = {};
+      try {
+        data = await response.json();
+      } catch (_) {}
+
+      if (!response.ok || !data.init_point) {
+        console.error('Checkout ZAVQEL:', data);
+        throw new Error(data.error || 'Não foi possível preparar o pagamento.');
+      }
+
+      window.location.href = data.init_point;
+    } catch (error) {
+      console.error(error);
+      alert(error.message || 'Não foi possível iniciar o pagamento. Tente novamente.');
+      confirmOrder.disabled = false;
+      confirmOrder.textContent = originalText;
+    }
   });
-  
+
   renderCart();renderComposition();
 });
 </script>
