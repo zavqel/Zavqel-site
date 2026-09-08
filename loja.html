@@ -291,9 +291,13 @@ body.quiz-open{
       </div>
     </div>
 
-    <a href="loja.html" class="payment-success-button">
-      Acompanhar pedido
-    </a>
+   <a
+  id="trackOrderButton"
+  href="pedidos.html"
+  class="payment-success-button"
+>
+  Acompanhar pedido
+</a>
   </div>
 </div>
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
@@ -768,6 +772,14 @@ const pagamentoStatus =
 
 const pedido =
   paymentParams.get('pedido');
+
+  const trackOrderButton =
+  document.getElementById('trackOrderButton');
+
+if (trackOrderButton && pedido) {
+  trackOrderButton.href =
+    `pedidos.html?pedido=${encodeURIComponent(pedido)}`;
+}
 
 if (
   pagamentoStatus === 'sucesso' &&
