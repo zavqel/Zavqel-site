@@ -684,7 +684,7 @@
 
     lookupButton.addEventListener(
       'click',
-      () => {
+      async () => {
 
         const orderNumber =
           orderNumberInput.value.trim();
@@ -711,10 +711,92 @@
           return;
         }
 
-        /*
-          A consulta ao banco será conectada ao Worker
-          na próxima etapa.
-        */
+       lookupButton.disabled = true;
+lookupButton.textContent = 'CONSULTANDO...';
+
+try {
+  const response = await fetch(
+    `https://api.zavqel.com.br/pedido?pedido=${encodeURIComponent(orderNumber)}&email=${encodeURIComponent(email)}`
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data.error || 'Pedido não encontrado.'
+    );
+  }
+
+  const order =
+    data.order;
+
+  document.getElementById(
+    'resultOrderNumber'
+  ).textContent =
+    order.order_number;
+
+  document.getElementById(
+    'resultStatus'
+  ).textContent =
+    order.status === 'approved'
+      ? 'PAGAMENTO APROVADO'
+      : order.status === 'pending'
+        ? 'PAGAMENTO PENDENTE'
+        : order.status.toUpperCase();
+
+  const firstItem =
+    order.items?.[0];
+
+  document.getElementById(
+    'resultProduct'
+  ).textContent =
+    firstItem?.title ||
+    'Black Signature — Edição I';
+
+  document.getElementById(
+    'resultAmount'
+  ).textContent =
+    new Intl.NumberFormat(
+      'pt-BR',
+      {
+        style: 'currency',
+        currency: order.currency || 'BRL'
+      }
+    ).format(
+      Number(order.amount || 0)
+    );
+
+  document.getElementById(
+    'resultDate'
+  ).textContent =
+    order.created_at
+      ? new Date(
+          order.created_at
+        ).toLocaleString(
+          'pt-BR',
+          {
+            dateStyle: 'short',
+            timeStyle: 'short'
+          }
+        )
+      : '—';
+
+  result.classList.add('open');
+
+} catch (error) {
+
+  message.textContent =
+    error.message ||
+    'Não foi possível consultar o pedido.';
+
+  message.classList.add('open');
+
+} finally {
+
+  lookupButton.disabled = false;
+  lookupButton.textContent =
+    'CONSULTAR PEDIDO';
+}
 
         message.textContent =
           'Consulta preparada. A conexão com seus pedidos será ativada na próxima etapa.';
