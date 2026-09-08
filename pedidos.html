@@ -908,6 +908,45 @@ try {
         )
       : '—';
 
+  const fulfillmentStatus =
+  order.fulfillment_status || 'pending';
+
+const timelineSteps = [
+  'pending',
+  'preparing',
+  'shipped',
+  'delivered'
+];
+
+const currentStep =
+  timelineSteps.indexOf(
+    fulfillmentStatus
+  );
+
+document
+  .querySelectorAll(
+    '#orderTimeline .timeline-step'
+  )
+  .forEach((step, index) => {
+
+    step.classList.remove(
+      'active',
+      'completed'
+    );
+
+    if (currentStep === -1) {
+      return;
+    }
+
+    if (index < currentStep) {
+      step.classList.add('completed');
+    }
+
+    if (index === currentStep) {
+      step.classList.add('active');
+    }
+  });
+
   result.classList.add('open');
 
 } catch (error) {
