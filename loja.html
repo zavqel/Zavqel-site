@@ -140,6 +140,133 @@ body.quiz-open{
 }
 </style>
 
+  <style>
+/* =========================================================
+   CONFIRMAÇÃO DE PAGAMENTO
+   ========================================================= */
+
+.payment-success-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.84);
+  z-index:500;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.payment-success-overlay.open{
+  display:flex;
+}
+
+.payment-success-box{
+  width:min(560px,100%);
+  background:#0d0d0b;
+  border:1px solid rgba(199,164,91,.35);
+  box-shadow:0 30px 100px rgba(0,0,0,.55);
+  padding:42px 34px;
+  text-align:center;
+}
+
+.payment-success-kicker{
+  font-size:9px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+
+.payment-success-icon{
+  width:62px;
+  height:62px;
+  border:1px solid rgba(199,164,91,.55);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:0 auto 22px;
+  color:var(--gold2);
+  font-size:25px;
+}
+
+.payment-success-box h2{
+  font:500 48px/.9 'Cormorant Garamond',serif;
+  color:#f4f1e9;
+  margin:0 0 12px;
+}
+
+.payment-success-text{
+  color:#9b958b;
+  font-size:12px;
+  line-height:1.8;
+  margin:0 auto 26px;
+  max-width:430px;
+}
+
+.payment-order-card{
+  border-top:1px solid rgba(199,164,91,.18);
+  border-bottom:1px solid rgba(199,164,91,.18);
+  padding:20px 0;
+  margin-bottom:25px;
+}
+
+.payment-order-label{
+  display:block;
+  font-size:8px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#777269;
+  margin-bottom:7px;
+}
+
+.payment-order-number{
+  display:block;
+  font:500 25px 'Cormorant Garamond',serif;
+  color:var(--gold2);
+  word-break:break-word;
+}
+
+.payment-product{
+  font-size:11px;
+  color:#ddd7cc;
+  margin-top:10px;
+}
+
+.payment-product strong{
+  display:block;
+  font:500 24px 'Cormorant Garamond',serif;
+  color:#f4f1e9;
+  margin-top:4px;
+}
+
+.payment-success-button{
+  display:inline-block;
+  padding:13px 22px;
+  background:var(--gold);
+  border:1px solid var(--gold);
+  color:#080807;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:9px;
+  letter-spacing:.14em;
+  cursor:pointer;
+}
+
+@media(max-width:600px){
+  .payment-success-box{
+    padding:32px 22px;
+  }
+
+  .payment-success-box h2{
+    font-size:40px;
+  }
+
+  .payment-order-number{
+    font-size:21px;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
