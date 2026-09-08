@@ -757,6 +757,39 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   });
 
+  /* =========================================================
+   CONFIRMAÇÃO DE PAGAMENTO
+   ========================================================= */
+
+const paymentParams = new URLSearchParams(window.location.search);
+
+const pagamentoStatus =
+  paymentParams.get('pagamento');
+
+const pedido =
+  paymentParams.get('pedido');
+
+if (
+  pagamentoStatus === 'sucesso' &&
+  pedido
+) {
+  const successOverlay =
+    document.getElementById(
+      'paymentSuccessOverlay'
+    );
+
+  const orderNumber =
+    document.getElementById(
+      'paymentOrderNumber'
+    );
+
+  if (successOverlay && orderNumber) {
+    orderNumber.textContent = pedido;
+
+    successOverlay.classList.add('open');
+  }
+}
+
   renderCart();renderComposition();
 });
 </script>
