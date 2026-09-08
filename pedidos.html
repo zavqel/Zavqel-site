@@ -344,6 +344,85 @@
       white-space:nowrap;
     }
 
+    .order-timeline{
+  padding:28px 26px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.timeline-step{
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  min-height:70px;
+}
+
+.timeline-step:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  left:15px;
+  top:32px;
+  width:1px;
+  height:48px;
+  background:rgba(199,164,91,.18);
+}
+
+.timeline-dot{
+  width:32px;
+  height:32px;
+  border:1px solid rgba(199,164,91,.22);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  flex:none;
+  color:#777269;
+  font-size:9px;
+  position:relative;
+  z-index:1;
+  background:#0c0c0a;
+}
+
+.timeline-info{
+  padding-top:2px;
+}
+
+.timeline-info strong{
+  display:block;
+  color:#bdb6aa;
+  font-size:10px;
+  font-weight:500;
+  margin-bottom:5px;
+}
+
+.timeline-info span{
+  color:#625e57;
+  font-size:9px;
+  line-height:1.6;
+}
+
+.timeline-step.active .timeline-dot{
+  border-color:var(--gold);
+  color:var(--gold2);
+  background:rgba(199,164,91,.06);
+}
+
+.timeline-step.active .timeline-info strong{
+  color:var(--gold2);
+}
+
+.timeline-step.completed .timeline-dot{
+  border-color:var(--gold);
+  color:var(--gold2);
+}
+
+.timeline-step.completed .timeline-info strong{
+  color:#ddd7cc;
+}
+
+.timeline-step.completed:not(:last-child)::after{
+  background:rgba(199,164,91,.42);
+}
+
     .result-body{
       padding:26px;
     }
@@ -606,6 +685,42 @@
           </div>
 
         </div>
+
+        <div class="order-timeline" id="orderTimeline">
+
+  <div class="timeline-step" data-step="pending">
+    <div class="timeline-dot">1</div>
+    <div class="timeline-info">
+      <strong>Pedido recebido</strong>
+      <span>Seu pedido foi registrado.</span>
+    </div>
+  </div>
+
+  <div class="timeline-step" data-step="preparing">
+    <div class="timeline-dot">2</div>
+    <div class="timeline-info">
+      <strong>Em preparação</strong>
+      <span>Seu pedido está sendo preparado.</span>
+    </div>
+  </div>
+
+  <div class="timeline-step" data-step="shipped">
+    <div class="timeline-dot">3</div>
+    <div class="timeline-info">
+      <strong>Enviado</strong>
+      <span>Seu pedido foi enviado.</span>
+    </div>
+  </div>
+
+  <div class="timeline-step" data-step="delivered">
+    <div class="timeline-dot">4</div>
+    <div class="timeline-info">
+      <strong>Entregue</strong>
+      <span>Pedido entregue com sucesso.</span>
+    </div>
+  </div>
+
+</div>
 
         <div class="result-body">
 
