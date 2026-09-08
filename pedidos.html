@@ -667,11 +667,23 @@
   </footer>
 
   <script>
+    
     const lookupButton =
       document.getElementById('lookupOrder');
 
     const orderNumberInput =
       document.getElementById('orderNumber');
+
+    const pedidoParams =
+  new URLSearchParams(window.location.search);
+
+const pedidoUrl =
+  pedidoParams.get('pedido');
+
+if (pedidoUrl) {
+  orderNumberInput.value =
+    pedidoUrl;
+}
 
     const emailInput =
       document.getElementById('customerEmail');
