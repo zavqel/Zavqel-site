@@ -299,15 +299,60 @@
     const loginMessage =
       document.getElementById('loginMessage');
 
-    loginButton.addEventListener('click', () => {
+   loginButton.addEventListener('click', async () => {
 
-      loginMessage.textContent =
-        'A autenticação será conectada ao servidor no próximo passo.';
+  const password =
+    document.getElementById('adminPassword').value;
 
-      loginMessage.style.display = 'block';
+  loginButton.disabled = true;
+  loginButton.textContent = 'AUTENTICANDO...';
 
-    });
+  loginMessage.style.display = 'none';
 
+  try {
+
+    const response = await fetch(
+      'https://api.zavqel.com.br/admin/login',
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          password
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.error || 'Não foi possível autenticar.'
+      );
+    }
+
+    loginCard.style.display = 'none';
+    adminPanel.style.display = 'block';
+
+  } catch (error) {
+
+    loginMessage.textContent =
+      error.message;
+
+    loginMessage.style.display = 'block';
+
+  } finally {
+
+    loginButton.disabled = false;
+    loginButton.textContent =
+      'ENTRAR NO PAINEL';
+
+  }
+
+});
     logoutButton.addEventListener('click', () => {
 
       adminPanel.style.display = 'none';
