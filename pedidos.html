@@ -937,6 +937,33 @@ const currentStep =
     fulfillmentStatus
   );
 
+  const trackingInfo =
+  document.getElementById('trackingInfo');
+
+const trackingCarrier =
+  document.getElementById('trackingCarrier');
+
+const trackingCode =
+  document.getElementById('trackingCode');
+
+if (
+  order.shipping_carrier ||
+  order.tracking_code
+) {
+  trackingCarrier.textContent =
+    order.shipping_carrier ||
+    'Transportadora não informada';
+
+  trackingCode.textContent =
+    order.tracking_code
+      ? `Código de rastreio: ${order.tracking_code}`
+      : 'Código de rastreio não informado';
+
+  trackingInfo.style.display = 'block';
+} else {
+  trackingInfo.style.display = 'none';
+}
+
 document
   .querySelectorAll(
     '#orderTimeline .timeline-step'
