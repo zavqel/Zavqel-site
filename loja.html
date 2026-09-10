@@ -281,6 +281,9 @@ body.quiz-open{
 .payment-result-box h2.pending{color:#f0dfb1;}
 .payment-result-box h2.failure{color:#ead0c9;}
 
+@media(max-width:700px){
+  .cart-button{right:12px;bottom:12px;padding:12px 14px}
+}
 @media(max-width:600px){
   .payment-success-box{padding:32px 22px;}
   .payment-success-box h2{font-size:40px;}
@@ -303,8 +306,38 @@ body.quiz-open{
   .signature-section{padding-top:82px;padding-bottom:82px}.signature-layout{padding-top:0;border-top:0;gap:70px}.signature-layout h2{font-size:clamp(52px,6vw,84px);letter-spacing:-.02em}.signature-preview{min-height:430px;background:radial-gradient(circle at center,rgba(199,164,91,.07),transparent 55%),#0a0a08;position:relative;overflow:hidden}.signature-preview:before{content:"001—100";position:absolute;top:28px;right:28px;color:rgba(199,164,91,.3);font-size:8px;letter-spacing:.22em}.signature-monogram{width:145px;height:145px;margin-bottom:28px;display:grid;place-items:center}.signature-monogram img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 15px 32px rgba(199,164,91,.15))}.signature-preview span{letter-spacing:.30em;color:#bbb4a7}.signature-preview strong{letter-spacing:.20em}.signature-preview small{margin-top:12px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#6f695f}
   .limited-section{padding:86px 0;background:linear-gradient(180deg,#0a0a08,#070706)}.limited-section h2{font-size:clamp(42px,5vw,68px)}.limited-section h2 em{font-style:italic;color:var(--gold2);font-weight:400}.limited-mark{font-size:110px;opacity:.9}.footer{padding-top:62px}.footer-brand{display:flex;align-items:center;gap:12px;color:#eee;min-height:40px}.footer-brand img{width:34px;height:34px;object-fit:contain}.footer-brand span{font-size:14px;letter-spacing:.35em}.cart-button{right:25px;bottom:24px;padding:15px 19px;background:rgba(10,10,9,.96);backdrop-filter:blur(8px)}
   @media(max-width:850px){.hero{min-height:0}.hero-inner{min-height:0;padding-top:52px;padding-bottom:36px}.hero-product{height:400px}.hero-photo-wrap{height:410px}.campaign-section{grid-template-columns:1fr}.campaign-media{min-height:480px}.campaign-copy{padding:54px 24px 64px}.signature-layout{gap:35px}}
-  @media(max-width:700px){.top{font-size:6.5px;letter-spacing:.16em;padding:0 8px;text-align:center}.nav{height:65px}.mark{width:40px;height:40px}.hero h1{font-size:clamp(66px,19vw,92px)}.hero-availability{gap:8px}.hero-availability span{font-size:7px}.hero-photo-wrap{height:350px}.hero-photo{transform:scale(1.12);object-position:center 53%}.promo h3{font-size:32px}.campaign-media{min-height:410px}.campaign-copy h2{font-size:clamp(43px,12vw,62px)}.signature-monogram{width:120px;height:120px}}
-  @media(max-width:470px){.hero-inner{padding-left:18px;padding-right:18px}.hero-actions .cta{width:100%;text-align:center}.hero-photo-wrap{height:310px}.campaign-media{min-height:350px}.limited-mark{font-size:78px}}
+  @media(max-width:700px){
+  .top{font-size:6.5px;letter-spacing:.16em;padding:0 8px;text-align:center}
+  .nav{height:auto;min-height:65px;padding:9px 12px;gap:8px;align-items:center}
+  .mark{width:40px;height:40px;flex:0 0 auto}
+  .brand{min-width:0;flex:0 0 auto}
+  .word{font-size:10px;letter-spacing:.30em}
+  .nav-actions{display:flex!important;margin-left:auto;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap;max-width:76%}
+  .nav-actions a,.nav-actions button{display:block!important;font-size:8px;letter-spacing:.03em;white-space:nowrap;padding:0}
+  .header-signature{display:none}
+  .hero h1{font-size:clamp(66px,19vw,92px)}
+  .hero-availability{gap:8px}
+  .hero-availability span{font-size:7px}
+  .hero-photo-wrap{height:350px;width:100%;max-width:100%;overflow:hidden}
+  .hero-photo{transform:none!important;width:100%;height:100%;object-fit:contain;object-position:center}
+  .promo h3{font-size:32px}
+  .campaign-media{min-height:410px}
+  .campaign-copy h2{font-size:clamp(43px,12vw,62px)}
+  .signature-monogram{width:120px;height:120px}
+}
+
+  @media(max-width:470px){
+  .nav{padding:8px 9px;gap:7px}
+  .word{font-size:9px;letter-spacing:.25em}
+  .nav-actions{gap:6px;max-width:78%}
+  .nav-actions a,.nav-actions button{font-size:7px;letter-spacing:.015em}
+  .hero-inner{padding-left:18px;padding-right:18px}
+  .hero-actions .cta{width:100%;text-align:center}
+  .hero-photo-wrap{height:310px}
+  .campaign-media{min-height:350px}
+  .limited-mark{font-size:78px}
+}
+
 </style>
 </head>
 <body>
@@ -602,17 +635,41 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   buttons.forEach(btn=>{
     btn.addEventListener('click',()=>{
-      const type=btn.dataset.type,i=selected[type].indexOf(btn);
-      if(i>=0){selected[type].splice(i,1);btn.classList.remove('selected')}
-      else if(selected[type].length<limits[type]){selected[type].push(btn);btn.classList.add('selected')}
+      const type=btn.dataset.type;
+      const current=selected[type];
+      const index=current.indexOf(btn);
+
+      // Deselect the tapped note.
+      if(index>=0){
+        current.splice(index,1);
+        btn.classList.remove('selected');
+        renderComposition();
+        if(isMobile()) showTooltip(btn);
+        return;
+      }
+
+      // Each stage has its own maximum of 4 notes.
+      if(current.length>=limits[type]){
+        btn.classList.remove('selected');
+        renderComposition();
+        if(isMobile()) showTooltip(btn);
+        return;
+      }
+
+      current.push(btn);
+      btn.classList.add('selected');
       renderComposition();
       if(isMobile()) showTooltip(btn);
     });
+
     btn.addEventListener('mouseenter',()=>{
       if(isMobile())return;
       showTooltip(btn);
     });
-    btn.addEventListener('mouseleave',()=>{if(!isMobile()) removeTooltip();});
+
+    btn.addEventListener('mouseleave',()=>{
+      if(!isMobile()) removeTooltip();
+    });
   });
 
   const quiz=document.createElement('div');quiz.className='quiz-overlay';quiz.innerHTML=`
