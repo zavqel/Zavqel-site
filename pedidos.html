@@ -804,15 +804,31 @@
       document.getElementById('orderNumber');
 
     const pedidoParams =
-  new URLSearchParams(window.location.search);
+      new URLSearchParams(window.location.search);
 
-const pedidoUrl =
-  pedidoParams.get('pedido');
+    const pedidoUrl =
+      pedidoParams.get('pedido');
 
-if (pedidoUrl) {
-  orderNumberInput.value =
-    pedidoUrl;
-}
+    // Mantém o número do pedido após F5 sem expor o e-mail na URL.
+    // A prioridade é: URL > memória local.
+    const STORAGE_KEY = 'zavqel_pedido_consulta';
+
+    const savedOrderNumber =
+      localStorage.getItem(STORAGE_KEY) || '';
+
+    const initialOrderNumber =
+      (pedidoUrl || savedOrderNumber).trim();
+
+    if (initialOrderNumber) {
+      orderNumberInput.value =
+        initialOrderNumber;
+
+      // Mantém a consulta consistente com o link atual.
+      localStorage.setItem(
+        STORAGE_KEY,
+        initialOrderNumber
+      );
+    }
 
     const emailInput =
       document.getElementById('customerEmail');
@@ -822,6 +838,16 @@ if (pedidoUrl) {
 
     const message =
       document.getElementById('message');
+
+
+    [orderNumberInput, emailInput].forEach(input => {
+      input.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          lookupButton.click();
+        }
+      });
+    });
 
     lookupButton.addEventListener(
       'click',
@@ -843,6 +869,13 @@ if (pedidoUrl) {
           orderNumberInput.focus();
           return;
         }
+
+        // Salva somente o número do pedido para sobreviver ao F5.
+        // O e-mail continua sendo solicitado no formulário e não vai para a URL.
+        localStorage.setItem(
+          STORAGE_KEY,
+          orderNumber
+        );
 
         if (!email) {
           message.textContent =
