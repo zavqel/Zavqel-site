@@ -252,17 +252,42 @@ body.quiz-open{
   cursor:pointer;
 }
 
+.payment-result-button{
+  display:inline-block;
+  padding:13px 22px;
+  background:var(--gold);
+  border:1px solid var(--gold);
+  color:#080807;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:9px;
+  letter-spacing:.14em;
+  cursor:pointer;
+  margin:0 5px;
+}
+.payment-result-button.secondary{
+  background:transparent;
+  color:#eee9df;
+  border-color:#5d4d2f;
+}
+.payment-result-icon.pending{
+  color:#d4bd83;
+  border-color:rgba(212,189,131,.55);
+}
+.payment-result-icon.failure{
+  color:#d08b7d;
+  border-color:rgba(208,139,125,.55);
+}
+.payment-result-box h2.pending{color:#f0dfb1;}
+.payment-result-box h2.failure{color:#ead0c9;}
+
 @media(max-width:600px){
-  .payment-success-box{
-    padding:32px 22px;
-  }
-
-  .payment-success-box h2{
-    font-size:40px;
-  }
-
-  .payment-order-number{
-    font-size:21px;
+  .payment-success-box{padding:32px 22px;}
+  .payment-success-box h2{font-size:40px;}
+  .payment-order-number{font-size:21px;}
+  .payment-result-button{
+    width:100%;
+    margin:5px 0;
   }
 }
 </style>
@@ -270,18 +295,18 @@ body.quiz-open{
 </head>
 <body>
   <div id="paymentSuccessOverlay" class="payment-success-overlay">
-  <div class="payment-success-box">
-    <div class="payment-success-kicker">ZAVQEL · Pedido confirmado</div>
+  <div class="payment-success-box payment-result-box">
+    <div class="payment-success-kicker" id="paymentResultKicker">ZAVQEL · Pedido confirmado</div>
 
-    <div class="payment-success-icon">✓</div>
+    <div class="payment-success-icon" id="paymentResultIcon">✓</div>
 
-    <h2>Pagamento aprovado.</h2>
+    <h2 id="paymentResultTitle">Pagamento aprovado.</h2>
 
-    <p class="payment-success-text">
+    <p class="payment-success-text" id="paymentResultText">
       Seu pagamento foi aprovado e seu pedido foi registrado com sucesso.
     </p>
 
-    <div class="payment-order-card">
+    <div class="payment-order-card" id="paymentOrderCard">
       <span class="payment-order-label">Número do pedido</span>
       <span class="payment-order-number" id="paymentOrderNumber">—</span>
 
@@ -291,13 +316,15 @@ body.quiz-open{
       </div>
     </div>
 
-   <a
-  id="trackOrderButton"
-  href="pedidos.html"
-  class="payment-success-button"
->
-  Acompanhar pedido
-</a>
+    <div id="paymentResultActions">
+      <a
+        id="trackOrderButton"
+        href="pedidos.html"
+        class="payment-result-button"
+      >
+        Acompanhar pedido
+      </a>
+    </div>
   </div>
 </div>
 <div class="top"><b>BLACK SIGNATURE · EDIÇÃO I</b>&nbsp; · &nbsp;100 EXEMPLARES&nbsp; · &nbsp;FRETE GRÁTIS PARA TODO O BRASIL</div>
@@ -802,7 +829,31 @@ const pagamentoStatus =
 const pedido =
   paymentParams.get('pedido');
 
-  const trackOrderButton =
+const successOverlay =
+  document.getElementById('paymentSuccessOverlay');
+
+const resultKicker =
+  document.getElementById('paymentResultKicker');
+
+const resultIcon =
+  document.getElementById('paymentResultIcon');
+
+const resultTitle =
+  document.getElementById('paymentResultTitle');
+
+const resultText =
+  document.getElementById('paymentResultText');
+
+const orderCard =
+  document.getElementById('paymentOrderCard');
+
+const orderNumber =
+  document.getElementById('paymentOrderNumber');
+
+const resultActions =
+  document.getElementById('paymentResultActions');
+
+const trackOrderButton =
   document.getElementById('trackOrderButton');
 
 if (trackOrderButton && pedido) {
@@ -811,24 +862,81 @@ if (trackOrderButton && pedido) {
 }
 
 if (
-  pagamentoStatus === 'sucesso' &&
-  pedido
+  successOverlay &&
+  pagamentoStatus &&
+  ['sucesso', 'pendente', 'pending', 'falhou', 'failure', 'failed'].includes(pagamentoStatus)
 ) {
-  const successOverlay =
-    document.getElementById(
-      'paymentSuccessOverlay'
-    );
-
-  const orderNumber =
-    document.getElementById(
-      'paymentOrderNumber'
-    );
-
-  if (successOverlay && orderNumber) {
+  if (pedido && orderNumber) {
     orderNumber.textContent = pedido;
-
-    successOverlay.classList.add('open');
   }
+
+  if (pagamentoStatus === 'sucesso') {
+    resultKicker.textContent = 'ZAVQEL · Pedido confirmado';
+    resultIcon.textContent = '✓';
+    resultTitle.textContent = 'Pagamento aprovado.';
+    resultText.textContent =
+      'Seu pagamento foi aprovado e seu pedido foi registrado com sucesso.';
+    resultIcon.classList.remove('pending', 'failure');
+    resultTitle.classList.remove('pending', 'failure');
+    if (orderCard) orderCard.style.display = pedido ? 'block' : 'none';
+    if (resultActions) {
+      resultActions.innerHTML = pedido ? `
+        <a href="pedidos.html?pedido=${encodeURIComponent(pedido)}" class="payment-result-button">
+          Acompanhar pedido
+        </a>
+      ` : '';
+    }
+  }
+
+  if (pagamentoStatus === 'pendente' || pagamentoStatus === 'pending') {
+    resultKicker.textContent = 'ZAVQEL · Pagamento em análise';
+    resultIcon.textContent = '…';
+    resultTitle.textContent = 'Pagamento pendente.';
+    resultText.textContent =
+      'Seu pagamento ainda está sendo processado pelo Mercado Pago. O pedido só será confirmado após a aprovação do pagamento.';
+    resultIcon.classList.remove('failure');
+    resultIcon.classList.add('pending');
+    resultTitle.classList.remove('failure');
+    resultTitle.classList.add('pending');
+    if (orderCard) orderCard.style.display = pedido ? 'block' : 'none';
+    if (resultActions) {
+      resultActions.innerHTML = pedido ? `
+        <a href="pedidos.html?pedido=${encodeURIComponent(pedido)}" class="payment-result-button">
+          Acompanhar pedido
+        </a>
+      ` : '';
+    }
+  }
+
+  if (pagamentoStatus === 'falhou' || pagamentoStatus === 'failure' || pagamentoStatus === 'failed') {
+    resultKicker.textContent = 'ZAVQEL · Pagamento não concluído';
+    resultIcon.textContent = '!';
+    resultTitle.textContent = 'Pagamento não aprovado.';
+    resultText.textContent =
+      'Não foi possível concluir o pagamento. Nenhuma confirmação de pagamento foi registrada para esta tentativa. Você pode voltar à compra e tentar novamente.';
+    resultIcon.classList.remove('pending');
+    resultIcon.classList.add('failure');
+    resultTitle.classList.remove('pending');
+    resultTitle.classList.add('failure');
+    if (orderCard) orderCard.style.display = pedido ? 'block' : 'none';
+    if (resultActions) {
+      resultActions.innerHTML = `
+        <a href="#colecao" class="payment-result-button" id="paymentRetryButton">
+          Tentar novamente
+        </a>
+        ${pedido ? `
+          <a href="pedidos.html?pedido=${encodeURIComponent(pedido)}" class="payment-result-button secondary">
+            Consultar pedido
+          </a>
+        ` : ''}
+      `;
+      document.getElementById('paymentRetryButton')?.addEventListener('click', () => {
+        successOverlay.classList.remove('open');
+      });
+    }
+  }
+
+  successOverlay.classList.add('open');
 }
 
   renderCart();renderComposition();
