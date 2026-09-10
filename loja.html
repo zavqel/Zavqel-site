@@ -347,7 +347,7 @@ body.quiz-open{
 <div class="header-signature">
   <span>UMA FRAGRÂNCIA. UMA ASSINATURA.</span>
 </div>
-<div class="nav-actions"><a href="#colecao">Coleção</a><a href="personalizacao.html">Personalização</a><button id="openAccount">Minha conta</button><button id="openCart">Sacola (<b id="navCount">0</b>)</button></div>
+<div class="nav-actions"><a href="#colecao">Coleção</a><a href="personalizacao.html">Personalização</a><a href="pedidos.html">Meus pedidos</a><button id="openCart">Sacola (<b id="navCount">0</b>)</button></div>
 </nav></header>
 
 <section class="hero"><div class="hero-inner">
@@ -564,7 +564,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('checkout')?.addEventListener('click',()=>{if(!cart.length)return alert('Sua sacola está vazia.');document.getElementById('checkoutSummary').innerHTML=cart.map(i=>`${i.qty}× ${i.name} — ${fmt(i.price*i.qty)}`).join('<br>');modal?.classList.add('open')});
   document.getElementById('closeModal')?.addEventListener('click',()=>modal?.classList.remove('open'));document.getElementById('backModal')?.addEventListener('click',()=>modal?.classList.remove('open'));
   document.getElementById('searchBtn')?.addEventListener('click',()=>document.getElementById('search')?.focus());
-  document.getElementById('openAccount')?.addEventListener('click',()=>alert('A área do cliente será conectada ao cadastro e aos pedidos.'));
 
   const metric=(id,val)=>{const v=Math.max(0,Math.min(5,val));document.getElementById(id+'Bar').style.width=(v*20)+'%';document.getElementById(id+'Text').textContent=v?Math.round(v)+'/5':'—'};
   const renderComposition=()=>{
