@@ -402,35 +402,102 @@
       data.orders.map(order => `
         <div class="order-placeholder" style="text-align:left; margin-bottom:20px;">
 
-          <div style="color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:8px;">
-            PEDIDO
-          </div>
+  <div style="color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:8px;">
+    PEDIDO
+  </div>
 
-          <div style="font-family:Georgia,serif; font-size:24px; color:#e0c47a; margin-bottom:14px;">
-            ${order.order_number}
-          </div>
+  <div style="font-family:Georgia,serif; font-size:24px; color:#e0c47a; margin-bottom:14px;">
+    ${order.order_number}
+  </div>
 
-          <div style="color:#f1eee7; margin-bottom:6px;">
-            Cliente: ${order.name || '-'}
-          </div>
+  <div style="color:#f1eee7; margin-bottom:6px;">
+    Cliente: ${order.name || '-'}
+  </div>
 
-          <div style="color:#8c887f; margin-bottom:6px;">
-            E-mail: ${order.email || '-'}
-          </div>
+  <div style="color:#8c887f; margin-bottom:6px;">
+    E-mail: ${order.email || '-'}
+  </div>
 
-          <div style="color:#8c887f; margin-bottom:6px;">
-            Valor: R$ ${Number(order.amount).toFixed(2).replace('.', ',')}
-          </div>
+  <div style="color:#8c887f; margin-bottom:6px;">
+    Valor: R$ ${Number(order.amount).toFixed(2).replace('.', ',')}
+  </div>
 
-          <div style="color:#8c887f; margin-bottom:6px;">
-            Pagamento: ${order.status || '-'}
-          </div>
+  <div style="color:#8c887f; margin-bottom:6px;">
+    Pagamento: ${order.status || '-'}
+  </div>
 
-          <div style="color:#8c887f;">
-            Envio: ${order.fulfillment_status || 'pending'}
-          </div>
+  <div style="margin-top:18px;">
 
-        </div>
+    <label style="display:block; color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:6px;">
+      STATUS DO ENVIO
+    </label>
+
+    <select
+      data-order="${order.order_number}"
+      class="admin-status"
+      style="width:100%; padding:12px; background:#111; color:#f1eee7; border:1px solid #5b4a2a; margin-bottom:12px;"
+    >
+      <option value="pending" ${order.fulfillment_status === 'pending' ? 'selected' : ''}>
+        Pedido recebido
+      </option>
+
+      <option value="preparing" ${order.fulfillment_status === 'preparing' ? 'selected' : ''}>
+        Em preparação
+      </option>
+
+      <option value="shipped" ${order.fulfillment_status === 'shipped' ? 'selected' : ''}>
+        Enviado
+      </option>
+
+      <option value="delivered" ${order.fulfillment_status === 'delivered' ? 'selected' : ''}>
+        Entregue
+      </option>
+    </select>
+
+    <label style="display:block; color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:6px;">
+      TRANSPORTADORA
+    </label>
+
+    <input
+      type="text"
+      class="admin-carrier"
+      data-order="${order.order_number}"
+      value="${order.shipping_carrier || ''}"
+      placeholder="Ex.: Correios"
+      style="width:100%; padding:12px; box-sizing:border-box; background:#111; color:#f1eee7; border:1px solid #5b4a2a; margin-bottom:12px;"
+    >
+
+    <label style="display:block; color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:6px;">
+      CÓDIGO DE RASTREIO
+    </label>
+
+    <input
+      type="text"
+      class="admin-tracking"
+      data-order="${order.order_number}"
+      value="${order.tracking_code || ''}"
+      placeholder="Ex.: AA123456789BR"
+      style="width:100%; padding:12px; box-sizing:border-box; background:#111; color:#f1eee7; border:1px solid #5b4a2a; margin-bottom:14px;"
+    >
+
+    <button
+      type="button"
+      class="admin-save-order"
+      data-order="${order.order_number}"
+      style="width:100%; padding:13px; background:#c7a45b; color:#111; border:0; cursor:pointer; letter-spacing:2px;"
+    >
+      SALVAR ALTERAÇÕES
+    </button>
+
+    <div
+      class="admin-save-message"
+      data-order="${order.order_number}"
+      style="display:none; margin-top:10px; padding:10px; border:1px solid #5b4a2a; color:#c7a45b;"
+    ></div>
+
+  </div>
+
+</div>
       `).join('');
 
   } catch (error) {
@@ -443,6 +510,103 @@
 
   }
 }
+    document.addEventListener('click', async (event) => {
+
+  const button = event.target.closest('.admin-save-order');
+
+  if (!button) {
+    return;
+  }
+
+  const orderNumber = button.dataset.order;
+
+  const statusElement =
+    document.querySelector(
+      `.admin-status[data-order="${orderNumber}"]`
+    );
+
+  const carrierElement =
+    document.querySelector(
+      `.admin-carrier[data-order="${orderNumber}"]`
+    );
+
+  const trackingElement =
+    document.querySelector(
+      `.admin-tracking[data-order="${orderNumber}"]`
+    );
+
+  const messageElement =
+    document.querySelector(
+      `.admin-save-message[data-order="${orderNumber}"]`
+    );
+
+  const fulfillmentStatus =
+    statusElement.value;
+
+  const shippingCarrier =
+    carrierElement.value.trim();
+
+  const trackingCode =
+    trackingElement.value.trim();
+
+  button.disabled = true;
+  button.textContent = 'SALVANDO...';
+
+  messageElement.style.display = 'none';
+
+  try {
+
+    const response = await fetch(
+      'https://api.zavqel.com.br/admin/orders/update',
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Password': adminPassword
+        },
+
+        body: JSON.stringify({
+          order_number: orderNumber,
+          fulfillment_status: fulfillmentStatus,
+          shipping_carrier: shippingCarrier,
+          tracking_code: trackingCode
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.error || 'Não foi possível atualizar o pedido.'
+      );
+    }
+
+    messageElement.textContent =
+      'Alterações salvas com sucesso.';
+
+    messageElement.style.display = 'block';
+
+    button.textContent = 'SALVO';
+
+  } catch (error) {
+
+    messageElement.textContent =
+      error.message;
+
+    messageElement.style.display = 'block';
+
+    button.textContent =
+      'SALVAR ALTERAÇÕES';
+
+  } finally {
+
+    button.disabled = false;
+
+  }
+
+});
     logoutButton.addEventListener('click', () => {
 
       adminPanel.style.display = 'none';
