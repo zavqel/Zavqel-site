@@ -523,10 +523,39 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     const status=document.getElementById('compositionStatus');if(status)status.textContent=all.length<12?`${all.length}/12 notas selecionadas · até 4 por etapa.`:'Composição completa · 12/12 notas selecionadas.';
   };
+  const isMobile=()=>window.matchMedia('(max-width:700px)').matches;
+  const removeTooltip=()=>document.getElementById('noteTooltip')?.remove();
+  const showTooltip=(btn)=>{
+    const text=btn.dataset.desc;if(!text)return;
+    removeTooltip();
+    const tip=document.createElement('div');
+    tip.className='note-tooltip';
+    tip.id='noteTooltip';
+    tip.innerHTML='<strong>'+btn.dataset.note+'</strong>'+text;
+    document.body.appendChild(tip);
+    const r=btn.getBoundingClientRect();
+    tip.style.left=Math.min(r.left,window.innerWidth-300)+'px';
+    tip.style.top=Math.min(r.bottom+8,window.innerHeight-110)+'px';
+  };
+  window.addEventListener('resize',()=>{ if(isMobile()) removeTooltip(); });
+  window.addEventListener('scroll',()=>{ if(isMobile()) removeTooltip(); },{passive:true});
+  document.addEventListener('click',(e)=>{
+    if(isMobile() && !e.target.closest('.note-option') && !e.target.closest('#noteTooltip')) removeTooltip();
+  });
+
   buttons.forEach(btn=>{
-    btn.addEventListener('click',()=>{const type=btn.dataset.type,i=selected[type].indexOf(btn);if(i>=0){selected[type].splice(i,1);btn.classList.remove('selected')}else if(selected[type].length<limits[type]){selected[type].push(btn);btn.classList.add('selected')}renderComposition()});
-    btn.addEventListener('mouseenter',()=>{const text=btn.dataset.desc;if(!text)return;const tip=document.createElement('div');tip.className='note-tooltip';tip.id='noteTooltip';tip.innerHTML='<strong>'+btn.dataset.note+'</strong>'+text;document.body.appendChild(tip);const r=btn.getBoundingClientRect();tip.style.left=Math.min(r.left,window.innerWidth-300)+'px';tip.style.top=Math.min(r.bottom+8,window.innerHeight-110)+'px'});
-    btn.addEventListener('mouseleave',()=>document.getElementById('noteTooltip')?.remove());
+    btn.addEventListener('click',()=>{
+      const type=btn.dataset.type,i=selected[type].indexOf(btn);
+      if(i>=0){selected[type].splice(i,1);btn.classList.remove('selected')}
+      else if(selected[type].length<limits[type]){selected[type].push(btn);btn.classList.add('selected')}
+      renderComposition();
+      if(isMobile()) showTooltip(btn);
+    });
+    btn.addEventListener('mouseenter',()=>{
+      if(isMobile())return;
+      showTooltip(btn);
+    });
+    btn.addEventListener('mouseleave',()=>{if(!isMobile()) removeTooltip();});
   });
 
   const quiz=document.createElement('div');quiz.className='quiz-overlay';quiz.innerHTML=`
