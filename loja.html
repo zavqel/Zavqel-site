@@ -481,6 +481,15 @@ document.addEventListener('DOMContentLoaded',()=>{
   const limits={saida:4,coracao:4,fundo:4},selected={saida:[],coracao:[],fundo:[]};
   const buttons=[...document.querySelectorAll('.note-option')];
 
+  const resetComposition=()=>{
+    selected.saida.length=0;
+    selected.coracao.length=0;
+    selected.fundo.length=0;
+    buttons.forEach(btn=>btn.classList.remove('selected'));
+    removeTooltip();
+    renderComposition();
+  };
+
   document.getElementById('addBlackSignature')?.addEventListener('click',()=>{
 
     // A composição precisa ter pelo menos uma nota em cada etapa
@@ -542,7 +551,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     openCart();
   });
   document.getElementById('cartItems')?.addEventListener('click',e=>{const x=e.target;if(x.dataset.plus)cart[x.dataset.plus].qty++;if(x.dataset.minus){cart[x.dataset.minus].qty--;if(cart[x.dataset.minus].qty<1)cart.splice(x.dataset.minus,1)}if(x.dataset.remove)cart.splice(x.dataset.remove,1);renderCart()});
-  document.getElementById('cartFloating')?.addEventListener('click',openCart);document.getElementById('closeCart')?.addEventListener('click',closeCart);document.getElementById('continue')?.addEventListener('click',closeCart);
+  document.getElementById('cartFloating')?.addEventListener('click',openCart);
+  document.getElementById('closeCart')?.addEventListener('click',closeCart);
+  document.getElementById('continue')?.addEventListener('click',()=>{
+    resetComposition();
+    closeCart();
+    document.getElementById('colecao')?.scrollIntoView({
+      behavior:'smooth',
+      block:'start'
+    });
+  });
   document.getElementById('checkout')?.addEventListener('click',()=>{if(!cart.length)return alert('Sua sacola está vazia.');document.getElementById('checkoutSummary').innerHTML=cart.map(i=>`${i.qty}× ${i.name} — ${fmt(i.price*i.qty)}`).join('<br>');modal?.classList.add('open')});
   document.getElementById('closeModal')?.addEventListener('click',()=>modal?.classList.remove('open'));document.getElementById('backModal')?.addEventListener('click',()=>modal?.classList.remove('open'));
   document.getElementById('searchBtn')?.addEventListener('click',()=>document.getElementById('search')?.focus());
