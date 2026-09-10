@@ -208,6 +208,43 @@
       color:var(--gold);
     }
 
+
+    .dashboard-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
+    .stat-card{background:var(--panel2);border:1px solid var(--line);padding:18px;min-height:106px}
+    .stat-card small{display:block;color:var(--muted);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+    .stat-card strong{display:block;font-family:Georgia,serif;font-size:27px;font-weight:400;color:var(--gold2)}
+    .stat-card span{display:block;margin-top:7px;color:#6f6b64;font-size:9px}
+    .orders-toolbar{display:grid;grid-template-columns:1.6fr .75fr;gap:10px;margin-bottom:16px}
+    .orders-list{display:grid;gap:12px}
+    .order-card{background:var(--panel2);border:1px solid rgba(199,164,91,.16);padding:18px}
+    .order-card-top{display:grid;grid-template-columns:1.5fr .8fr .8fr .8fr auto;gap:16px;align-items:end}
+    .order-field small{display:block;color:#67635d;font-size:8px;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:6px}
+    .order-field strong{display:block;color:#ece7df;font-size:13px;line-height:1.4;font-weight:500}
+    .order-number{font:500 22px/1.1 Georgia,serif!important;color:var(--gold2)!important;word-break:break-word}
+    .status-pill{display:inline-flex;align-items:center;min-height:28px;padding:6px 9px;border:1px solid rgba(199,164,91,.28);color:var(--gold2);font-size:8px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+    .status-pill.approved{border-color:rgba(104,154,112,.45);color:#a9d0ad}.status-pill.pending{color:#d9bf83}.status-pill.rejected{border-color:rgba(185,107,107,.38);color:#d9a2a2}
+    .shipment-line{margin-top:15px;padding-top:13px;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+    .shipment-line span{color:#777269;font-size:9px}.shipment-line b{color:#cfc7bb;font-weight:500}
+    .order-actions{display:flex;gap:8px;margin-top:15px}.order-actions button{width:auto;height:40px;padding:0 14px;font-size:8px}
+    .order-actions .details-button{background:transparent;color:var(--gold2);border:1px solid var(--line)}
+    .empty-state{border:1px solid rgba(199,164,91,.16);padding:40px 20px;text-align:center;color:var(--muted);font-size:11px}
+    .details-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
+    .details-overlay.open{display:flex}.details-box{width:min(980px,100%);max-height:min(88vh,900px);overflow:auto;background:#0d0d0c;border:1px solid var(--line);padding:28px}
+    .details-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:20px}
+    .details-head h3{margin:0;font:500 31px/1 Georgia,serif;color:var(--gold2)}
+    .details-close{width:auto;height:40px;padding:0 13px;background:transparent;border:1px solid var(--line);color:var(--gold2)}
+    .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+    .detail-section{background:#10100f;border:1px solid rgba(255,255,255,.06);padding:18px}.detail-section.wide{grid-column:1/-1}
+    .detail-section h4{margin:0 0 14px;color:var(--gold);font-size:9px;letter-spacing:1.8px;text-transform:uppercase}
+    .detail-row{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05)}.detail-row:last-child{border-bottom:0}
+    .detail-row small{display:block;color:#67635d;font-size:8px;margin-bottom:4px}.detail-row strong,.detail-row span{display:block;color:#ddd7cc;font-size:11px;line-height:1.55;word-break:break-word}
+    .item-card{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06)}.item-card:last-child{border-bottom:0}
+    .item-title{color:#eee9df;font-size:11px;line-height:1.55}.item-meta{margin-top:5px;color:#777269;font-size:9px}
+    .composition-block{margin-top:9px;padding:10px;background:#0b0b0a;border:1px solid rgba(199,164,91,.10);color:#cdb77d;font-size:9px;line-height:1.7;white-space:pre-wrap}
+    .loading-detail{padding:40px;text-align:center;color:var(--muted);font-size:11px}
+    @media(max-width:950px){.dashboard-summary{grid-template-columns:repeat(3,1fr)}.order-card-top{grid-template-columns:repeat(2,1fr)}.order-actions{grid-column:1/-1}.detail-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:700px){.dashboard-summary{grid-template-columns:1fr 1fr}.orders-toolbar{grid-template-columns:1fr}.order-card-top{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}.details-box{padding:20px}}
+
     .order-placeholder{
       border:1px solid var(--line);
       padding:24px;
@@ -323,382 +360,446 @@
           SAIR
         </button>
 
+      </div>      <div class="dashboard-summary">
+        <div class="stat-card"><small>Total de pedidos</small><strong id="statTotal">0</strong><span>Todos os pedidos registrados</span></div>
+        <div class="stat-card"><small>Pagos</small><strong id="statApproved">0</strong><span id="statApprovedLabel">Pagamento aprovado</span></div>
+        <div class="stat-card"><small>Pendentes</small><strong id="statPending">0</strong><span>Aguardando confirmação</span></div>
+        <div class="stat-card"><small>Em envio</small><strong id="statShipping">0</strong><span>Preparação + envio</span></div>
+        <div class="stat-card"><small>Faturamento aprovado</small><strong id="statRevenue">R$ 0,00</strong><span>Soma dos pagamentos aprovados</span></div>
       </div>
-
-     <div id="ordersContainer">
-
-  <div class="order-placeholder">
-    CARREGANDO PEDIDOS...
-  </div>
-
-</div>
-
+      <div class="orders-toolbar">
+        <input id="orderSearch" type="search" placeholder="Pesquisar pedido, cliente ou e-mail" autocomplete="off">
+        <select id="orderFilter">
+          <option value="all">Todos os pedidos</option><option value="approved">Pagamento aprovado</option>
+          <option value="pending">Pagamento pendente</option><option value="rejected">Pagamento recusado</option>
+          <option value="preparing">Em preparação</option><option value="shipped">Enviados</option><option value="delivered">Entregues</option>
+        </select>
+      </div>
+      <div id="ordersContainer" class="orders-list"><div class="order-placeholder">CARREGANDO PEDIDOS...</div></div>
     </section>
 
   </main>
 
+
+  <div class="details-overlay" id="detailsOverlay">
+    <div class="details-box">
+      <div class="details-head">
+        <div>
+          <div style="color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">ZAVQEL · Detalhes do pedido</div>
+          <h3 id="detailsTitle">Pedido</h3>
+        </div>
+        <button class="details-close" id="detailsClose">FECHAR</button>
+      </div>
+      <div id="detailsContent"><div class="loading-detail">CARREGANDO DETALHES...</div></div>
+    </div>
+  </div>
+
   <script>
 
+
     let adminPassword = '';
-    
-    const loginButton =
-      document.getElementById('loginButton');
+    let allOrders = [];
 
-    const logoutButton =
-      document.getElementById('logoutButton');
+    const API_BASE = 'https://api.zavqel.com.br';
 
-    const loginCard =
-      document.getElementById('loginCard');
+    const loginButton = document.getElementById('loginButton');
+    const logoutButton = document.getElementById('logoutButton');
+    const loginCard = document.getElementById('loginCard');
+    const adminPanel = document.getElementById('adminPanel');
+    const loginMessage = document.getElementById('loginMessage');
 
-    const adminPanel =
-      document.getElementById('adminPanel');
+    const passwordInput = document.getElementById('adminPassword');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const passwordEye = document.getElementById('passwordEye');
 
-    const loginMessage =
-      document.getElementById('loginMessage');
+    const ordersContainer = document.getElementById('ordersContainer');
+    const orderSearch = document.getElementById('orderSearch');
+    const orderFilter = document.getElementById('orderFilter');
 
-     const passwordInput =
-       document.getElementById('adminPassword');
+    const detailsOverlay = document.getElementById('detailsOverlay');
+    const detailsClose = document.getElementById('detailsClose');
+    const detailsContent = document.getElementById('detailsContent');
+    const detailsTitle = document.getElementById('detailsTitle');
 
-     const passwordToggle =
-       document.getElementById('passwordToggle');
+    const fmt = value => Number(value || 0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 
-     const passwordEye =
-       document.getElementById('passwordEye');
+    const esc = value => String(value ?? '')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 
-     passwordToggle.addEventListener('click', () => {
-       const showing = passwordInput.type === 'text';
+    const dateFmt = value => {
+      if (!value) return '—';
+      const d = new Date(value);
+      return Number.isNaN(d.getTime()) ? String(value) : d.toLocaleString('pt-BR');
+    };
 
-       passwordInput.type = showing ? 'password' : 'text';
+    const paymentLabel = status => ({
+      approved:'Aprovado',
+      pending:'Pendente',
+      rejected:'Recusado',
+      cancelled:'Cancelado'
+    }[String(status || '').toLowerCase()] || String(status || '—'));
 
-       passwordToggle.setAttribute(
-         'aria-label',
-         showing ? 'Mostrar senha' : 'Ocultar senha'
-       );
+    const fulfillmentLabel = status => ({
+      pending:'Pedido recebido',
+      preparing:'Em preparação',
+      shipped:'Enviado',
+      delivered:'Entregue'
+    }[String(status || '').toLowerCase()] || 'Pedido recebido');
 
-       passwordToggle.setAttribute(
-         'title',
-         showing ? 'Mostrar senha' : 'Ocultar senha'
-       );
+    const paymentClass = status => {
+      const s = String(status || '').toLowerCase();
+      if (s === 'approved') return 'approved';
+      if (s === 'rejected' || s === 'cancelled') return 'rejected';
+      return 'pending';
+    };
 
-       passwordEye.innerHTML = showing
-         ? `
-           <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-           <circle cx="12" cy="12" r="2.8" stroke="currentColor" stroke-width="1.7"/>
-         `
-         : `
-           <path d="M3 3l18 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-           <path d="M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a18.4 18.4 0 0 1-3.5 3.9M7.2 7.8C4 9.4 2 12 2 12s3.5 6 10 6a10.8 10.8 0 0 0 4.1-.8M14.8 14.8A4 4 0 0 1 9.2 9.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-         `;
-     });
+    passwordToggle.addEventListener('click', () => {
+      const showing = passwordInput.type === 'text';
+      passwordInput.type = showing ? 'password' : 'text';
+      passwordToggle.setAttribute('aria-label', showing ? 'Mostrar senha' : 'Ocultar senha');
+      passwordToggle.setAttribute('title', showing ? 'Mostrar senha' : 'Ocultar senha');
+      passwordEye.innerHTML = showing
+        ? `<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" stroke="currentColor" stroke-width="1.7"/>`
+        : `<path d="M3 3l18 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a18.4 18.4 0 0 1-3.5 3.9M7.2 7.8C4 9.4 2 12 2 12s3.5 6 10 6a10.8 10.8 0 0 0 4.1-.8M14.8 14.8A4 4 0 0 1 9.2 9.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>`;
+    });
 
+    loginButton.addEventListener('click', async () => {
+      const password = passwordInput.value;
+      loginButton.disabled = true;
+      loginButton.textContent = 'AUTENTICANDO...';
+      loginMessage.style.display = 'none';
 
-   loginButton.addEventListener('click', async () => {
+      try {
+        const response = await fetch(`${API_BASE}/admin/login`, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({password})
+        });
 
-  const password =
-    document.getElementById('adminPassword').value;
+        const data = await response.json();
 
-  loginButton.disabled = true;
-  loginButton.textContent = 'AUTENTICANDO...';
-
-  loginMessage.style.display = 'none';
-
-  try {
-
-    const response = await fetch(
-      'https://api.zavqel.com.br/admin/login',
-      {
-        method: 'POST',
-
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify({
-          password
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(
-        data.error || 'Não foi possível autenticar.'
-      );
-    }
-
-    adminPassword = password;
-
-    loginCard.style.display = 'none';
-    adminPanel.style.display = 'block';
-    loadAdminOrders();
-
-  } catch (error) {
-
-    loginMessage.textContent =
-      error.message;
-
-    loginMessage.style.display = 'block';
-
-  } finally {
-
-    loginButton.disabled = false;
-    loginButton.textContent =
-      'ENTRAR NO PAINEL';
-
-  }
-
-});
-    async function loadAdminOrders() {
-
-  const ordersContainer =
-    document.getElementById('ordersContainer');
-
-  try {
-
-    const response = await fetch(
-      'https://api.zavqel.com.br/admin/orders',
-      {
-        method: 'GET',
-        headers: {
-          'X-Admin-Password': adminPassword
+        if (!response.ok) {
+          throw new Error(data.error || 'Não foi possível autenticar.');
         }
+
+        adminPassword = password;
+        loginCard.style.display = 'none';
+        adminPanel.style.display = 'block';
+
+        await loadAdminOrders();
+      } catch (error) {
+        loginMessage.textContent = error.message;
+        loginMessage.style.display = 'block';
+      } finally {
+        loginButton.disabled = false;
+        loginButton.textContent = 'ENTRAR NO PAINEL';
       }
-    );
+    });
 
-    const data = await response.json();
+    async function loadAdminOrders() {
+      try {
+        ordersContainer.innerHTML = `<div class="order-placeholder">CARREGANDO PEDIDOS...</div>`;
 
-    if (!response.ok) {
-      throw new Error(
-        data.error || 'Não foi possível carregar os pedidos.'
-      );
+        const response = await fetch(`${API_BASE}/admin/orders`, {
+          method:'GET',
+          headers:{'X-Admin-Password':adminPassword}
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Não foi possível carregar os pedidos.');
+        }
+
+        allOrders = Array.isArray(data.orders) ? data.orders : [];
+        updateStats();
+        renderOrders();
+      } catch (error) {
+        ordersContainer.innerHTML = `<div class="message" style="display:block;">${esc(error.message)}</div>`;
+      }
     }
 
-    if (!data.orders || data.orders.length === 0) {
+    function updateStats() {
+      const approved = allOrders.filter(o => String(o.status || '').toLowerCase() === 'approved').length;
+      const pending = allOrders.filter(o => String(o.status || '').toLowerCase() === 'pending').length;
+      const shipping = allOrders.filter(o => ['preparing','shipped'].includes(String(o.fulfillment_status || '').toLowerCase())).length;
+      const revenue = allOrders
+        .filter(o => String(o.status || '').toLowerCase() === 'approved')
+        .reduce((sum,o) => sum + Number(o.amount || 0), 0);
 
-      ordersContainer.innerHTML = `
-        <div class="order-placeholder">
-          NENHUM PEDIDO ENCONTRADO.
+      document.getElementById('statTotal').textContent = allOrders.length;
+      document.getElementById('statApproved').textContent = approved;
+      document.getElementById('statPending').textContent = pending;
+      document.getElementById('statShipping').textContent = shipping;
+      document.getElementById('statRevenue').textContent = fmt(revenue);
+      document.getElementById('statApprovedLabel').textContent = `${approved} pedido${approved === 1 ? '' : 's'}`;
+    }
+
+    function filteredOrders() {
+      const search = String(orderSearch.value || '').trim().toLowerCase();
+      const filter = orderFilter.value;
+
+      return allOrders.filter(order => {
+        const haystack = [
+          order.order_number, order.name, order.email,
+          order.payment_id, order.external_reference
+        ].filter(Boolean).join(' ').toLowerCase();
+
+        if (search && !haystack.includes(search)) return false;
+
+        const payment = String(order.status || '').toLowerCase();
+        const fulfillment = String(order.fulfillment_status || '').toLowerCase();
+
+        if (filter === 'approved') return payment === 'approved';
+        if (filter === 'pending') return payment === 'pending';
+        if (filter === 'rejected') return ['rejected','cancelled'].includes(payment);
+        if (filter === 'preparing') return fulfillment === 'preparing';
+        if (filter === 'shipped') return fulfillment === 'shipped';
+        if (filter === 'delivered') return fulfillment === 'delivered';
+
+        return true;
+      });
+    }
+
+    function renderOrders() {
+      const orders = filteredOrders();
+
+      if (!orders.length) {
+        ordersContainer.innerHTML = `<div class="empty-state">NENHUM PEDIDO ENCONTRADO PARA OS FILTROS ATUAIS.</div>`;
+        return;
+      }
+
+      ordersContainer.innerHTML = orders.map(order => `
+        <article class="order-card">
+          <div class="order-card-top">
+            <div class="order-field"><small>Pedido</small><strong class="order-number">${esc(order.order_number || '—')}</strong></div>
+            <div class="order-field"><small>Cliente</small><strong>${esc(order.name || '—')}</strong></div>
+            <div class="order-field"><small>Valor</small><strong>${fmt(order.amount)}</strong></div>
+            <div class="order-field"><small>Pagamento</small><span class="status-pill ${paymentClass(order.status)}">${esc(paymentLabel(order.status))}</span></div>
+            <div class="order-actions"><button type="button" class="details-button" data-details-order="${esc(order.order_number)}">VER DETALHES</button></div>
+          </div>
+
+          <div class="shipment-line">
+            <span>Envio: <b>${esc(fulfillmentLabel(order.fulfillment_status))}</b></span>
+            <span>Data: <b>${esc(dateFmt(order.created_at))}</b></span>
+            <span>E-mail: <b>${esc(order.email || '—')}</b></span>
+          </div>
+
+          <div class="shipment-line">
+            <span>Transportadora: <b>${esc(order.shipping_carrier || '—')}</b></span>
+            <span>Rastreamento: <b>${esc(order.tracking_code || '—')}</b></span>
+          </div>
+
+          <div style="margin-top:15px;padding-top:15px;border-top:1px solid rgba(255,255,255,.06);">
+            <label>Status do envio</label>
+            <select class="admin-status" data-order="${esc(order.order_number)}">
+              <option value="pending" ${order.fulfillment_status === 'pending' ? 'selected' : ''}>Pedido recebido</option>
+              <option value="preparing" ${order.fulfillment_status === 'preparing' ? 'selected' : ''}>Em preparação</option>
+              <option value="shipped" ${order.fulfillment_status === 'shipped' ? 'selected' : ''}>Enviado</option>
+              <option value="delivered" ${order.fulfillment_status === 'delivered' ? 'selected' : ''}>Entregue</option>
+            </select>
+
+            <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div>
+                <label>Transportadora</label>
+                <input type="text" class="admin-carrier" data-order="${esc(order.order_number)}" value="${esc(order.shipping_carrier || '')}" placeholder="Ex.: Correios">
+              </div>
+              <div>
+                <label>Código de rastreio</label>
+                <input type="text" class="admin-tracking" data-order="${esc(order.order_number)}" value="${esc(order.tracking_code || '')}" placeholder="Ex.: AA123456789BR">
+              </div>
+            </div>
+
+            <button type="button" class="admin-save-order" data-order="${esc(order.order_number)}" style="margin-top:12px;">SALVAR ALTERAÇÕES</button>
+            <div class="admin-save-message" data-order="${esc(order.order_number)}" style="display:none;margin-top:10px;padding:10px;border:1px solid #5b4a2a;color:#c7a45b;"></div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    orderSearch.addEventListener('input', renderOrders);
+    orderFilter.addEventListener('change', renderOrders);
+
+    document.addEventListener('click', async event => {
+      const detailBtn = event.target.closest('[data-details-order]');
+      if (detailBtn) {
+        await openDetails(detailBtn.dataset.detailsOrder);
+        return;
+      }
+
+      const button = event.target.closest('.admin-save-order');
+      if (!button) return;
+
+      const orderNumber = button.dataset.order;
+      const safe = CSS.escape(orderNumber);
+
+      const statusElement = document.querySelector(`.admin-status[data-order="${safe}"]`);
+      const carrierElement = document.querySelector(`.admin-carrier[data-order="${safe}"]`);
+      const trackingElement = document.querySelector(`.admin-tracking[data-order="${safe}"]`);
+      const messageElement = document.querySelector(`.admin-save-message[data-order="${safe}"]`);
+
+      const fulfillmentStatus = statusElement.value;
+      const shippingCarrier = carrierElement.value.trim();
+      const trackingCode = trackingElement.value.trim();
+
+      button.disabled = true;
+      button.textContent = 'SALVANDO...';
+      messageElement.style.display = 'none';
+
+      try {
+        const response = await fetch(`${API_BASE}/admin/orders/update`, {
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json',
+            'X-Admin-Password':adminPassword
+          },
+          body:JSON.stringify({
+            order_number:orderNumber,
+            fulfillment_status:fulfillmentStatus,
+            shipping_carrier:shippingCarrier,
+            tracking_code:trackingCode
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.error || 'Não foi possível atualizar o pedido.');
+
+        messageElement.textContent = 'Alterações salvas com sucesso.';
+        messageElement.style.display = 'block';
+        button.textContent = 'SALVO';
+
+        const local = allOrders.find(o => o.order_number === orderNumber);
+        if (local) {
+          local.fulfillment_status = fulfillmentStatus;
+          local.shipping_carrier = shippingCarrier || null;
+          local.tracking_code = trackingCode || null;
+        }
+
+        updateStats();
+      } catch (error) {
+        messageElement.textContent = error.message;
+        messageElement.style.display = 'block';
+        button.textContent = 'SALVAR ALTERAÇÕES';
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    async function openDetails(orderNumber) {
+      const local = allOrders.find(o => o.order_number === orderNumber) || {};
+      detailsTitle.textContent = orderNumber;
+      detailsContent.innerHTML = `<div class="loading-detail">CARREGANDO DETALHES...</div>`;
+      detailsOverlay.classList.add('open');
+
+      try {
+        const email = String(local.email || '').trim().toLowerCase();
+
+        if (!email) throw new Error('O pedido não possui e-mail disponível para consulta.');
+
+        const response = await fetch(
+          `${API_BASE}/pedido?pedido=${encodeURIComponent(orderNumber)}&email=${encodeURIComponent(email)}`
+        );
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Não foi possível carregar os detalhes.');
+
+        renderDetails({...local, ...(data.order || {})});
+      } catch (error) {
+        renderDetails({...local, detailError:error.message});
+      }
+    }
+
+    function renderDetails(order) {
+      const items = Array.isArray(order.items) ? order.items : [];
+
+      const itemsHtml = items.length
+        ? items.map(item => `
+            <div class="item-card">
+              <div class="item-title">${esc(item.title || item.product_id || 'Produto')}</div>
+              <div class="item-meta">Quantidade: ${esc(item.quantity || 0)} · Unitário: ${fmt(item.unit_price)}</div>
+              ${item.composition ? `<div class="composition-block">${esc(item.composition)}</div>` : ''}
+            </div>
+          `).join('')
+        : `<div style="color:#777269;font-size:10px;">Nenhum item retornado para este pedido.</div>`;
+
+      detailsContent.innerHTML = `
+        <div class="detail-grid">
+          <section class="detail-section">
+            <h4>Pedido</h4>
+            <div class="detail-row"><small>Número</small><strong>${esc(order.order_number || '—')}</strong></div>
+            <div class="detail-row"><small>Criado em</small><span>${esc(dateFmt(order.created_at))}</span></div>
+            <div class="detail-row"><small>Valor</small><strong>${fmt(order.amount)}</strong></div>
+          </section>
+
+          <section class="detail-section">
+            <h4>Pagamento</h4>
+            <div class="detail-row"><small>Status</small><strong>${esc(paymentLabel(order.status))}</strong></div>
+            <div class="detail-row"><small>Pago em</small><span>${esc(dateFmt(order.paid_at))}</span></div>
+            <div class="detail-row"><small>Payment ID</small><span>${esc(order.payment_id || '—')}</span></div>
+          </section>
+
+          <section class="detail-section">
+            <h4>Entrega</h4>
+            <div class="detail-row"><small>Status</small><strong>${esc(fulfillmentLabel(order.fulfillment_status))}</strong></div>
+            <div class="detail-row"><small>Transportadora</small><span>${esc(order.shipping_carrier || '—')}</span></div>
+            <div class="detail-row"><small>Rastreamento</small><span>${esc(order.tracking_code || '—')}</span></div>
+          </section>
+
+          <section class="detail-section wide">
+            <h4>Cliente</h4>
+            <div class="detail-grid" style="margin:0;">
+              <div class="detail-row"><small>Nome</small><strong>${esc(order.name || '—')}</strong></div>
+              <div class="detail-row"><small>E-mail</small><span>${esc(order.email || '—')}</span></div>
+              <div class="detail-row"><small>Telefone</small><span>${esc(order.phone || '—')}</span></div>
+              <div class="detail-row"><small>CPF</small><span>${esc(order.cpf || '—')}</span></div>
+              <div class="detail-row"><small>CEP</small><span>${esc(order.cep || '—')}</span></div>
+              <div class="detail-row"><small>Endereço</small><span>${esc(order.address || '—')}</span></div>
+              <div class="detail-row"><small>Número</small><span>${esc(order.number || '—')}</span></div>
+              <div class="detail-row"><small>Complemento</small><span>${esc(order.complement || '—')}</span></div>
+              <div class="detail-row"><small>Bairro</small><span>${esc(order.neighborhood || '—')}</span></div>
+              <div class="detail-row"><small>Cidade</small><span>${esc(order.city || '—')}</span></div>
+              <div class="detail-row"><small>Estado</small><span>${esc(order.state || '—')}</span></div>
+            </div>
+          </section>
+
+          <section class="detail-section wide">
+            <h4>Referências técnicas</h4>
+            <div class="detail-grid" style="margin:0;">
+              <div class="detail-row"><small>Preference ID</small><span>${esc(order.preference_id || '—')}</span></div>
+              <div class="detail-row"><small>External reference</small><span>${esc(order.external_reference || '—')}</span></div>
+              <div class="detail-row"><small>Moeda</small><span>${esc(order.currency || 'BRL')}</span></div>
+            </div>
+          </section>
+
+          <section class="detail-section wide">
+            <h4>Produtos e composição</h4>
+            ${itemsHtml}
+          </section>
+
+          ${order.detailError ? `<section class="detail-section wide"><h4>Observação</h4><div style="color:#d59a9a;font-size:10px;line-height:1.6;">${esc(order.detailError)}</div></section>` : ''}
         </div>
       `;
-
-      return;
     }
 
-    ordersContainer.innerHTML =
-      data.orders.map(order => `
-        <div class="order-placeholder" style="text-align:left; margin-bottom:20px;">
-
-  <div style="color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:8px;">
-    PEDIDO
-  </div>
-
-  <div style="font-family:Georgia,serif; font-size:24px; color:#e0c47a; margin-bottom:14px;">
-    ${order.order_number}
-  </div>
-
-  <div style="color:#f1eee7; margin-bottom:6px;">
-    Cliente: ${order.name || '-'}
-  </div>
-
-  <div style="color:#8c887f; margin-bottom:6px;">
-    E-mail: ${order.email || '-'}
-  </div>
-
-  <div style="color:#8c887f; margin-bottom:6px;">
-    Valor: R$ ${Number(order.amount).toFixed(2).replace('.', ',')}
-  </div>
-
-  <div style="color:#8c887f; margin-bottom:6px;">
-    Pagamento: ${order.status || '-'}
-  </div>
-
-  <div style="margin-top:18px;">
-
-    <label style="display:block; color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:6px;">
-      STATUS DO ENVIO
-    </label>
-
-    <select
-      data-order="${order.order_number}"
-      class="admin-status"
-      style="width:100%; padding:12px; background:#111; color:#f1eee7; border:1px solid #5b4a2a; margin-bottom:12px;"
-    >
-      <option value="pending" ${order.fulfillment_status === 'pending' ? 'selected' : ''}>
-        Pedido recebido
-      </option>
-
-      <option value="preparing" ${order.fulfillment_status === 'preparing' ? 'selected' : ''}>
-        Em preparação
-      </option>
-
-      <option value="shipped" ${order.fulfillment_status === 'shipped' ? 'selected' : ''}>
-        Enviado
-      </option>
-
-      <option value="delivered" ${order.fulfillment_status === 'delivered' ? 'selected' : ''}>
-        Entregue
-      </option>
-    </select>
-
-    <label style="display:block; color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:6px;">
-      TRANSPORTADORA
-    </label>
-
-    <input
-      type="text"
-      class="admin-carrier"
-      data-order="${order.order_number}"
-      value="${order.shipping_carrier || ''}"
-      placeholder="Ex.: Correios"
-      style="width:100%; padding:12px; box-sizing:border-box; background:#111; color:#f1eee7; border:1px solid #5b4a2a; margin-bottom:12px;"
-    >
-
-    <label style="display:block; color:#c7a45b; font-size:10px; letter-spacing:2px; margin-bottom:6px;">
-      CÓDIGO DE RASTREIO
-    </label>
-
-    <input
-      type="text"
-      class="admin-tracking"
-      data-order="${order.order_number}"
-      value="${order.tracking_code || ''}"
-      placeholder="Ex.: AA123456789BR"
-      style="width:100%; padding:12px; box-sizing:border-box; background:#111; color:#f1eee7; border:1px solid #5b4a2a; margin-bottom:14px;"
-    >
-
-    <button
-      type="button"
-      class="admin-save-order"
-      data-order="${order.order_number}"
-      style="width:100%; padding:13px; background:#c7a45b; color:#111; border:0; cursor:pointer; letter-spacing:2px;"
-    >
-      SALVAR ALTERAÇÕES
-    </button>
-
-    <div
-      class="admin-save-message"
-      data-order="${order.order_number}"
-      style="display:none; margin-top:10px; padding:10px; border:1px solid #5b4a2a; color:#c7a45b;"
-    ></div>
-
-  </div>
-
-</div>
-      `).join('');
-
-  } catch (error) {
-
-    ordersContainer.innerHTML = `
-      <div class="message" style="display:block;">
-        ${error.message}
-      </div>
-    `;
-
-  }
-}
-    document.addEventListener('click', async (event) => {
-
-  const button = event.target.closest('.admin-save-order');
-
-  if (!button) {
-    return;
-  }
-
-  const orderNumber = button.dataset.order;
-
-  const statusElement =
-    document.querySelector(
-      `.admin-status[data-order="${orderNumber}"]`
-    );
-
-  const carrierElement =
-    document.querySelector(
-      `.admin-carrier[data-order="${orderNumber}"]`
-    );
-
-  const trackingElement =
-    document.querySelector(
-      `.admin-tracking[data-order="${orderNumber}"]`
-    );
-
-  const messageElement =
-    document.querySelector(
-      `.admin-save-message[data-order="${orderNumber}"]`
-    );
-
-  const fulfillmentStatus =
-    statusElement.value;
-
-  const shippingCarrier =
-    carrierElement.value.trim();
-
-  const trackingCode =
-    trackingElement.value.trim();
-
-  button.disabled = true;
-  button.textContent = 'SALVANDO...';
-
-  messageElement.style.display = 'none';
-
-  try {
-
-    const response = await fetch(
-      'https://api.zavqel.com.br/admin/orders/update',
-      {
-        method: 'POST',
-
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Admin-Password': adminPassword
-        },
-
-        body: JSON.stringify({
-          order_number: orderNumber,
-          fulfillment_status: fulfillmentStatus,
-          shipping_carrier: shippingCarrier,
-          tracking_code: trackingCode
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(
-        data.error || 'Não foi possível atualizar o pedido.'
-      );
+    function closeDetails() {
+      detailsOverlay.classList.remove('open');
     }
 
-    messageElement.textContent =
-      'Alterações salvas com sucesso.';
+    detailsClose.addEventListener('click', closeDetails);
+    detailsOverlay.addEventListener('click', event => {
+      if (event.target === detailsOverlay) closeDetails();
+    });
 
-    messageElement.style.display = 'block';
-
-    button.textContent = 'SALVO';
-
-  } catch (error) {
-
-    messageElement.textContent =
-      error.message;
-
-    messageElement.style.display = 'block';
-
-    button.textContent =
-      'SALVAR ALTERAÇÕES';
-
-  } finally {
-
-    button.disabled = false;
-
-  }
-
-});
     logoutButton.addEventListener('click', () => {
-
+      adminPassword = '';
+      allOrders = [];
+      closeDetails();
       adminPanel.style.display = 'none';
       loginCard.style.display = 'block';
-
+      passwordInput.value = '';
+      passwordInput.type = 'password';
     });
   </script>
 
