@@ -462,6 +462,48 @@
       white-space:nowrap;
     }
 
+    .payment-retry{
+      display:none;
+      margin-top:24px;
+      padding-top:22px;
+      border-top:1px solid rgba(199,164,91,.14);
+    }
+
+    .payment-retry.open{
+      display:block;
+    }
+
+    .payment-retry-title{
+      color:#ddd7cc;
+      font-size:11px;
+      font-weight:500;
+      margin-bottom:7px;
+    }
+
+    .payment-retry-text{
+      color:#777269;
+      font-size:9px;
+      line-height:1.7;
+      margin-bottom:14px;
+    }
+
+    .payment-retry-button{
+      width:100%;
+      padding:13px 16px;
+      background:#c7a45b;
+      color:#111;
+      border:1px solid #c7a45b;
+      cursor:pointer;
+      font-size:9px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .payment-retry-button:disabled{
+      opacity:.55;
+      cursor:default;
+    }
+
     .message{
       display:none;
       width:min(620px,100%);
@@ -783,6 +825,12 @@
 
           </div>
 
+          <div class="payment-retry" id="paymentRetry">
+            <div class="payment-retry-title">Pagamento ainda não confirmado</div>
+            <div class="payment-retry-text">Você pode continuar o pagamento deste mesmo pedido. Não será criado um novo pedido.</div>
+            <button type="button" class="payment-retry-button" id="paymentRetryButton">CONTINUAR PAGAMENTO</button>
+          </div>
+
         </div>
 
       </section>
@@ -839,6 +887,12 @@
     const message =
       document.getElementById('message');
 
+    const paymentRetry =
+      document.getElementById('paymentRetry');
+
+    const paymentRetryButton =
+      document.getElementById('paymentRetryButton');
+
 
     [orderNumberInput, emailInput].forEach(input => {
       input.addEventListener('keydown', event => {
@@ -861,6 +915,7 @@
 
         result.classList.remove('open');
         message.classList.remove('open');
+        paymentRetry?.classList.remove('open');
 
         if (!orderNumber) {
           message.textContent =
@@ -1022,6 +1077,63 @@ document
   });
 
   result.classList.add('open');
+
+  const canRetryPayment =
+    order.status !== 'approved';
+
+  if (paymentRetry) {
+    paymentRetry.classList.toggle(
+      'open',
+      canRetryPayment
+    );
+  }
+
+  if (paymentRetryButton) {
+    paymentRetryButton.onclick = async () => {
+      if (!canRetryPayment) return;
+
+      paymentRetryButton.disabled = true;
+      paymentRetryButton.textContent = 'PREPARANDO PAGAMENTO...';
+      message.classList.remove('open');
+
+      try {
+        const paymentResponse = await fetch(
+          'https://api.zavqel.com.br/pedido/pagamento',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              order_number: orderNumber,
+              email
+            })
+          }
+        );
+
+        let paymentData = {};
+        try {
+          paymentData = await paymentResponse.json();
+        } catch (_) {}
+
+        if (!paymentResponse.ok || !paymentData.init_point) {
+          throw new Error(
+            paymentData.error ||
+            'Não foi possível retomar o pagamento.'
+          );
+        }
+
+        window.location.href = paymentData.init_point;
+      } catch (error) {
+        message.textContent =
+          error.message ||
+          'Não foi possível retomar o pagamento.';
+        message.classList.add('open');
+        paymentRetryButton.disabled = false;
+        paymentRetryButton.textContent = 'CONTINUAR PAGAMENTO';
+      }
+    };
+  }
 
 } catch (error) {
 
