@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://zavqel.com.br/</loc></url>
-  <url><loc>https://zavqel.com.br/zavqel.html</loc></url>
-  <url><loc>https://zavqel.com.br/black-signature.html</loc></url>
-  <url><loc>https://zavqel.com.br/colecao.html</loc></url>
-  <url><loc>https://zavqel.com.br/personalizacao.html</loc></url>
-  <url><loc>https://zavqel.com.br/certificado.html</loc></url>
-  <url><loc>https://zavqel.com.br/loja.html</loc></url>
+  <url>
+    <loc>https://zavqel.com.br/</loc>
+  </url>
 </urlset>
